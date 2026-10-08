@@ -6,7 +6,7 @@ Geophysical fluids, namely air in the atmosphere and water in the ocean, strongl
 
 From Fluid Mechanics III, you will be familiar with the Navier-Stokes equations. Atmospheric and oceanic flows are described by similar equations, but there are two distinguishing features of these flows that are not covered in details in generic fluids courses. The first feature is the variation of density in different layers of the atmosphere and ocean, known as *stratification*. We cover this phenomenon and some of its implications in @sec-chap:strat. The other feature is the effect of the Earth's *rotation*. We are observing the atmospheric and oceanic flows from a rotating frame of reference, which has important implications on their dynamics. In fact, the Earth's rotation is one of the main drivers behind the weather systems and ocean circulation. We introduce rotating fluids and some of their features in  @sec-chap:rotation.
 
-Geophysical flows are also an amazing platform for the application of mathematics. Due to their complexity, we use a variety of mathematical tools to systematically simplify their governing equations. These simplifications are performed for specific scales or regimes of these fluids. In other words, the simplification and the type of mathematical tools that we employ are problem-dependent. In Chapters [-@sec-chap:SW], [-@sec-Geostrophic], and [-@chap-waves], we will use different mathematical tools such as non-dimensionalisation and scaling analysis, perturbation techniques, linearisation and stability analysis in order to study problems of geophysical interest. Hopefully this will equip you with a set of applied maths skills that you can use in other contexts and problems. In the rest of this chapter, we review some generic aspects of fluid dynamics that you should be familiar with from Fluid Mechanics III.
+Geophysical flows are also an amazing platform for the application of mathematics. Due to their complexity, we use a variety of mathematical tools to systematically simplify their governing equations. These simplifications are performed for specific scales or regimes of these fluids. In other words, the simplification and the type of mathematical tools that we employ are problem-dependent. In Chapters [-@sec-chap:SW], [-@sec-Geostrophic], and [-@sec-chap:waves], we will use different mathematical tools such as non-dimensionalisation and scaling analysis, perturbation techniques and linearisation in order to study problems of geophysical interest. Hopefully this will equip you with a set of applied maths skills that you can use in other contexts and problems. In the rest of this chapter, we review some generic aspects of fluid dynamics that you should be familiar with from Fluid Mechanics III.
 
 
 ## Review of governing equations
@@ -121,13 +121,13 @@ Note the equation of state $p=p(\rho,T)$ implies that if $p$ and $\rho$ are only
 ::: {.callout-tip icon="false"}
 ## Example
 
-Consider an ideal gas atmosphere with a constant temperature $T$ occupying $z>0$. By combining the ideal gas law, $\rho=\rho\mathcal{R}T$ with the equation for hydrostatic balance (@eq-hydrobal), we can determine $\rho$ and $p$ (given that $T$ is constant). 
+Consider an ideal gas atmosphere with a constant temperature $T$ occupying $z>0$. By combining the ideal gas law, $p=\rho\mathcal{R}T$ with the equation for hydrostatic balance (@eq-hydrobal), we can determine $\rho$ and $p$ (given that $T$ is constant). 
 
 From the ideal gas law we have that $\rho=\frac{p}{\mathcal{R} T}$ and therefore, from @eq-hydrobal, we have
 $$
 \frac{dp}{dz} = -\frac{gp}{\mathcal{R} T}=-\frac{p}{H}, 
 $$ {#eq-exidealatmos}
-where $H=\frac{\mathcal{R}T}{g}$ is a scale height. Solving @eq-exidealatmos for $p$ gives $p=p_0e^{-\frac{z}{H}}$ where $p_0=p(z=0)$ is the pressure at the bottom of the atmosphere. It follows that $\rho=\frac{\rho_0}{\mathcal{R} T}e^{-\frac{z}{H}}$.
+where $H=\frac{\mathcal{R}T}{g}$ is a scale height. Solving @eq-exidealatmos for $p$ gives $p=p_0e^{-\frac{z}{H}}$ where $p_0=p(z=0)$ is the pressure at the bottom of the atmosphere. It follows that $\rho=\frac{p_0}{\mathcal{R} T}e^{-\frac{z}{H}}$.
 
 Therefore, we see that both $\rho$ and $p$ decrease upwards with a scale height of $H$. A scale height is typically defined as a distance over which a quantity changes by a factor of $e$.
 

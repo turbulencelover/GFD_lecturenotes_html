@@ -40,7 +40,7 @@ The thinness of fluid has an important consequence: the vertical velocity (in th
 ![A shallow water system. $h$ is the thickness of a water column, $H$ is
 the mean thickness, $\eta$ is the height of the free surface and $\eta_b$
 is the height of the lower rigid. $\Delta \eta$ is the deviation of free
-from average height.](figures/SWschemEdited.png){#fig-SW_schematic
+surface from average height.](figures/SWschemEdited.png){#fig-SW_schematic
 width="70%"}
 
 ### Momentum equations
@@ -123,7 +123,7 @@ $$
 $$
 which can be written as 
 $$
-    \frac{\partial h}{\partial t} + \gradH \cdot (h \vb)=0, \quad \text{or} \quad  \frac{D h}{D t} + h \gradH \cdot \vb=0.
+    \frac{\partial h}{\partial t} + \grad \cdot (h \vb)=0, \quad \text{or} \quad  \frac{D h}{D t} + h \grad \cdot \vb=0.
 $$ {#eq-SWmass}
 Note that unlike Boussinesq or incompressible flows, the shallow water velocity is not divergence free. This is because the columns of fluids can be compressed by increasing their height.
 
@@ -138,10 +138,10 @@ In summary, in a non-rotating frame, the inviscid shallow water equations are
 ## **Inviscid Shallow Water Equations** 
 
 $$
- \text{momentum:} \quad \frac{D \vb}{D t}  =  - g \ \gradH \eta. 
+ \text{momentum:} \quad \frac{D \vb}{D t}  =  - g \ \grad \eta. 
 $$ {#eq-SW1}
 $$
- \text{mass continuity:} \quad \frac{\partial h}{\partial t} + \gradH \cdot (h \vb) = 0, \quad \text{or} \quad  \frac{D h}{D t} + h \gradH \cdot \vb=0 
+ \text{mass continuity:} \quad \frac{\partial h}{\partial t} + \grad \cdot (h \vb) = 0, \quad \text{or} \quad  \frac{D h}{D t} + h \grad \cdot \vb=0 
 $$ {#eq-SW2}
 $$
  \text{height relation:}  \quad  h(x,y,t) = \eta(x,y,t) - \eta_b(x,y,t). 
@@ -250,11 +250,30 @@ $$
 
 Unlike the previous example, we cannot assume that the disturbance is small. Therefore, the nonlinear terms in the shallow water equations are retained.
 
-There is no fixed horizontal length scale in this problem. The initial condition specifies the water depth $H$, but does not specify a horizontal length scale over which the disturbance varies. We therefore expect the horizontal extent of the solution to grow with time. The natural velocity scale of the problem is the shallow-water wave speed $c_0=\sqrt{gH}$, and hence the disturbed region is expected to spread over a distance of order $c_0t$. This motivates looking for a *self-similar solution* that depends on $x$ and $t$ only through the combination
+There is no fixed horizontal length scale in this problem. The initial condition specifies the water depth $H$, but does not specify a horizontal length scale over which the disturbance varies. We therefore expect the horizontal extent of the solution to grow with time.
+
+To determine how fast it grows, let us seek a solution of the form
 $$
-\xi=\frac{x}{t},
+h(x,t)=h(\xi), \qquad u(x,t)=u(\xi), \qquad \xi=\frac{x}{t^n},
 $$
-so that $h(x,t)=h(\xi)$ and $u(x,t)=u(\xi)$.
+where the exponent $n$ is yet to be determined. Using
+$$
+\frac{\partial \xi}{\partial t} =-\frac{n\xi}{t}, \qquad \frac{\partial \xi}{\partial x} =\frac{1}{t^n},
+$$
+the momentum equation becomes
+$$
+-\frac{n\xi}{t}\frac{du}{d\xi} +\frac{u}{t^n}\frac{du}{d\xi} = -\frac{g}{t^n}\frac{dh}{d\xi}.
+$$
+For this equation to hold for all times, the different terms must have the same dependence on $t$. Therefore, $t^{-1}=t^{-n}$, which gives
+$$
+n=1.
+$$
+The mass equation leads to the same result. Hence, the appropriate similarity variable is
+$$
+\xi=\frac{x}{t}.
+$$
+
+This result also makes physical sense. The natural velocity scale of the problem is the shallow-water wave speed $c_0=\sqrt{gH}$, and hence the disturbed region is expected to spread over a distance of order $c_0t$. A solution depending on $x/t$ therefore describes a profile whose horizontal extent grows linearly with time. As time passes, the disturbed region simply expands away from the position of the original dam. We therefore look for a solution that depends on $x$ and $t$ only through the combination $\xi = x/t$, so that $h(x,t)=h(\xi)$ and $u(x,t)=u(\xi)$. Such a solution is known as a *self-similar solution*.
 
 Using
 $$
@@ -266,35 +285,95 @@ $$
 =
 \frac{1}{t}\frac{d}{d\xi},
 $$
-the momentum @eq-nonlinear_SW_momentum becomes
+the momentum equation @eq-nonlinear_SW_momentum becomes
 $$
 (u-\xi)\frac{du}{d\xi}
-+g\frac{dh}{d\xi}=0,
++g\frac{dh}{d\xi}=0.
 $$ {#eq-dam_similarity_momentum}
-and the mass @eq-nonlinear_SW_mass becomes
+Similarly, writing the mass equation as
+$$
+\frac{\partial h}{\partial t} +u\frac{\partial h}{\partial x} +h\frac{\partial u}{\partial x}=0,
+$$
+we obtain
 $$
 (u-\xi)\frac{dh}{d\xi}
 +h\frac{du}{d\xi}=0.
 $$ {#eq-dam_similarity_mass}
 
-For a non-trivial solution of @eq-dam_similarity_momentum and @eq-dam_similarity_mass, the determinant of the coefficient matrix must vanish, giving $(u-\xi)^2=gh$. Defining $c=\sqrt{gh}$ (the local wave speed), and choosing the branch
+Equations @eq-dam_similarity_momentum and @eq-dam_similarity_mass form a pair of equations for $du/d\xi$ and $dh/d\xi$:
 $$
-u-\xi=-c,
+\begin{pmatrix}
+    u-\xi & g\\
+    h & u-\xi
+\end{pmatrix}
+\begin{pmatrix}
+    du/d\xi\\
+    dh/d\xi
+\end{pmatrix}
+=0.
 $$
-then substituting into @eq-dam_similarity_momentum and integrating gives
+For a non-trivial solution, the determinant of this matrix must vanish. Therefore,
 $$
-u + 2c = \text{constant}.
+(u-\xi)^2=gh.
 $$
-Matching to the undisturbed reservoir ($u=0$, $h=H$ hence $c=c_0$) at the left boundary gives $u + 2c = 2c_0$.
+Defining
+$$
+c=\sqrt{gh},
+$$
+which is the shallow-water wave speed corresponding to the local depth $h$, we choose
+$$
+u-\xi=c.
+$$ {#eq-dam_branch}
 
-Combining these results, the solution in the disturbed region is
+Substituting this relation into @eq-dam_similarity_momentum gives
+$$
+c\frac{du}{d\xi} +g\frac{dh}{d\xi}=0.
+$$
+Since $c=\sqrt{gh}$, we have
+$$
+h=\frac{c^2}{g}, \qquad \frac{dh}{d\xi} =\frac{2c}{g}\frac{dc}{d\xi},
+$$
+and hence
+$$
+\frac{du}{d\xi} +2\frac{dc}{d\xi}=0.
+$$
+Integrating gives
+$$
+u+2c=\text{constant}.
+$$
+At the left-hand edge of the disturbed region, the solution must match the undisturbed reservoir, where $u=0$ and $h=H$. Therefore,
+$$
+u+2c=2c_0, \qquad c_0=\sqrt{gH}.
+$$
+
+Combining this result with @eq-dam_branch, i.e. $\xi=u-c$, gives
+$$
+u(\xi)=\frac{2}{3}(c_0+\xi),
+$$
+and
+$$
+c(\xi)=\frac{1}{3}(2c_0-\xi).
+$$
+Since $h=c^2/g$, the water depth is therefore
+$$
+h(\xi) = \frac{1}{9g}(2c_0-\xi)^2.
+$$
+Returning to $x$ and $t$, we find
 $$
 u(x,t)=\frac{2}{3}\left(c_0+\frac{x}{t}\right),
 \qquad
 h(x,t)=\frac{1}{9g}\left(2c_0-\frac{x}{t}\right)^2.
 $$
 
-The solution applies in the region where $h>0$. At the left edge, the solution matches the undisturbed reservoir ($u=0$, $h=H$), giving $x/t = -c_0$. At the right edge, $h=0$ gives $x/t = 2c_0$. The complete solution is therefore
+It remains to determine the region in which this solution applies. At the left-hand edge, the solution matches the undisturbed reservoir, where $u=0$ and $h=H$. This occurs when
+$$
+\frac{x}{t}=-c_0.
+$$
+At the right-hand edge, the water depth vanishes, $h=0$, which gives
+$$
+\frac{x}{t}=2c_0.
+$$
+Hence, the complete solution is
 $$
 (h,u)=
 \begin{cases}
@@ -310,7 +389,11 @@ $$
 \end{cases}
 $$
 
-The disturbed region expands linearly in time and the front of the water moves into the dry region with constant speed $2c_0 = 2\sqrt{gH}$. Thus, a deeper reservoir produces a faster-moving front.
+The disturbed region therefore expands linearly in time. In particular, the front of the water moves into the dry region with the constant speed
+$$
+\frac{dx_{\mathrm{front}}}{dt} =2c_0 =2\sqrt{gH}.
+$$
+Thus, a deeper reservoir produces a faster-moving front.
 
 ![The evolution of the height (top) and velocity (bottom) for the nonlinear dam break. Both figures share the same legend shown at the top.](figures/Solution_nonlinear_dambreak.png){#fig-sol_nldambreak width=80%}
 

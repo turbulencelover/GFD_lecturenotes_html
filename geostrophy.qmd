@@ -29,7 +29,7 @@ $$
  \gradHh \cdot\vh + \frac{\mathcal{W} \mathcal{L}}{\mathcal{U} \mathcal{H}}  \frac{\partial \wh}{\partial \zh} =0, 
 $$ {#eq-nd_Bousdiv}
 $$
-\frac{1}{f_0 \mathcal{T}} \frac{\partial \bh}{\partial \tha} + \frac{\mathcal{U}}{f_0 \mathcal{L}} \ (\vh\cdot\gradHh ) \bh + \frac{\mathcal{W}}{f_0 \mathcal{H}} \wh \frac{\partial \bh}{\partial \zh} + \frac{N^2 \mathcal{W}}{\mathcal{B}} \wh =0.
+\frac{1}{f_0 \mathcal{T}} \frac{\partial \bh}{\partial \tha} + \frac{\mathcal{U}}{f_0 \mathcal{L}} \ (\vh\cdot\gradHh ) \bh + \frac{\mathcal{W}}{f_0 \mathcal{H}} \wh \frac{\partial \bh}{\partial \zh} + \frac{N^2 \mathcal{W}}{f_0 \mathcal{B}} \wh =0.
 $$ {#eq-nd_Bousbuoy}
 
 ::: {.callout-note appearance="simple"}
@@ -51,21 +51,21 @@ $$
  \gradHh \cdot\vh + \frac{\mathcal{W} \mathcal{L}}{\mathcal{U} \mathcal{H}}  \frac{\partial \wh}{\partial \zh} =0,
 $$ {#eq-nd_Bousdiv2}
 $$
- \frac{1}{f_0 \mathcal{T}} \frac{\partial \bh}{\partial \tha} +\Ro \ (\vh\cdot\gradHh ) \bh + \Ro \frac{\mathcal{W} \mathcal{L}}{\mathcal{U} \mathcal{H}} \wh \frac{\partial \bh}{\partial \zh} + \frac{N^2 \mathcal{W}}{\mathcal{B}} \wh =0. 
+ \frac{1}{f_0 \mathcal{T}} \frac{\partial \bh}{\partial \tha} +\Ro \ (\vh\cdot\gradHh ) \bh + \Ro \frac{\mathcal{W} \mathcal{L}}{\mathcal{U} \mathcal{H}} \wh \frac{\partial \bh}{\partial \zh} + \frac{N^2 \mathcal{W}}{f_0 \mathcal{B}} \wh =0. 
 $$ {#eq-nd_Bousbuoy2}
 
 In the rest of this chapter we assume $N$ to be constant. However, the geostrophic theory can be easily generalised to a variable $N$.
 
 
 ::: {.callout-note appearance="simple"}
-$Ro$ is named after after the Swedish-American meteorologist Carl-Gustav Arvid Rossby, who first explain who first explained the large-scale motions of the atmosphere using fluid mechanics.
+$Ro$ is named after after the Swedish-American meteorologist Carl-Gustav Arvid Rossby, who first explained the large-scale motions of the atmosphere using fluid mechanics.
 :::
 
 
 
 ## Leading order: geostrophic balance
 
-Our goal in this section is to use the relevant scaling to the weather scale to simplify the Bousinesq equation. To that end, we consider the following assumptions
+Our goal in this section is to use the relevant scaling to the weather scale to simplify the Boussinesq equation. To that end, we consider the following assumptions
 
 
 1. The Rossby number is small and we denote it by $\Ro =\epsilon$ to emphasise this fact. This means the Coriolis effect is strong. The average wind speed in the atmosphere is about $8 m/s$, the Coriolis parameter at mid-latitudes (about $35^{\circ}$) is $0.8 \times 10^{-4}$ and as mentioned earlier we are considering the weather (synoptic) scales of $\mathcal{L} = 1000 km$. With these values we get $\Ro \approx 0.1$, which is indeed a small parameter. A similar calculation for the ocean scales of 100 km leads to even smaller Rossby numbers.
@@ -89,20 +89,19 @@ $$
  \gradHh \cdot\vh + \frac{\partial \wh}{\partial \zh} =0, 
 $$ {#eq-nd_Bousdiv3}
 $$
- \epsilon \left(\frac{\partial \bh}{\partial \tha} +(\vh\cdot\gradHh ) \bh + \wh \frac{\partial \bh}{\partial \zh}  \right) + \frac{N^2 \mathcal{W}}{\mathcal{B}}\wh =0. 
+ \epsilon \left(\frac{\partial \bh}{\partial \tha} +(\vh\cdot\gradHh ) \bh + \wh \frac{\partial \bh}{\partial \zh}  \right) + \frac{N^2 \mathcal{W}}{f_0 \mathcal{B}}\wh =0. 
 $$ {#eq-nd_Bousbuoy3}
 
 
-If we consider the limit of small $\epsilon$ (following assumption 1), in the horizontal momentum @eq-nd_BousmomH3 the Coriolis force will be larger than all other terms in the LHS. We know the Coriolis force is not small at the weather scale as the horizontal wind $\vb$ is not negligible. Hence, the pressure gradient in the RHS has to be the same order as Coriolis force to balance it out. This require the following scaling for pressure
+If we consider the limit of small $\epsilon$ (following assumption 1), in the horizontal momentum @eq-nd_BousmomH3 the Coriolis force will be larger than all other terms in the LHS. We know the Coriolis force is not small at the weather scale as the horizontal wind $\vb$ is not negligible. Hence, the pressure gradient in the RHS has to be the same order as Coriolis force to balance it out. This requires the following scaling for pressure
 $$
     \mathcal{P} \sim \bar\rho f_0 \mathcal{L}\ \mathcal{U}
 $$
-Following this scaling, we can move to the vertical momentum @eq-nd_BousmomV3 and infer the approperiate scaling for buoyancy
+Following this scaling, we can move to the vertical momentum @eq-nd_BousmomV3 and infer the appropriate scaling for buoyancy
 $$
     \mathcal{B} \sim \frac{f_0 \mathcal{L}\ \mathcal{U}}{\mathcal{H}}
 $$
 After replacing for $\mathcal{B}$ and $\mathcal{P}$  all the pieces of scaling puzzle are complete and we have a set of equations for which we know the relative importance of all terms
-\begin{align}
 $$
  \epsilon \left(  \frac{\partial\vh}{\partial \tha} + (\vh \cdot \gradHh ) \vh + \wh \frac{\partial \vh }{\partial \zh} \right) +  \fh_0 \times \vh + \epsilon \nd{\beta} \nd{y} \eb_z \times \vh = - \gradHh \ph, 
 $$ {#eq-nd_BousmomH4}
@@ -126,8 +125,12 @@ Upon substitution in @eq-nd_BousmomH4 and keeping the leading order terms (the s
 $$
   \fh_0 \times \vh_0 = - \gradH \ph_0, 
 $$ {#eq-geobalance}
+which can be turned back to the dimensional form to get
+$$
+    \fb_0 \times \vb_0 = - \frac{1}{\rho_0} \gradH p_0.
+$$
 
-This is the infamous **geostrophic balance**, which is the building block of modern weather forecast. It expresses that the Coriolis forces is balancing the pressure gradient. If we take the divergence of both sides in @eq-geobalance, we find
+This is the famous **geostrophic balance**, which is the building block of modern weather forecast. It expresses that the Coriolis forces is balancing the pressure gradient. If we take the divergence of both sides in @eq-geobalance, we find
 $$
   \gradHh \cdot\vh_0 = 0, 
 $$ {#eq-divfree_geo}
@@ -216,17 +219,19 @@ $$
     \frac{\partial\vh_0}{\partial \tha} + (\vh_0 \cdot \gradHh ) \vh_0 + \nd{\beta} \nd{y} \eb_z \times \vh_0 + \fh_0 \times \vh_1 = - \gradHh \ph_1.
 $$
 We then take the curl of this equation 
-    \begin{align*}
+$$
+\begin{aligned}
         \frac{\partial}{\partial \nd{x}} \left( \frac{\partial \nd{v}_0}{\partial \tha} + \nd{u}_0 \frac{\partial \nd{v}_0}{\partial \nd{x}} + \nd{v}_0 \frac{\partial \nd{v}_0}{\partial \nd{y}} + \nd{\beta} \nd{y} u_0 + \nd{f}_0 u_1  \right) 
         &- \frac{\partial}{\partial \nd{y}} \left( \frac{\partial \nd{u}_0}{\partial \tha} + \nd{u}_0 \frac{\partial \nd{u}_0}{\partial \nd{x}} + \nd{v}_0 \frac{\partial \nd{u}_0}{\partial \nd{y}} - \nd{\beta} \nd{y} v_0 - \nd{f}_0 v_1  \right)
-        = 0 \nonumber \\
-    \rightarrow \quad & \frac{\partial\nd{\zeta}_0}{\partial \tha} + (\vh_0 \cdot \gradHh ) \nd{\zeta}_0 + \nd{\beta} v_0 = -  \nd{f}_0 \gradHh \cdot \vh_1, \label{QGvort1}
-    \end{align*}
+        = 0 \\
+    \rightarrow \quad & \frac{\partial\nd{\zeta}_0}{\partial \tha} + (\vh_0 \cdot \gradHh ) \nd{\zeta}_0 + \nd{\beta} v_0 = -  \nd{f}_0 \gradHh \cdot \vh_1,
+\end{aligned}
+$$ {#eq-QGvort1}
 where we used @eq-divfree_geo and $\nd{\zeta}_0 = \partial \nd{v}_0 / \partial \nd{x} - \partial \nd{u}_0 / \partial \nd{y}$ is the vertical vorticity at zeroth order. The next order mass conservation equation is
 $$
     \gradHh \cdot\vh_1 + \frac{\partial \wh_1}{\partial \zh} = 0,
 $$
-which can be used to replace for $\gradHh \cdot \vh_1$ in @q-QGvort1
+which can be used to replace for $\gradHh \cdot \vh_1$ in @eq-QGvort1
 $$
     \frac{\partial\nd{\zeta}_0}{\partial \tha} + (\vh_0 \cdot \gradHh ) \nd{\zeta}_0 + \nd{\beta} v_0 = \nd{f}_0 \frac{\partial \wh_1}{\partial \zh}
 $$ {#eq-QGvort2}
@@ -256,14 +261,14 @@ $$
 $$ {#eq-QGnondim}
 This is the quasi-geostrophic (QG) balance in the non-dimensional form. We can transform all variables back to their dimensional version (using @eq-scaling) and drop the subscripts assuming that the flow is approximated by its leading order terms to arrive at 
 $$ 
-    \frac{D q}{D t}  = 0, \quad \text{where} \quad q = \zeta + f +  \frac{1}{N^2}    \frac{\partial b}{\partial z}.
+    \frac{D q}{D t}  = 0, \quad \text{where} \quad q = \zeta + f +  \frac{f_0}{N^2}    \frac{\partial b}{\partial z}.
 $$ {#eq-QGdim}
 which is the QG equation in the dimensional form. $q$ in this equation is the known as **potential vorticity** (PV), which is of immense significance in geophysical fluid dynamics. @eq-QGdim implies that following each particle in a QG flow we find its PV remains unchanged. Note that all the variables in @eq-QGdim can be written in terms of a streamfunction $\psi$ (the dimensional version of $\psih$ in @eq-streamfunction_geo):
-\begin{itemize}
-    \item horizontal velocity components: $u=-{\partial \psi}/{\partial y}$ and $v={\partial \psi}/{\partial x}$,
-    \item vertical vorticity (vorticity in the $z$ direction): $\zeta = \gradH^2 \psi$,
-    \item perturbation buoyancy: $b = f_0 {\partial \psi}/{\partial z}$.
-\end{itemize}
+
+- horizontal velocity components: $u=-{\partial \psi}/{\partial y}$ and $v={\partial \psi}/{\partial x}$,
+- vertical vorticity (vorticity in the $z$ direction): $\zeta = \gradH^2 \psi$,
+- perturbation buoyancy: $b = f_0 {\partial \psi}/{\partial z}$.
+
 This means that QG equation is basically a partial differential equation for only one variable. Considering that the full Boussinesq equations contain 5 unknown variables, this is a significant simplification to describe the large scale atmospheric and oceanic flows (thanks to mathematics and in particular perturbation methods!).
 
 ## Shallow water quasigeostrophy {#sec-QGSW}

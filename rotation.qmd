@@ -170,8 +170,8 @@ $$
 $$
 For small $\theta-\theta_0$, $y\approx r_e(\theta-\theta_0)$ and so we have that
 \begin{align*}
-\sin\theta&=\sin(\theta+(\theta-\theta_0)) =\sin\theta_0 + (\theta-\theta_0)\cos\theta_0 + O((\theta-\theta_0)^2) \approx \sin\theta_0 +\frac{\cos\theta_0}{r_e}y\\
-\cos\theta&=\cos(\theta+(\theta-\theta_0)) = \cos\theta_0 - (\theta-\theta_0)\sin\theta_0 + O((\theta-\theta_0)^2) \approx \cos\theta_0 -\frac{\sin\theta_0}{r_e}y.
+\sin\theta&=\sin(\theta_0+(\theta-\theta_0)) =\sin\theta_0 + (\theta-\theta_0)\cos\theta_0 + O((\theta-\theta_0)^2) \approx \sin\theta_0 +\frac{\cos\theta_0}{r_e}y\\
+\cos\theta&=\cos(\theta_0+(\theta-\theta_0)) = \cos\theta_0 - (\theta-\theta_0)\sin\theta_0 + O((\theta-\theta_0)^2) \approx \cos\theta_0 -\frac{\sin\theta_0}{r_e}y.
 \end{align*}
 Hence we write $\Omb = \Omrm_z\eb_z + \Omrm_y\eb_y$ where
 \begin{align*}
@@ -191,7 +191,7 @@ $$
  \DDt{v} + 2\Omrm_z u = -\frac{1}{\rho}\frac{\partial p}{\partial y} 
 $$ {#eq-tangentplanev}
 $$
-\DDt{w}  -2\Omrm_y u = -\frac{1}{\rho}\frac{\partial p}{\partial z} -g. 
+\DDt{w}  -2\Omrm_y u = -\frac{1}{\rho}\frac{\partial p}{\partial z} + b. 
 $$ {#eq-tangentplanew}
 
 
@@ -199,11 +199,11 @@ If we further assume that the layer is thin then the vertical flow speed is much
 \begin{align}
 \DDt{u} -fv &= -\frac{1}{\rho}\frac{\partial p}{\partial x} \\
 \DDt{v} + fu &= -\frac{1}{\rho}\frac{\partial p}{\partial y} \\
-\DDt{w}   &= -\frac{1}{\rho}\frac{\partial p}{\partial z} -g,
+\DDt{w}   &= -\frac{1}{\rho}\frac{\partial p}{\partial z} + b,
 \end{align}
 where we have introduced $f=2\Omrm_z$. Equivalently, these equations can be written in vector form as
 $$
-\DDt{\ub} + \fb\times\ub = -\frac{1}{\rho}\nabla p -g\eb_z,
+\DDt{\ub} + \fb\times\ub = -\frac{1}{\rho}\nabla p + b\eb_z,
 $$ {#eq-fvecform}
 where $\fb=f(y)\eb_z$.
 This formulation in which components of $\Omb$ not in the direction of the local vertical is sometimes called the *traditional approximation*. Note, the centrifugal potential no longer appears in our equations, this is a result of defining the local vertical in the direction of $-\nabla\Phi$. Therefore, rotation enters the equations only through the Coriolis force and $f$ is often called the *Coriolis parameter*.
@@ -323,7 +323,7 @@ In reality, we do not see exact two-dimensional flow in the atmosphere of the oc
 
 ![Taylor-Proudman column](figures/TaylorProudmanColumn.png){#fig-taylorproudman width="50%"}
 
-If rotating fluid moves around an obstacle near the ground, the fluid must also move around an 'imaginary' obstacle higher up in the fluid. This is depicted in @fig--taylorproudman and can be observed in rotating tank experiments such as [this video](https://www.youtube.com/watch?v=18HwEHyks9M).
+If rotating fluid moves around an obstacle near the ground, the fluid must also move around an 'imaginary' obstacle higher up in the fluid. This is depicted in @fig-taylorproudman and can be observed in rotating tank experiments such as [this video](https://www.youtube.com/watch?v=18HwEHyks9M).
 
 :::
 

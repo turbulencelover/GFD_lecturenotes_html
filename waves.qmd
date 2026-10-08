@@ -1,40 +1,38 @@
-# Waves in the atmosphere and ocean {#chap-waves}
+# Waves in the atmosphere and ocean {#sec-chap:waves}
 
 ## Basic concepts
 
-We review some basic concepts about waves that you might already be familiar with from other courses. To start, consider a plane sinusoidal wave  
+We review some basic concepts about waves that you might already be familiar with from other courses. To start, consider a plane sinusoidal wave 
 $$
     \psi(\xb,t) = \mathcal{M} \cos(\kb \cdot \xb - \omega t) + \mathcal{N} \sin(\kb \cdot \xb - \omega t),
 $$ {#eq-planewave_sin}
-where $\kb = (k_x,k_y,k_z)$ is the wavevector and $\omega$ the frequency. The norm of wavevector $k = |\kb|$, is known as the wavenumber (in the  literature even $\kb$ is sometimes loosely referred to as the wavenumber). The argument of $\sin$ and $\cos$ functions is known as the phase and usually denoted by $\theta = \kb . \xb - \omega t$. Using trigonometric identities, we can write @eq-planewave_sin in the equivalent different form
+where $\kb = (k_x,k_y,k_z)$ is the wavevector and $\omega$ the frequency. The norm of the wavevector, $k = |\kb|$, is known as the wavenumber (in the literature, $\kb$ is sometimes loosely referred to as the wavenumber as well). The argument of the sine and cosine is known as the phase and is usually denoted by
+$$
+    \theta = \kb \cdot \xb - \omega t.
+$$
+Using trigonometric identities, we can write @eq-planewave_sin in the equivalent form
 $$
     \psi(\xb,t) = \mathcal{A} \cos(\kb \cdot \xb - \omega t + \phi_0),
 $$
 where $\mathcal{A} = \sqrt{\mathcal{M}^2+\mathcal{N}^2}$ is the wave amplitude and $\phi_0$ is an initial phase shift.  
 
-
-
 Another useful equivalent form of @eq-planewave_sin is in terms of the complex exponential function:
 $$
-    \psi(\xb,t) = \mathcal{R}e \{ A e^{i (\kb . \xb - \omega t)} \}
+    \psi(\xb,t) = \mathcal{R}e \{ A e^{i (\kb \cdot \xb - \omega t)} \},
 $$ {#eq-planewave_exp}
 where $A$ is the complex wave amplitude (often loosely referred to simply as the wave amplitude). For plane waves $A$ is constant, but in general it may depend on space and time. With some complex algebra one can show that $|A| = \mathcal{A}$.  
 
-
 In the remainder of this chapter, we will often omit the real-part operator $\mathcal{R}e$ to lighten the notation, with the understanding that the physical solution is always the real part of the complex expression.
 
-
-From @planewave_sin we can infer that the distance between two consecutive crests (or troughs) is
+From @eq-planewave_sin we can infer that the distance between two consecutive crests (or troughs) is
 $$
     \lambda = \frac{2\pi}{|\kb|},
 $$
-
 which is called the wavelength. If we fix a point in space, the period
 $$
     T = \frac{2\pi}{\omega}
 $$
 is the time it takes for the wave to repeat itself at that point (for example, the time between two crests passing a fixed location).
-
 
 ### Dispersion relation
 
@@ -42,67 +40,70 @@ Different kinds of waves arise as solutions of different linear (partial) differ
 $$
     \frac{\partial \psi}{\partial t} + \alpha \ \frac{\partial \psi}{\partial x} = 0.
 $$ {#eq-waveq_1D}
-Upon substituting @eq-planewave_exp into this equation, we obtain $A(-i\omega + \alpha \ ik_x)=0$. For a non-trivial solution ($A \neq 0$), this requires
+Upon substituting @eq-planewave_exp into this equation, we obtain
 $$
-  \omega = \alpha k_x 
+    A(-i\omega + \alpha \, i k_x)=0.
+$$
+For a non-trivial solution ($A \neq 0$), this requires
+$$
+    \omega = \alpha k_x.
 $$ {#eq-planewave_disprel}
 In other words, for any wavenumber $k_x$ we can find a corresponding frequency $\omega$ from @eq-planewave_disprel such that $A e^{i (\kb \cdot \xb - \omega t)}$ is a solution of @eq-waveq_1D. A relation between $\omega$ and $\kb$ obtained in this way is called the *dispersion relation*. 
 
 ::: {.callout-tip icon="false"}
 ## Example
 
-For the following equation 
+For the equation 
 $$
     \frac{\partial}{\partial t} \nabla^2 \psi + \beta \ \frac{\partial \psi}{\partial x} = 0,
 $$ {#eq-RossbyWave_3D}
 we find the dispersion relation
 $$
-    \omega = \frac{-\beta k_x}{k_x^2+k_y^2+k_z^2}
+    \omega = \frac{-\beta k_x}{k_x^2+k_y^2+k_z^2}.
 $$ {#eq-RossbyWave_disprel}
 :::
 
-
-For a general linear equation, the dispersion relation can have the form of
+For a general linear system, the dispersion relation may be written in the form
 $$
-    \omega = \Omega(\kb; \xb, k)
+    \omega = \Omega(\kb; \xb, t),
 $$
-
+which allows, for example, for slowly varying background properties.
 
 ### Phase speed and phase velocity
 
-![Propagation of plane wave crests.](figures/plane_wave.png){#fig-plane_wave_crest width=50%}
+![Propagation of plane-wave crests.](figures/plane_wave.png){#fig-plane_wave_crest width=50%}
 
-
-Phase speed is the distant that the crests (or troughs) of a wave are travelling per unit of time. To find the value of phase speed, (at any instance in time) we align our coordinate along the $\kb$ axis as shown in @fig-plane_wave_crest. If denote the position along the $\kb$ axis in the new coordinate by $x^*$, $\kb \cdot \xb = k x^*$. We then write @eq-planewave_exp as
+The *phase speed* is the speed at which individual crests (or troughs) of a wave propagate. To determine it, we align our coordinate axis along the direction of $\kb$, as shown in @fig-plane_wave_crest. If we denote the coordinate along $\kb$ by $x^*$, then $\kb \cdot \xb = k x^*$, and we can rewrite @eq-planewave_exp as
 $$
-    \psi = A e^{i (\kb . \xb - \omega t)} = A e^{i k (x^*- c t)} ,
+    \psi = A e^{i (\kb \cdot \xb - \omega t)} = A e^{i k (x^* - c_p t)} ,
 $$
 where
 $$
     c_p = \frac{\omega}{k}
-$${#eq-phase_speed}
-is the phase speed. From this form we can see that the wave function is simply shifted along the $\kb$ direction by $c t$. Hence, if we pick a point on the wave (for example on a crest), it moves along the $\kb$ axis with the speed $c$. 
-
+$$ {#eq-phase_speed}
+is the phase speed. From this form we see that the wave is simply shifted along the direction of $\kb$ by $c_p t$. Hence, if we pick a particular point on the wave (for example a crest), it moves along the $\kb$ axis with speed $c_p$.
 
 ::: {.callout-tip icon="false"}
 ## Example
 
-Based on the definition of phase speed in @eq-phase_speed, we derive $c$ for the following equations 
+Using the definition @eq-phase_speed, derive $c_p$ for the following equations:
 $$
-  \frac{\partial \psi}{\partial t} + \alpha \ \frac{\partial \psi}{\partial x} = 0 
+    \frac{\partial \psi}{\partial t} + \alpha \ \frac{\partial \psi}{\partial x} = 0,
 $$ {#eq-PlaneWave_1D}
 $$
-    \frac{\partial}{\partial t} \frac{\partial^2 \psi}{\partial x^2} \psi + \beta \ \frac{\partial \psi}{\partial x} = 0. 
+    \frac{\partial}{\partial t} \frac{\partial^2 \psi}{\partial x^2} + \beta \ \frac{\partial \psi}{\partial x} = 0.
 $$ {#eq-RossbyWave_1D}
-We can first derive the dispersion relation for the above systems and then divide $\omega$ by $k$ to get the phase speed. We have already found the dispersion for @eq-PlaneWave_1D in @eq-planewave_disprel. Dividing this expression by $k$, we obtain $c_p = \alpha$. The system @eq-RossbyWave_1D is a one-dimensional case of @eq-RossbyWave_3D, where $k = k_x$ and $k_y = k_z =0$. Dividing @eq-RossbyWave_disprel by $k$ leads to $c_p = -\beta / k_x$.
+We first derive the dispersion relation for each system and then obtain $c_p = \omega/k$.
+
+We have already found the dispersion relation for @eq-PlaneWave_1D in @eq-planewave_disprel. Dividing this expression by $k$ gives $c_p = \alpha$.
+
+The system @eq-RossbyWave_1D is the one-dimensional case of @eq-RossbyWave_3D, where $k = k_x$ and $k_y = k_z = 0$. Using @eq-RossbyWave_disprel, dividing by $k$ leads to $c_p = -\beta / k_x^2$.
 :::
 
-
-It is common to assign a direction to the phase speed and turn it into a velocity vector. Considering that wave crests propagate along $\kb$ we can define the phase velocity as 
+It is often convenient to assign a direction to the phase speed and define the *phase velocity* vector. Since the crests propagate along $\kb$, we can define
 $$
     \boldsymbol{c}_p = \frac{\omega}{k} \ \frac{\kb}{k}.
 $$
-(decide later if you want to talk about phase velocity in more detail. probably better not to bother)
 
 ::: {#fig-disp_nondispWave layout-ncol=2}
 
@@ -110,35 +111,55 @@ $$
 
 ![](figures/dispers2waves.png){width=50%}
 
-Propagation of two superimposed waves: left) non-dispersive and right) dispersive. The solid line is the initial wave $\psi(x,t=0)$ and the dashed line after 1.5 time $\psi(x,t=1.5)$.
+Propagation of two superimposed waves: left) non-dispersive and right) dispersive. The solid line is the initial wave $\psi(x,t=0)$ and the dashed line shows $\psi(x,t=1.5)$.
 :::
 
-
-Now let's consider a (one-dimensional) compound wave that consists of two wavenumbers, for example 
+Now consider a (one-dimensional) wave that consists of two wavenumbers, for example 
 $$
     \psi = A_1 e^{i ( x - c_1 t)} + A_2 e^{i 2 ( x - c_2 t)}. 
 $$ {#eq-twowaves_1_2}
-If this wave evolves under @eq-PlaneWave_1D we find that phase velocity of both components are the same $c_1 = c_2 = \alpha$. This means that both signals (wave components) move at the same speed so the initial shape of the wave will be preserved in time and just gets shifted along the x axis. The story is very different for the system @eq-RossbyWave_1D as each component of the wave has a different velocity $c_1 = \beta$ and $c_2 = \beta / 2$. This means that the shape of the wave deforms in time as its constituents propagate at different speed. This is demonstrated in figure @fig-disp_nondispWave. The first systems @eq-PlaneWave_1D belongs to a class of waves that are called *non-dispersive*. For non-dispersive waves the phase speed does not depend on the wavenumber (left panel of @fig-disp_nondispWave). The second system @eq-RossbyWave_1D is an example of *dispersive* waves for which the phase speed is an explicit function of wavenumber (right panel of @fig-disp_nondispWave). 
+If this wave evolves under @eq-PlaneWave_1D, we find that the phase speeds of both components are the same: $c_1 = c_2 = \alpha$. This means that both signals (wave components) move at the same speed, so the initial shape of their superposition is preserved and simply shifted along the $x$-axis.
 
+The situation is very different for the system @eq-RossbyWave_1D, where each component of the wave has a different velocity $c_1 = - \beta$ and $c_2 = - \beta / 4$. In this case, the shape of the wave deforms in time as its components propagate at different speeds. This is demonstrated in @fig-disp_nondispWave.  
+
+The first system @eq-PlaneWave_1D belongs to the class of *non-dispersive* waves: the phase speed does not depend on wavenumber (left panel of @fig-disp_nondispWave). The second system @eq-RossbyWave_1D is an example of *dispersive* waves, for which the phase speed is an explicit function of wavenumber (right panel of @fig-disp_nondispWave).
 
 ### Group velocity
 
-![The signals of first and second row plots, with slightly different frequencies are added generating the bottom plot signal.](figures/Group_Vel.png){#fig-groupvel width=65%}
+![Two signals with slightly different frequencies (top two rows) and their superposition (bottom), which forms a wave packet.](figures/Group_Vel.png){#fig-groupvel width=65%}
 
-Energy and information do not necessarily travel at the phase speed. We do not care too much about how individual crests and troughs propagate in time. Instead, we want to know how a packet or bundle of them move together. Their collective motion shows how much energy and information is transferred by them. The quantity that characterises such a collective motion is the *group velocity*. 
+Energy and information do not necessarily travel at the phase speed. In most applications we are less interested in how individual crests and troughs move, and more interested in how a packet or bundle of crests and troughs propagates. The propagation of such a wave packet determines how energy and information are transported. The quantity that characterises this collective motion is the *group velocity*. 
 
-To understand the concept of group velocity, we consider a superposition of two waves similar to @eq-twowaves_1_2
+To understand group velocity, consider again a superposition of two waves similar to @eq-twowaves_1_2,
 $$
     \psi = A \left[ e^{i ( k_1 x - \omega_1 t)} + e^{i (k_2 x - \omega_2 t) } \right], 
 $$ {#eq-twoSimilarWaves}
-but this time we set the frequency of individual signals to $\omega_1 = \omega + \Delta \omega$ and $\omega_2 = \omega - \Delta \omega$, and their wavenumbers to $k_1 = k + \Delta k$ and $k_2 = k - \Delta k$. If $\Delta k$ and $\Delta \omega$ are small, these two components will have similar frequencies and wavenumbers. An example of two wave signals with slightly different frequencies and wavenumbers is depicted in the top rows of @fig-groupvel. The bottom row of this figure shows the superposition of these waves, which forms a wave packets (an envelope of crests and troughs) that look like a wave itself. We can see this in a mathematical expression by simplifying @eq-twoSimilarWaves
+but now choose the frequencies and wavenumbers to be
 $$
-    \psi = A e^{i ( k x - \omega t)} \left[ e^{i ( \Delta k x - \Delta \omega t)} + e^{- i ( \Delta k x - \Delta \omega t)}  \right] = A \cos (\Delta k x - \Delta \omega t) e^{i ( k x - \omega t)}   
+    \omega_1 = \omega + \Delta \omega,\quad \omega_2 = \omega - \Delta \omega,\quad
+    k_1 = k + \Delta k,\quad k_2 = k - \Delta k,
 $$
-The amplitude of the superposition is no longer constant and instead is *modulated* by $\cos(\Delta k x - \Delta \omega t)$. Just like the original wave signals, this modulated envelope moves in time, however, with a different speed that is $\Delta \omega / \Delta k$. This quantity at the limit of $\Delta k, \Delta \omega \to 0$ is the group velocity $c_g = \partial \omega / \partial k$. Group velocity is equal to the phase speed only for non-dispersive waves, i.e. when the frequency is a linear function of wavenumber. The energy in a wave is transported by group velocity. To have a better understanding of this phenomenon, consider the nodes between the envelopes in figure @fig-groupvel. The wave function is zero at these nodes so the energy cannot be transferred across them. These nodes (as well as the envelopes between them that contains the wave energy) move with the group velocity. We can generalise this concept to three dimensions and define the group velocity as
+with $\Delta k$ and $\Delta \omega$ small. The two components then have very similar wavenumbers and frequencies. An example of such a pair is shown in the top two rows of @fig-groupvel. The bottom panel shows their superposition, which forms an envelope containing a number of crests and troughs—a wave packet.
+
+We can see this structure mathematically by simplifying @eq-twoSimilarWaves:
 $$
-    \boldsymbol{c}_g = \nabla_{\kb} \omega = \ddy{\omega}{\kb} = \left(\ddy{\omega}{k_x}, \ddy{\omega}{k_y}, \ddy{\omega}{k_z} \right)
-$$ {#eq-groupVel_def} 
+\begin{aligned}
+    \psi &= A e^{i ( k x - \omega t)} \left[ e^{i ( \Delta k x - \Delta \omega t)} + e^{- i ( \Delta k x - \Delta \omega t)}  \right] \\
+         &= 2 A \cos (\Delta k x - \Delta \omega t) \, e^{i ( k x - \omega t)}.
+\end{aligned}
+$$
+The amplitude of the superposition is no longer constant; it is *modulated* by the factor $\cos(\Delta k x - \Delta \omega t)$. This envelope also propagates, but with speed $\Delta \omega / \Delta k$, which is in general different from the phase speed of the carrier wave. In the limit $\Delta k, \Delta \omega \to 0$ we obtain the group velocity
+$$
+    c_g = \frac{\partial \omega}{\partial k}.
+$$
+For non-dispersive waves, where $\omega$ is linear in $k$, the group and phase speeds coincide. In general, however, they are different.  
+
+The energy in a wave is transported at the group velocity. To see this, note that the nodes between the envelopes in @fig-groupvel are points where the wave amplitude (and hence energy) is almost zero, so energy cannot cross them. These nodes (and the envelopes containing the energy between them) move with the group velocity.
+
+In three dimensions, we define the group-velocity vector as
+$$
+    \boldsymbol{c}_g = \nabla_{\kb} \omega = \ddy{\omega}{\kb} = \left(\ddy{\omega}{k_x}, \ddy{\omega}{k_y}, \ddy{\omega}{k_z} \right).
+$$ {#eq-groupVel_def}
 
 ## Poincaré waves in the Shallow Water equations {#sec-SW_waves}
 
@@ -309,7 +330,7 @@ $$
 $$ {#eq-hydstat-IGWdisp}
 It is straightforward to check that the inner product of this vector with $\kb = (k_x, k_y, k_z)$ is zero, confirming that $\boldsymbol{c}_g \perp \kb$.
 
-We can repeat the analysis for the non-hydrostatic Boussinesq equations (see the earlier Boussinesq chapter) to obtain the dispersion relation
+We can repeat the analysis for the non-hydrostatic Boussinesq equations (see ([-@eq-rtBousmombuoy])-([-@eq-rtBousdenistybuoy])) to obtain the dispersion relation
 $$
     \omega = \pm \sqrt{f^2 \frac{k_z^2}{k^2} + N^2 \frac{k_h^2}{k^2}} = \pm \sqrt{f^2 \cos^2(\theta) + N^2 \sin^2(\theta)},
 $$ {#eq-nonhydstat-IGWdisp}
@@ -323,13 +344,13 @@ The hydrostatic and non-hydrostatic dispersion relations share a key feature: bo
 
 Rossby waves are another important class of waves in the ocean and atmosphere. They have relatively large spatial scales—comparable to the planetary radius—and are therefore also called *planetary waves*. Figure @fig-RossbyWaveSim illustrates the large scale of atmospheric Rossby waves. These waves play a crucial role in shaping weather patterns, as they can transport substantial masses of air or water and give rise to cyclones and anticyclones.  
 
-The restoring mechanism for Rossby waves is the variation of the Coriolis parameter with latitude, the so-called $\beta$-effect introduced in the earlier chapter on the tangent-plane approximation. As usual, we will start from a set of linear equations and derive a dispersion relation. For Rossby waves we begin from the quasigeostrophic (QG) potential vorticity equation
+The restoring mechanism for Rossby waves is the variation of the Coriolis parameter with latitude, the so-called $\beta$-effect introduced in @sec-tang_plane_approx. As usual, we will start from a set of linear equations and derive a dispersion relation. For Rossby waves we begin from the quasigeostrophic (QG) potential vorticity equation (see @eq-QGdim or @eq-SWQG)
 $$
      \frac{D q}{D t}  = 0,
 $$ {#eq-QGrepeat}
-where $q$ is the potential vorticity (PV). We did not start from the full Boussinesq equations, because at large scales the QG approximation is appropriate. As discussed in previous chapters, PV conservation holds for both the shallow-water and Boussinesq systems, but the expressions for $q$ differ. Starting from @eq-QGrepeat, one can derive Rossby waves in both systems; here we restrict attention to the shallow-water case for simplicity, noting that many properties are shared.
+where $q$ is the potential vorticity (PV). We did not start from the full Boussinesq equations, because at large scales the QG approximation is appropriate. As discussed in @sec-QGBouss and @sec-QGSW, PV conservation holds for both the shallow-water and Boussinesq systems, but the expressions for $q$ differ. Starting from @eq-QGrepeat, one can derive Rossby waves in both systems; here we restrict attention to the shallow-water case for simplicity, noting that many properties are shared.
 
-Recall that the QG PV for the shallow-water system is
+Recall that the QG PV for the shallow-water system is (see @eq-SWQG)
 $$
     q = \gradH^2 \psi + f_0 + \beta y -\frac{1}{\mathcal{L}_d^2} \psi,
 $$ {#eq-PVSWrepeat}
@@ -386,8 +407,8 @@ $$
 $$
 This is an interesting result: the group velocity of the Rossby wave is shifted eastward relative to its phase velocity. For example, consider a stationary Rossby wave (with $\mathcal{L}_d \to \infty$ and $\omega = 0$). Although the wave pattern is fixed in space, the corresponding wave packets transport energy and mass eastward.
 
-![Mechanism of a Rossby wave with infinite deformation radius. An initial disturbance displaces a material line at constant latitude (black straight line) into the solid curve $\eta(t=0)$. Conservation of absolute vorticity ($\zeta + f_0 + \beta y$) leads to the production of relative vorticity $\zeta$ for parcels moved northward or southward. The induced velocity field (arrows) then advects the fluid parcels further, and the material line evolves into the dashed curve $\eta(t>0)$, with the phase propagating westward.](figures/RossbyWaveSchem.jpg){#fig:Mechanism_RossbyWave width=65%}
+![Mechanism of a Rossby wave with infinite deformation radius. An initial disturbance displaces a material line at constant latitude (black straight line) into the solid curve $\eta(t=0)$. Conservation of absolute vorticity ($\zeta + f_0 + \beta y$) leads to the production of relative vorticity $\zeta$ for parcels moved northward or southward. The induced velocity field (arrows) then advects the fluid parcels further, and the material line evolves into the dashed curve $\eta(t>0)$, with the phase propagating westward.](figures/RossbyWaveSchem.jpg){#fig-Mechanism_RossbyWave width=65%}
 
-We can gain more physical intuition for Rossby waves (with large deformation radius) using a heuristic argument. Consider a line of fluid parcels at a fixed latitude $y$, represented by the black straight line in Figure @fig:Mechanism_RossbyWave. Suppose this material line is disturbed so that it acquires the shape $\eta(t=0)$ (solid blue curve).  
+We can gain more physical intuition for Rossby waves (with large deformation radius) using a heuristic argument. Consider a line of fluid parcels at a fixed latitude $y$, represented by the black straight line in @fig-Mechanism_RossbyWave. Suppose this material line is disturbed so that it acquires the shape $\eta(t=0)$ (solid blue curve).  
 
-The PV in the limit $\mathcal{L}_d \to \infty$ becomes $q = \zeta + f_0 + \beta y$ and is conserved according to @eq-QGrepeat. A parcel displaced northward (to larger $y$) must therefore acquire negative relative vorticity ($\zeta<0$) to keep its absolute vorticity unchanged; a parcel displaced southward must acquire positive vorticity. As indicated in Figure @fig:Mechanism_RossbyWave, these vorticity anomalies induce a velocity field that pushes the neighbouring parcels westward, causing the disturbed material line (solid curve) to evolve into the dashed curve $\eta(t>0)$. Thus the disturbance propagates westward, consistent with the sign of the $x$-component of the phase velocity in @eq-cp-RossWav-Inf when $\overline{u}=0$.
+The PV in the limit $\mathcal{L}_d \to \infty$ becomes $q = \zeta + f_0 + \beta y$ and is conserved according to @eq-QGrepeat. A parcel displaced northward (to larger $y$) must therefore acquire negative relative vorticity ($\zeta<0$) to keep its absolute vorticity unchanged; a parcel displaced southward must acquire positive vorticity. As indicated in @fig-Mechanism_RossbyWave, these vorticity anomalies induce a velocity field that pushes the neighbouring parcels westward, causing the disturbed material line (solid curve) to evolve into the dashed curve $\eta(t>0)$. Thus the disturbance propagates westward, consistent with the sign of the $x$-component of the phase velocity in @eq-cp-RossWav-Inf when $\overline{u}=0$.
