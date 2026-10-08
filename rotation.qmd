@@ -12,7 +12,9 @@ $$ \delta\Cb = |\Cb|\sin\gamma\delta\lambda \eb_n $$
 where $\gamma$ is the angle between $\Omb$ and $\Cb$, and $\hat n$ is the unit vector in the direction of the change of $\Cb$ (perpendicular to both $\Omb$ and $\Cb$). But the change in $\lambda$ is easily obtained from the angular velocity, in particular we have $\delta \lambda = |\Omb|\delta t$ and hence
 $$ \delta \Cb = |\Cb||\Omb|\sin\gamma\delta t \eb_n = \Omb \times \Cb \delta t. $$
 It follows that 
-$$ \left( \ddt{\Cb}\right)_\mathrm{I} = \Omb\times\Cb. $$ {#eq-RtoI}
+$$
+ \left( \ddt{\Cb}\right)_\mathrm{I} = \Omb\times\Cb. 
+$$ {#eq-RtoI}
 
 ![A vector $\Cb$ rotating relative to the inertial frame at a constant angular velocity $\Omb$. Over a small interval of time $\delta t$, $\Cb$ rotates through a small angle $\delta \lambda$. $\gamma$ is the angle between $\Omb$ and $\Cb$, and $\eb_n$ is the unit vector in the direction of the change of $\Cb$ (perpendicular to both $\Omb$ and $\Cb$). Figure adapted from Vallis.](figures/Rotframe.png){#fig-rotframe width="50%"}
 
@@ -60,7 +62,9 @@ In the inertial frame we have
 & =  \left(\ddt{\Bb}\right)_\mathrm{R}  + \Omb\times\Bb.
 \end{align*}
 So, for any vector $\Bb$, we have
-$$\left( \ddt{\Bb}\right)_\mathrm{I} =  \left(\ddt{\Bb}\right)_\mathrm{R}  + \Omb\times\Bb. $$ {#eq-rotframeref}
+$$
+\left( \ddt{\Bb}\right)_\mathrm{I} =  \left(\ddt{\Bb}\right)_\mathrm{R}  + \Omb\times\Bb. 
+$$ {#eq-rotframeref}
 
 
 ## Dynamics in a rotating frame
@@ -100,9 +104,15 @@ $$
 
 As density (or buoyancy) is a scalar, @eq-Bousdenistybuoy is unchanged in a rotating frame and therefore the Boussinesq equations in a rotating frame can be summarised as:
 
-$$ \DDt{\ub}  + 2\Omb\times\ub +\Omb\times(\Omb \times \Xb) = -\frac{1}{\bar\rho}\nabla p +b\eb_z, $$ {#eq-Bousmomrot}
-$$	\nabla\cdot\ub = 0,$$ {#eq-Bousdivu0rot}
-$$ \DDt{b} +N^2(z)w=0,$$ {#eq-Bousdensityrot}
+$$
+ \DDt{\ub}  + 2\Omb\times\ub +\Omb\times(\Omb \times \Xb) = -\frac{1}{\bar\rho}\nabla p +b\eb_z, 
+$$ {#eq-Bousmomrot}
+$$
+	\nabla\cdot\ub = 0,
+$$ {#eq-Bousdivu0rot}
+$$
+ \DDt{b} +N^2(z)w=0,
+$$ {#eq-Bousdensityrot}
 where we have dropped the subscript $\mathrm{R}$ from the velocity as we simply interpret $\ub$ in these equations to be the velocity in a rotating frame of reference.
 
 ::: {.callout-note appearance="simple"}
@@ -125,7 +135,9 @@ $$
 and hence $\phi_c = -\frac{\Omrm^2s^2}{2} = -\frac{1}{2}|\Omb \times \Xb|^2$.
 
 Writing the centrifugal force as $-\Omb\times(\Omb\times\Xb) = -\nabla \phi_c$ allows us to simplify @eq-Bousmomrot to give
-$$	\DDt{\ub}  +2\Omb\times\ub  = -\frac{1}{\bar\rho}\nabla p_r + b \eb_z,$$ {#eq-Bousmomrotpot}
+$$
+	\DDt{\ub}  +2\Omb\times\ub  = -\frac{1}{\bar\rho}\nabla p_r + b \eb_z,
+$$ {#eq-Bousmomrotpot}
 where $p_r = p + \bar\rho\phi_c$.
 
 ::: {.callout-note appearance="simple"}
@@ -172,9 +184,15 @@ $$
 2\Omb\times \ub = (2\Omrm_y w - 2\Omrm_z v, 2\Omrm_z u, -2\Omrm_y u)
 $$
 Hence the Cartesian components of momentum equations under the tangent plane approximation are:
-$$ \DDt{u} + 2(\Omrm_yw-\Omrm_zv) = -\frac{1}{\rho}\frac{\partial p}{\partial x} $$ {#eq-tangentplaneu}
-$$ \DDt{v} + 2\Omrm_z u = -\frac{1}{\rho}\frac{\partial p}{\partial y} $$ {#eq-tangentplanev}
-$$\DDt{w}  -2\Omrm_y u = -\frac{1}{\rho}\frac{\partial p}{\partial z} -g. $$ {#eq-tangentplanew}
+$$
+ \DDt{u} + 2(\Omrm_yw-\Omrm_zv) = -\frac{1}{\rho}\frac{\partial p}{\partial x} 
+$$ {#eq-tangentplaneu}
+$$
+ \DDt{v} + 2\Omrm_z u = -\frac{1}{\rho}\frac{\partial p}{\partial y} 
+$$ {#eq-tangentplanev}
+$$
+\DDt{w}  -2\Omrm_y u = -\frac{1}{\rho}\frac{\partial p}{\partial z} -g. 
+$$ {#eq-tangentplanew}
 
 
 If we further assume that the layer is thin then the vertical flow speed is much smaller than the horizontal flow speeds, i.e., $|w| \ll |u| \text{ and } |v|$. We can therefore drop the $\Omrm_y w$ term in @eq-tangentplaneu. Then, to ensure energy is still conserved we must then also drop the $-\Omrm_y u$ term from @eq-tangentplanew although in someways this is less physically justified. This leads to the following set of equations:
@@ -206,27 +224,47 @@ Considering the tangent plane approximation $2\Omb \approx \fb=f \eb_z$, we rewr
 ::: {.callout-important icon="false"}
 ## **Inviscid Shallow Water Equations** 
 
-$$  \frac{\partial \vb}{\partial t} + (\vb\cdot\nabla)\vb   + \fb\times\vb =  - g \ \gradH \eta. $$ {#eq-rtSW1}
-$$ \frac{\partial h}{\partial t} + \gradH \cdot (h \vb) = 0,  $$ {#eq-rtSW2}
-$$  h(x,y,t) = \eta(x,y,t) - \eta_b(x,y,t). $$ {#eq-rtSW3}
+$$
+  \frac{\partial \vb}{\partial t} + (\vb\cdot\nabla)\vb   + \fb\times\vb =  - g \ \gradH \eta. 
+$$ {#eq-rtSW1}
+$$
+ \frac{\partial h}{\partial t} + \gradH \cdot (h \vb) = 0,  
+$$ {#eq-rtSW2}
+$$
+  h(x,y,t) = \eta(x,y,t) - \eta_b(x,y,t). 
+$$ {#eq-rtSW3}
 :::
 
 
 ::: {.callout-important icon="false"}
 ## **(Hydrostatic) Boussinesq Equations** {#eq-rtBoussinesqHydrostat}
 
-$$   \frac{\partial \vb}{\partial t} + (\ub\cdot\nabla)\vb  + \fb\times\vb = -\frac{1}{\bar\rho}\gradH p,$$ {#eq-rtBoussinesqHydrostat1}
-$$   \frac{\partial p}{\partial z}  = \bar\rho b = -\rho g,$$ {#eq-rthydroapprox_hydrobal}
-$$   \nabla\cdot \ub =0,$$ {#eq-rtBoussinesqHydrostat3}
-$$    \frac{\partial b}{\partial t} + (\ub\cdot\nabla)b +N^2w =0,$$ {#eq-rtBoussinesqHydrostat4}
+$$
+   \frac{\partial \vb}{\partial t} + (\ub\cdot\nabla)\vb  + \fb\times\vb = -\frac{1}{\bar\rho}\gradH p,
+$$ {#eq-rtBoussinesqHydrostat1}
+$$
+   \frac{\partial p}{\partial z}  = \bar\rho b = -\rho g,
+$$ {#eq-rthydroapprox_hydrobal}
+$$
+   \nabla\cdot \ub =0,
+$$ {#eq-rtBoussinesqHydrostat3}
+$$
+    \frac{\partial b}{\partial t} + (\ub\cdot\nabla)b +N^2w =0,
+$$ {#eq-rtBoussinesqHydrostat4}
 :::
 
 ::: {.callout-important icon="false"}
 ## **Rotating (Non-hydrostatic) Boussinesq Equations** 
 
-$$ \frac{\partial\ub}{\partial t} + (\ub\cdot\nabla)\ub + \fb\times\ub = -\frac{1}{\bar\rho}\nabla p +b\eb_z, $$ {#eq-rtBousmombuoy}
-$$\nabla\cdot\ub=0,  $$ {#eq-rtBousdivu0buoy}
-$$\frac{\partial b}{\partial t}+(\ub\cdot\nabla)b+N^2(z)w=0,$$ {#eq-rtBousdenistybuoy}
+$$
+ \frac{\partial\ub}{\partial t} + (\ub\cdot\nabla)\ub + \fb\times\ub = -\frac{1}{\bar\rho}\nabla p +b\eb_z, 
+$$ {#eq-rtBousmombuoy}
+$$
+\nabla\cdot\ub=0,  
+$$ {#eq-rtBousdivu0buoy}
+$$
+\frac{\partial b}{\partial t}+(\ub\cdot\nabla)b+N^2(z)w=0,
+$$ {#eq-rtBousdenistybuoy}
 :::
 
 
@@ -296,8 +334,12 @@ $$
 f\frac{\partial v}{\partial z} = \frac{1}{\bar\rho}\frac{\partial^2 p}{\partial z \partial x}, \quad\quad f\frac{\partial u}{\partial z} = -\frac{1}{\bar\rho}\frac{\partial^2 p}{\partial z \partial y},
 $$
 and combine these with hydrostatic balance from the hydrostatic Boussinesq equations ([-@eq-rthydroapprox_hydrobal]) to give
-$$ f\frac{\partial v}{\partial z} = \frac{\partial b}{\partial x} $$ {#eq-thermalwindbalance1}
-$$ f\frac{\partial u}{\partial z} = -\frac{\partial b}{\partial y}. $$ {#eq-thermalwindbalance2}
+$$
+ f\frac{\partial v}{\partial z} = \frac{\partial b}{\partial x} 
+$$ {#eq-thermalwindbalance1}
+$$
+ f\frac{\partial u}{\partial z} = -\frac{\partial b}{\partial y}. 
+$$ {#eq-thermalwindbalance2}
 These equations represent thermal wind balance and the vertical derivative of the geostrophic velocity (wind) is known as the thermal wind. If the buoyancy is constant (e.g., if the density is constant) then there is no shearing of the geostrophic wind and equations ([-@eq-thermalwindbalance1]) - ([-@eq-thermalwindbalance2]) reduce to the Taylor-Proudman constraint.
 
 

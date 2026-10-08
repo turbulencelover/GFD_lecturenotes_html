@@ -22,9 +22,15 @@ $$ {#eq-scaling}
 where $\nd{()}$ are dimensionless. We also use $\gradH = 1/ \mathcal{L} \ \nd{\nabla}_H$, consistent with the scale of $x$ and $y$. We then non-dimensionalise the (hydrostatic) Boussinesq equations
 $$
 \frac{1}{f_0 \mathcal{T}} \frac{\partial\vh}{\partial \tha} + \frac{\mathcal{U}}{f_0 \mathcal{L}} \ (\vh \cdot \gradHh ) \vh + \frac{\mathcal{W}}{f_0 \mathcal{H}} \wh \frac{\partial \vh }{\partial \zh} + \fh \times \vh = - \frac{\mathcal{P}}{\bar\rho f_0 \mathcal{L}\ \mathcal{U} } \ \gradHh \ph,$$ {#eq-nd_BousmomH}
-$$ \frac{\bar\rho \mathcal{B} \mathcal{H}}{\mathcal{P}} \ \bh = \frac{\partial \ph }{\partial \zh} ,$$  {#eq-nd_BousmomV} 
-$$ \gradHh \cdot\vh + \frac{\mathcal{W} \mathcal{L}}{\mathcal{U} \mathcal{H}}  \frac{\partial \wh}{\partial \zh} =0, $$ {#eq-nd_Bousdiv}
-$$\frac{1}{f_0 \mathcal{T}} \frac{\partial \bh}{\partial \tha} + \frac{\mathcal{U}}{f_0 \mathcal{L}} \ (\vh\cdot\gradHh ) \bh + \frac{\mathcal{W}}{f_0 \mathcal{H}} \wh \frac{\partial \bh}{\partial \zh} + \frac{N^2 \mathcal{W}}{\mathcal{B}} \wh =0.$$ {#eq-nd_Bousbuoy}
+$$
+ \frac{\bar\rho \mathcal{B} \mathcal{H}}{\mathcal{P}} \ \bh = \frac{\partial \ph }{\partial \zh} ,
+$$  {#eq-nd_BousmomV}
+$$
+ \gradHh \cdot\vh + \frac{\mathcal{W} \mathcal{L}}{\mathcal{U} \mathcal{H}}  \frac{\partial \wh}{\partial \zh} =0, 
+$$ {#eq-nd_Bousdiv}
+$$
+\frac{1}{f_0 \mathcal{T}} \frac{\partial \bh}{\partial \tha} + \frac{\mathcal{U}}{f_0 \mathcal{L}} \ (\vh\cdot\gradHh ) \bh + \frac{\mathcal{W}}{f_0 \mathcal{H}} \wh \frac{\partial \bh}{\partial \zh} + \frac{N^2 \mathcal{W}}{\mathcal{B}} \wh =0.
+$$ {#eq-nd_Bousbuoy}
 
 ::: {.callout-note appearance="simple"}
 We could have started from non-hydrotatic Boussinesq equations as well and by a scaling argument shows that the vertical momentum equation at the leading order is hydrostatic.
@@ -35,10 +41,18 @@ $$
      \Ro = \frac{\mathcal{U}}{f_0 \mathcal{L}},
 $$ {#eq-def_Ro}
 which shows the ratio of inertial force to Coriolis force and is called **Rossby number**. If the Coriolis force is strong, we expect $\Ro$ to be small. Using the definition Rossby number ([-@eq-def_Ro]), we rewrite ([-@eq-nd_BousmomH]) - ([-@eq-nd_Bousbuoy])  as 
-$$ \frac{1}{f_0 \mathcal{T}} \frac{\partial\vh}{\partial \tha} + \Ro \ (\vh \cdot \gradHh ) \vh + \Ro \frac{\mathcal{W} \mathcal{L}}{\mathcal{U} \mathcal{H}} \wh \frac{\partial \vh }{\partial \zh} + \fh \times \vh = - \frac{\mathcal{P}}{\bar\rho f_0 \mathcal{L}\ \mathcal{U} } \ \gradHh \ph, $$ {#eq-nd_BousmomH2} 
-$$ \frac{\bar\rho \mathcal{B} \mathcal{H}}{\mathcal{P}} \ \bh = \frac{\partial \ph }{\partial \zh} , $$ {#eq-nd_BousmomV2} 
-$$ \gradHh \cdot\vh + \frac{\mathcal{W} \mathcal{L}}{\mathcal{U} \mathcal{H}}  \frac{\partial \wh}{\partial \zh} =0,$$ {#eq-nd_Bousdiv2}
-$$ \frac{1}{f_0 \mathcal{T}} \frac{\partial \bh}{\partial \tha} +\Ro \ (\vh\cdot\gradHh ) \bh + \Ro \frac{\mathcal{W} \mathcal{L}}{\mathcal{U} \mathcal{H}} \wh \frac{\partial \bh}{\partial \zh} + \frac{N^2 \mathcal{W}}{\mathcal{B}} \wh =0. $$ {#eq-nd_Bousbuoy2}
+$$
+ \frac{1}{f_0 \mathcal{T}} \frac{\partial\vh}{\partial \tha} + \Ro \ (\vh \cdot \gradHh ) \vh + \Ro \frac{\mathcal{W} \mathcal{L}}{\mathcal{U} \mathcal{H}} \wh \frac{\partial \vh }{\partial \zh} + \fh \times \vh = - \frac{\mathcal{P}}{\bar\rho f_0 \mathcal{L}\ \mathcal{U} } \ \gradHh \ph, 
+$$ {#eq-nd_BousmomH2}
+$$
+ \frac{\bar\rho \mathcal{B} \mathcal{H}}{\mathcal{P}} \ \bh = \frac{\partial \ph }{\partial \zh} , 
+$$ {#eq-nd_BousmomV2}
+$$
+ \gradHh \cdot\vh + \frac{\mathcal{W} \mathcal{L}}{\mathcal{U} \mathcal{H}}  \frac{\partial \wh}{\partial \zh} =0,
+$$ {#eq-nd_Bousdiv2}
+$$
+ \frac{1}{f_0 \mathcal{T}} \frac{\partial \bh}{\partial \tha} +\Ro \ (\vh\cdot\gradHh ) \bh + \Ro \frac{\mathcal{W} \mathcal{L}}{\mathcal{U} \mathcal{H}} \wh \frac{\partial \bh}{\partial \zh} + \frac{N^2 \mathcal{W}}{\mathcal{B}} \wh =0. 
+$$ {#eq-nd_Bousbuoy2}
 
 In the rest of this chapter we assume $N$ to be constant. However, the geostrophic theory can be easily generalised to a variable $N$.
 
@@ -65,10 +79,18 @@ $$
 where $\nd{\beta}$ is $O(1)$ due to the assumption made and $\nd{f}_0 = f_0/f_0 = 1$. Note that we still keep $\nd{f}_0$ in the equations (despite being simply 1) so the leading term of the Coriolis force will stand out in the non-dimensionalised equations. Likewise, we keep $\fh_0 = \nd{f}_0 \eb_z$ instead of the unit vector $\eb_z$.
 
 Using the assumption 3, 4 and 5, we rewrite ([-@eq-nd_BousmomH2]) - ([-@eq-nd_Bousbuoy2]) 
-$$ \epsilon \left(  \frac{\partial\vh}{\partial \tha} + (\vh \cdot \gradHh ) \vh + \wh \frac{\partial \vh }{\partial \zh} \right) +  (\nd{f}_0 + \epsilon \nd{\beta} \nd{y})  \eb_z \times \vh = - \frac{\mathcal{P}}{\bar\rho f_0 \mathcal{L}\ \mathcal{U} } \ \gradHh \ph, $$ {#eq-nd_BousmomH3} 
-$$ \frac{\bar\rho \mathcal{B} \mathcal{H}}{\mathcal{P}} \ \bh = \frac{\partial \ph }{\partial \zh}, $$ {#eq-nd_BousmomV3} 
-$$ \gradHh \cdot\vh + \frac{\partial \wh}{\partial \zh} =0, $$ {#eq-nd_Bousdiv3}
-$$ \epsilon \left(\frac{\partial \bh}{\partial \tha} +(\vh\cdot\gradHh ) \bh + \wh \frac{\partial \bh}{\partial \zh}  \right) + \frac{N^2 \mathcal{W}}{\mathcal{B}}\wh =0. $$ {#eq-nd_Bousbuoy3}
+$$
+ \epsilon \left(  \frac{\partial\vh}{\partial \tha} + (\vh \cdot \gradHh ) \vh + \wh \frac{\partial \vh }{\partial \zh} \right) +  (\nd{f}_0 + \epsilon \nd{\beta} \nd{y})  \eb_z \times \vh = - \frac{\mathcal{P}}{\bar\rho f_0 \mathcal{L}\ \mathcal{U} } \ \gradHh \ph, 
+$$ {#eq-nd_BousmomH3}
+$$
+ \frac{\bar\rho \mathcal{B} \mathcal{H}}{\mathcal{P}} \ \bh = \frac{\partial \ph }{\partial \zh}, 
+$$ {#eq-nd_BousmomV3}
+$$
+ \gradHh \cdot\vh + \frac{\partial \wh}{\partial \zh} =0, 
+$$ {#eq-nd_Bousdiv3}
+$$
+ \epsilon \left(\frac{\partial \bh}{\partial \tha} +(\vh\cdot\gradHh ) \bh + \wh \frac{\partial \bh}{\partial \zh}  \right) + \frac{N^2 \mathcal{W}}{\mathcal{B}}\wh =0. 
+$$ {#eq-nd_Bousbuoy3}
 
 
 If we consider the limit of small $\epsilon$ (following assumption 1), in the horizontal momentum @eq-nd_BousmomH3 the Coriolis force will be larger than all other terms in the LHS. We know the Coriolis force is not small at the weather scale as the horizontal wind $\vb$ is not negligible. Hence, the pressure gradient in the RHS has to be the same order as Coriolis force to balance it out. This require the following scaling for pressure
@@ -81,10 +103,18 @@ $$
 $$
 After replacing for $\mathcal{B}$ and $\mathcal{P}$  all the pieces of scaling puzzle are complete and we have a set of equations for which we know the relative importance of all terms
 \begin{align}
-$$ \epsilon \left(  \frac{\partial\vh}{\partial \tha} + (\vh \cdot \gradHh ) \vh + \wh \frac{\partial \vh }{\partial \zh} \right) +  \fh_0 \times \vh + \epsilon \nd{\beta} \nd{y} \eb_z \times \vh = - \gradHh \ph, $$ {#eq-nd_BousmomH4}
-$$ \bh = \frac{\partial \ph }{\partial \zh}, $$ {#eq-nd_BousmomV4}
-$$ \gradHh \cdot\vh + \frac{\partial \wh}{\partial \zh} =0, $$ {#eq-nd_Bousdiv4}
-$$ \epsilon \left(\frac{\partial \bh}{\partial \tha} +(\vh\cdot\gradHh ) \bh + \wh \frac{\partial \bh}{\partial \zh}  \right) + \left( \frac{\Ld}{\mathcal{L}} \right)^2 \wh =0. $$ {#eq-nd_Bousbuoy4}
+$$
+ \epsilon \left(  \frac{\partial\vh}{\partial \tha} + (\vh \cdot \gradHh ) \vh + \wh \frac{\partial \vh }{\partial \zh} \right) +  \fh_0 \times \vh + \epsilon \nd{\beta} \nd{y} \eb_z \times \vh = - \gradHh \ph, 
+$$ {#eq-nd_BousmomH4}
+$$
+ \bh = \frac{\partial \ph }{\partial \zh}, 
+$$ {#eq-nd_BousmomV4}
+$$
+ \gradHh \cdot\vh + \frac{\partial \wh}{\partial \zh} =0, 
+$$ {#eq-nd_Bousdiv4}
+$$
+ \epsilon \left(\frac{\partial \bh}{\partial \tha} +(\vh\cdot\gradHh ) \bh + \wh \frac{\partial \bh}{\partial \zh}  \right) + \left( \frac{\Ld}{\mathcal{L}} \right)^2 \wh =0. 
+$$ {#eq-nd_Bousbuoy4}
 where we have used the definition of deformation radius.
 
 In the next step, we start with the classical asymptotic approach to reduce the above equations to a simpler set. We expand all variables in terms of $\epsilon$
@@ -93,29 +123,41 @@ $$
     \ph = \ph_0 + \epsilon \ph_1 + \dots, \quad \bh = \bh_0 + \epsilon \bh_1 + \dots  
 $$
 Upon substitution in @eq-nd_BousmomH4 and keeping the leading order terms (the smallest power of $\epsilon$), we find
-$$  \fh_0 \times \vh_0 = - \gradH \ph_0, $$ {#eq-geobalance}
+$$
+  \fh_0 \times \vh_0 = - \gradH \ph_0, 
+$$ {#eq-geobalance}
 
 This is the infamous **geostrophic balance**, which is the building block of modern weather forecast. It expresses that the Coriolis forces is balancing the pressure gradient. If we take the divergence of both sides in @eq-geobalance, we find
-$$  \gradHh \cdot\vh_0 = 0, $$ {#eq-divfree_geo}
+$$
+  \gradHh \cdot\vh_0 = 0, 
+$$ {#eq-divfree_geo}
 which tells us that the horizontal velocity is divergence-free at the leading order. As a result, we can define the streamfunction below
-$$ \nd{u}_0 = - \frac{\partial \psih}{\partial \nd{y}}, \quad \nd{v}_0 = \frac{\partial \psih}{\partial \nd{x}}. $$  {#eq-streamfunction_geo}
+$$
+ \nd{u}_0 = - \frac{\partial \psih}{\partial \nd{y}}, \quad \nd{v}_0 = \frac{\partial \psih}{\partial \nd{x}}. 
+$$  {#eq-streamfunction_geo}
 This looks similar to the definition of streamfunction for 2D incompressible flow. However, unlike 2D flow, $\psih$, $\nd{u}_0$ and $\nd{v}_0$ can depend on $z$. Considering @eq-geobalance, we can set
 $$
     \nd{\psi} = \ph_0/f_0,
 $$
 which automatically satisfies @eq-streamfunction_geo. At leading order, @eq-nd_Bousdiv4 becomes
-$$   \bh_0 = \frac{\partial \ph_0}{\partial z} $$ {#eq-hydstat_balance}
+$$
+   \bh_0 = \frac{\partial \ph_0}{\partial z} 
+$$ {#eq-hydstat_balance}
 This is simply the **hydrostatic balance**. Consider the conservation of mass at leading order
 $$
     \gradHh \cdot\vh_0 + \frac{\partial \wh_0}{\partial \zh} = 0.
 $$
 We have already established that $\gradHh \cdot\vh_0 = 0$ in @eq-divfree_geo. Hence,
-$$ \frac{\partial \wh_0}{\partial \zh} = 0, $$ {#eq-dw0dz_geo}
+$$
+ \frac{\partial \wh_0}{\partial \zh} = 0, 
+$$ {#eq-dw0dz_geo}
 implying that if $\wh_0$ is zero somewhere (like at the boundary) then it is zero everywhere. 
 
 
 Considering the assumption 2, the buoyancy @eq-nd_Bousbuoy4 at leading order is
-$$ \left( \frac{\Ld}{\mathcal{L}} \right)^2 \wh_0 = 0, $$ {#eq-w0_geo}
+$$
+ \left( \frac{\Ld}{\mathcal{L}} \right)^2 \wh_0 = 0, 
+$$ {#eq-w0_geo}
 showing that the leading order the vertical velocity is zero. 
 
 
@@ -125,7 +167,9 @@ Note that @eq-w0_geo is in a sense stronger than @eq-dw0dz_geo, but it requires 
 
 
 As discussed earlier in @sec-thermalwind, we can also combined hydrostatic and geostrophic balance by taking the $z$-derivative of @eq-geobalance and substitute for pressure terms from @eq-hydstat_balance
-$$  \fh_0 \times \frac{\partial \vh_0}{\partial \nd{z}} = - \gradH \bh_0 $$ {#eq-thermalwind_balance}
+$$
+  \fh_0 \times \frac{\partial \vh_0}{\partial \nd{z}} = - \gradH \bh_0 
+$$ {#eq-thermalwind_balance}
 which is the *thermal wind balance* that holds at leading order.
 
 We take a short break here from asymptotics and look at the implications and applications of geostrophic balance before proceeding to the next order.
@@ -233,7 +277,9 @@ $$
     \frac{D q}{D t}  = 0, \quad \text{where} \quad q = \zeta + f +  -\frac{f_0}{H} \eta = \gradH^2 \psi + f -\frac{1}{\mathcal{L}_d^2} \psi.
 $$ {#eq-SWQG}
 which is the QG equation for shallow waters. This form of $q$ is the shallow water PV and 
-$$  \mathcal{L}_d = \frac{\sqrt{g H}}{f_0} $$ {#eq-SW_DefRadius}
+$$
+  \mathcal{L}_d = \frac{\sqrt{g H}}{f_0} 
+$$ {#eq-SW_DefRadius}
 is the deformation radius for this system.
 
 

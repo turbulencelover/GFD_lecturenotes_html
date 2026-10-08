@@ -17,7 +17,9 @@ $$
 $$ {#eq-NSmass}
 $$
 \frac{\partial\ub}{\partial t} + (\ub\cdot\nabla)\ub = \fb_b -\frac{1}{\rho}\nabla p+\frac{\nu}{3}\nabla(\nabla\cdot\ub) + \nu\Delta\ub,$$ {#eq-NSmom}
-$$+ \quad \text{equation of state}$$ {#eq-NSeos}
+$$
++ \quad \text{equation of state}
+$$ {#eq-NSeos}
 
 where $\rho$ is the fluid density, $\ub=(u,v,w)$ is the velocity, $p$ the pressure, $\nu$ the kinematic viscosity and $\fb_{b}$ represents body forces acting on the fluid (e.g., gravity). The operator 
 $$
@@ -44,11 +46,19 @@ Air is considered to satisfy the ideal gas law with $\mathcal{R}=287\mathrm{Jkg^
 ### Incompressible fluids
 
 For the incompressible flow we assume that the density of fluid parcels remains constant in time, i.e.,
-$$ \frac{D\rho}{Dt}  = \frac{\partial \rho}{\partial t} + (\ub\cdot\nabla)\rho= 0. $$ {#eq-incompdensity}
+$$
+ \frac{D\rho}{Dt}  = \frac{\partial \rho}{\partial t} + (\ub\cdot\nabla)\rho= 0. 
+$$ {#eq-incompdensity}
 In other words, the rate of change of $\rho$ when following a fluid element is zero but $\rho$ is not necessarily constant. In this case, @eq-NSmass reduces to $\nabla\cdot\ub = 0$ and the governing equations for incompressible flow are
-$$      \frac{\partial \rho}{\partial t} + (\ub\cdot\nabla)\rho = 0 $$ {#eq-NavStoIncompress}
-$$ \nabla\cdot\ub = 0, $$ {#eq-divu0}
-$$ \frac{\partial\ub}{\partial t} + (\ub\cdot\nabla)\ub = \fb_b -\frac{1}{\rho}\nabla p + \nu\Delta\ub. $$ {#eq-incompmom}
+$$
+      \frac{\partial \rho}{\partial t} + (\ub\cdot\nabla)\rho = 0 
+$$ {#eq-NavStoIncompress}
+$$
+ \nabla\cdot\ub = 0, 
+$$ {#eq-divu0}
+$$
+ \frac{\partial\ub}{\partial t} + (\ub\cdot\nabla)\ub = \fb_b -\frac{1}{\rho}\nabla p + \nu\Delta\ub. 
+$$ {#eq-incompmom}
 Note, we have discarded the equation of state as it is redundant for incompressible flow.
 
 
@@ -86,7 +96,9 @@ $$
  \frac{\partial w}{\partial t} + (\ub\cdot\nabla)w = - \frac{\partial p}{\partial z} -\rho g.
 $$ {#eq-vertMom}
 Note that we also neglected the viscosity effects. In many fluid applications, the vertical velocity is relatively small, motivating the reduction of @eq-vertMom to 
-$$ \frac{\partial p}{\partial z} = -\rho g. $$ {#eq-hydrobal}
+$$
+ \frac{\partial p}{\partial z} = -\rho g. 
+$$ {#eq-hydrobal}
 This equation is called *hydrostatic balance* and is an important concept that will be used throughout this course. From this equation, we see that pressure decreases with height. Specifically, if we fix the horizontal coordinate $(x_0,y_0)$ and integrate from an arbitrary height/depth $z$ upwards/downward to a reference level $z=z_0$ (e.g., ocean surface or ground) then we find
 $$
     p(x_0,y_0,z_0)-p(x_0,y_0,z) = -\int_z^{z_0} \rho(x_0,y_0,s) g \,ds 

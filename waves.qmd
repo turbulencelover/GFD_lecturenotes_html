@@ -43,7 +43,9 @@ $$
     \frac{\partial \psi}{\partial t} + \alpha \ \frac{\partial \psi}{\partial x} = 0.
 $$ {#eq-waveq_1D}
 Upon substituting @eq-planewave_exp into this equation, we obtain $A(-i\omega + \alpha \ ik_x)=0$. For a non-trivial solution ($A \neq 0$), this requires
-$$  \omega = \alpha k_x $$ {#eq-planewave_disprel}
+$$
+  \omega = \alpha k_x 
+$$ {#eq-planewave_disprel}
 In other words, for any wavenumber $k_x$ we can find a corresponding frequency $\omega$ from @eq-planewave_disprel such that $A e^{i (\kb \cdot \xb - \omega t)}$ is a solution of @eq-waveq_1D. A relation between $\omega$ and $\kb$ obtained in this way is called the *dispersion relation*. 
 
 ::: {.callout-tip icon="false"}
@@ -86,8 +88,12 @@ is the phase speed. From this form we can see that the wave function is simply s
 ## Example
 
 Based on the definition of phase speed in @eq-phase_speed, we derive $c$ for the following equations 
-$$  \frac{\partial \psi}{\partial t} + \alpha \ \frac{\partial \psi}{\partial x} = 0 $$ {#eq-PlaneWave_1D}
-$$    \frac{\partial}{\partial t} \frac{\partial^2 \psi}{\partial x^2} \psi + \beta \ \frac{\partial \psi}{\partial x} = 0. $$ {#eq-RossbyWave_1D}
+$$
+  \frac{\partial \psi}{\partial t} + \alpha \ \frac{\partial \psi}{\partial x} = 0 
+$$ {#eq-PlaneWave_1D}
+$$
+    \frac{\partial}{\partial t} \frac{\partial^2 \psi}{\partial x^2} \psi + \beta \ \frac{\partial \psi}{\partial x} = 0. 
+$$ {#eq-RossbyWave_1D}
 We can first derive the dispersion relation for the above systems and then divide $\omega$ by $k$ to get the phase speed. We have already found the dispersion for @eq-PlaneWave_1D in @eq-planewave_disprel. Dividing this expression by $k$, we obtain $c_p = \alpha$. The system @eq-RossbyWave_1D is a one-dimensional case of @eq-RossbyWave_3D, where $k = k_x$ and $k_y = k_z =0$. Dividing @eq-RossbyWave_disprel by $k$ leads to $c_p = -\beta / k_x$.
 :::
 

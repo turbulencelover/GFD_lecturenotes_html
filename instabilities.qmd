@@ -29,7 +29,9 @@ $$ {#eq-basicstate}
  For simplicity, we will consider the case of a constant density (so no buoyancy effects), inviscid fluid. The governing equations are therefore Euler's equations:
 $$
  \frac{\partial \ub}{\partial t} + (\ub\cdot\grad)\ub = -\frac{1}{\rho_0}\nabla p, $$ {#eq-goveqinstability1}
-$$ \nabla\cdot\ub = 0. $$ {#eq-goveqinstability2}
+$$
+ \nabla\cdot\ub = 0. 
+$$ {#eq-goveqinstability2}
 
 We take the unidirectional shear flow (@eq-basicstate) as our basic state along with constant pressure: $P=\text{const}$ (exercise: check this is a solution of the governing equations). Then, let's perturb the basic state and set $\ub (\xb,t)=\Ub(z)+\ub '(\xb,t)$, $p(\xb,t)=P + p'(\xb,t)$, where primed quantities are small perturbations to the basic state.
 
@@ -40,22 +42,44 @@ $$ {#eq-perturb}
 This will make our analysis neater partly because it allows us to introduce a streamfunction. However, it turns out (though we won't prove this here) that for unidirectional shear flows, the most unstable perturbations are two-dimensional anyway.
 
 Substituting @eq-perturb into @eq-goveqinstability1 and @eq-goveqinstability2 and writing out in component form gives:
-$$ \frac{\partial u'}{\partial t} + U\frac{\partial u'}{\partial x'} + w\frac{\mathrm{d}U}{\mathrm{d}z}  = -\frac{\partial p'}{\partial x}, $$ {#eq-componentform1}
-$$ \frac{\partial w'}{\partial t} + U\frac{\partial w'}{\partial x'}  = -\frac{\partial p'}{\partial z},$$ {#eq-componentform2}
-$$ \frac{\partial u'}{\partial x} + \frac{\partial w'}{\partial z} = 0, $$ {#eq-componentform3}
+$$
+ \frac{\partial u'}{\partial t} + U\frac{\partial u'}{\partial x'} + w\frac{\mathrm{d}U}{\mathrm{d}z}  = -\frac{\partial p'}{\partial x}, 
+$$ {#eq-componentform1}
+$$
+ \frac{\partial w'}{\partial t} + U\frac{\partial w'}{\partial x'}  = -\frac{\partial p'}{\partial z},
+$$ {#eq-componentform2}
+$$
+ \frac{\partial u'}{\partial x} + \frac{\partial w'}{\partial z} = 0, 
+$$ {#eq-componentform3}
 where we have neglected products of perturbation quantities and so these equations are linear equations for $u'$, $w'$ and $p'$. We therefore seek normal mode solutions of the form
-$$u'(x,z,t) = \mathcal{R}e \{\hat u(z) \exp(ik(x-ct)) \}, $$ {#eq-normalmodel1}
-$$w'(x,z,t) = \mathcal{R}e \{\hat w(z)  \exp(ik(x-ct)) \}, $$ {#eq-normalmodel2}
-$$p'(x,z,t) =  \mathcal{R}e \{  \hat p(z) \exp(ik(x-ct)) \},$$ {#eq-normalmodel3}
+$$
+u'(x,z,t) = \mathcal{R}e \{\hat u(z) \exp(ik(x-ct)) \}, 
+$$ {#eq-normalmodel1}
+$$
+w'(x,z,t) = \mathcal{R}e \{\hat w(z)  \exp(ik(x-ct)) \}, 
+$$ {#eq-normalmodel2}
+$$
+p'(x,z,t) =  \mathcal{R}e \{  \hat p(z) \exp(ik(x-ct)) \},
+$$ {#eq-normalmodel3}
 where $c=c_r + i c_i$ is the (possibly complex) wavespeed. The growth rate of these modes is given by $\sigma = -ik(c_r+ic_i) = -ikc_r + kc_i$, so that in particular, the modes grow exponentially if $\mathcal{R}e(\sigma)=kc_i>0$ and decay if $\mathcal{R}e(\sigma) = kc_i<0$. In other words, the mode is stable if $kc_i\leq 0$ and unstable if $kc_i>0$.
 
 Then, substituting ([-@eq-normalmodel1])-([-@eq-normalmodel3]) into ([-@eq-componentform1])-([-@eq-componentform3]) gives:
-$$-ikc\hat u + ikU\hat u +DU \hat w = -ik \hat p,$$ {#eq-normalmodeu} 
-$$-ikc\hat w + ikU\hat w = -\ddz{\hat p},$$ {#eq-normalmodew} 
-$$ik\hat u + \ddz{\hat w} = 0, $$ {#eq-normalmodedivu}
+$$
+-ikc\hat u + ikU\hat u +DU \hat w = -ik \hat p,
+$$ {#eq-normalmodeu}
+$$
+-ikc\hat w + ikU\hat w = -\ddz{\hat p},
+$$ {#eq-normalmodew}
+$$
+ik\hat u + \ddz{\hat w} = 0, 
+$$ {#eq-normalmodedivu}
 where we have introduced $D\equiv\ddz{}$ to denote the $z$-derivative of a basic state quantity. Now we can make us of the 2D nature of our perturbations and define a streamfunction $\psi(x,z,t)$ that satisfies $u=\frac{\partial \psi}{\partial z}$, $w=-\frac{\partial \psi}{\partial x}$. Then, assuming the normal mode ansatz carries over to the streamfunction, we have that $\hat u =\ddz{\hat\psi}$ and $\hat w =-ik\hat\psi$. Note these automatically satisfy @eq-normalmodedivu. Writing @eq-normalmodeu and @eq-normalmodew in terms of the streamfunction gives
-$$ik(U-c)\ddz{\hat\psi} - DU ik \hat \psi  = -ik\hat p, $$ {#eq-normalmode_a} 
-$$k^2(U-c)\hat \psi = -\ddz{\hat p}. $$ {#eq-normalmode_b}
+$$
+ik(U-c)\ddz{\hat\psi} - DU ik \hat \psi  = -ik\hat p, 
+$$ {#eq-normalmode_a}
+$$
+k^2(U-c)\hat \psi = -\ddz{\hat p}. 
+$$ {#eq-normalmode_b}
 
 @eq-normalmode_a then gives $-\hat p = (U-c)\ddz{\hat\psi} - DU\hat \psi$ which can be used in @eq-normalmode_b to yield
 \begin{align*}
@@ -164,13 +188,17 @@ We next apply the interface conditions (at $z=0$). The first interface condition
 $$ \left[(U-c)\frac{d\hat\psi}{dz}\right]_1 = \left[(U-c)\frac{d\hat\psi}{dz}\right]_2 $$
 $$ \Rightarrow \, (-U_0-c)\frac{d\hat\psi}{dz} \bigg |_1 = (U_0-c)\frac{d\hat\psi}{dz} \bigg |_2 $$
 $$ \Rightarrow \, -(U_0+c)kA_0e^{kz_0}  = -(U_0-c)kB_1e^{-kz_0} $$
-$$ \Rightarrow \, -(U_0+c)A_0  = -(U_0-c)B_1 $$ {#eq-interfacecondeg1}
+$$
+ \Rightarrow \, -(U_0+c)A_0  = -(U_0-c)B_1 
+$$ {#eq-interfacecondeg1}
 
 
 The second interface condition gives:
 $$ \left[\frac{\hat\psi}{U-c}\right]_1 = \left[\frac{\hat\psi}{U-c}\right]_2 $$
 $$ \Rightarrow \,\frac{1}{-U_0-c}A_0e^{kz_0} =\frac{1}{U_0-c}B_1e^{-kz_0} $$
-$$ \Rightarrow \, -\frac{A_0}{U_0+c}  = \frac{B_1}{U_0-c} $$ {#eq-interfacecondeg2}
+$$
+ \Rightarrow \, -\frac{A_0}{U_0+c}  = \frac{B_1}{U_0-c} 
+$$ {#eq-interfacecondeg2}
 
 The two interface conditions @eq-interfacecondeg1 and @eq-interfacecondeg2 together imply
 \begin{align*}
@@ -223,7 +251,9 @@ $$
 $$ {#eq-RIPCproof2}
 Next, consider the imaginary part of @eq-RIPCproof2. Note the first term is purely real so we just need the imaginary part of the second term. This is easiest found if we multiply top and bottom by $U-c^*$, i.e.,
 $$ \int_{z_1}^{z_2} \frac{D^2U}{U-c}|\hat\psi|^2 \, dz  =  \int_{z_1}^{z_2} \frac{D^2U(U-(c_r-ic_i)}{|U-c|^2}|\hat\psi|^2 \, dz $$
-$$ = \int_{z_1}^{z_2} \frac{D^2U(U-c_r)}{|U-c|^2}|\hat\psi|^2 \, dz + i \int_{z_1}^{z_2} \frac{D^2Uc_i}{|U-c|^2}|\hat\psi|^2 \, dz. $$ {#eq-RIPCproof3}
+$$
+ = \int_{z_1}^{z_2} \frac{D^2U(U-c_r)}{|U-c|^2}|\hat\psi|^2 \, dz + i \int_{z_1}^{z_2} \frac{D^2Uc_i}{|U-c|^2}|\hat\psi|^2 \, dz. 
+$$ {#eq-RIPCproof3}
 So the imaginary part of @eq-RIPCproof2 is given by 
 $$
 c_i\int_{z_1}^{z_2} \frac{D^2U}{|U-c|^2}|\hat\psi|^2 \, dz = 0.

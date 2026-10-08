@@ -27,26 +27,20 @@ We use the defining characteristics of shallow water flows to derive their
 governing equations. Before that, let's clarify the notation and
 conventions we are going to use (this is sometimes the most confusing
 part about shallow water systems because different sources in the
-literature adopt very different notation). We assume the $z$
-axis is perpendicular to the layer of water as shown in
-@fig-SW_schematic. $z=0$ can be placed at any arbitrary level (naturally
-we want to see it close the bottom surface). $\eta(x,y,t)$ is the
-vertical position of fluid surface measured from $z=0$. Likewise,
-$\eta_b(x,y,t)$ is the vertical height of bottom topography measured
-from $z=0$. $h(x,y,t)$ is the thickness of water column measured from
-bottom boundary all the way to free surface, i.e. $h = \eta - \eta_b$.
-The thinness of fluid has an important consequence: the vertical
-velocity (in the $z$ direction) is much smaller than the horizontal
-velocity components (but is not necessarily zero). Hence, we only
-consider the two-dimensional horizontal velocity denoted by
-$\vb =(u,v)$ and assume $w \ll u, v$.
-Lastly, we denote the horizontal gradient operator by
-$\gradH = (\partial / \partial x, \partial / \partial y)$.
+literature adopt very different notation). We assume the $z$ axis is perpendicular to the layer of water as shown in @fig-SW_schematic. $\eta(x,y,t)$ is the vertical position of the fluid surface measured from $z=0$. Likewise, $\eta_b(x,y)$ is the vertical height of bottom topography. The origin, $z=0$, can be placed at any arbitrary level. In this course, we use the mean fluid surface as $z=0$, leading to
+$$
+\iint_S \eta \, dx \, dy = 0,
+$$
+where $S$ is the entire surface area covered by the layer of fluid. $h(x,y,t)$ is the thickness of water column measured from bottom boundary all the way to free surface, i.e. $h = \eta - \eta_b$. We define the constant $H$ as the average height of the fluid,
+$$
+H = \frac{\iint_S h \, dx \, dy}{S}.
+$$
+The thinness of fluid has an important consequence: the vertical velocity (in the $z$ direction) is much smaller than the horizontal velocity components (but is not necessarily zero), $w \ll u, v$. Lastly, we denote the horizontal gradient operator by $\gradH = (\partial / \partial x, \partial / \partial y)$.
 
 ![A shallow water system. $h$ is the thickness of a water column, $H$ is
 the mean thickness, $\eta$ is the height of the free surface and $\eta_b$
 is the height of the lower rigid. $\Delta \eta$ is the deviation of free
-from average height.](figures/SWschematic.png){#fig-SW_schematic
+from average height.](figures/SWschemEdited.png){#fig-SW_schematic
 width="70%"}
 
 ### Momentum equations
@@ -55,27 +49,29 @@ One of the main consequences of small vertical velocity appears in the
 vertical momentum equation. Let's consider the vertical momentum
 equation in the Boussinesq system (i.e., @eq-Bousmom) 
 $$ \frac{\partial w}{\partial t} + (\vb \cdot\gradH)w + w \frac{\partial w}{\partial z} = -\frac{1}{\bar\rho} \frac{\partial p}{\partial z} -\frac{\rho}{\bar\rho}g. 
-$$ {#eq-verticalBous} Assuming $w$ to be smaller than the other
+$$ {#eq-verticalBous}
+Assuming $w$ to be smaller than the other
 variables, the vertical momentum equation then reduces to $$
     \frac{\partial p}{\partial z} = - \rho g,  
 $$ which is simply the hydrostatic balance that was discussed in @sec-hydrostat
 (cf. @eq-hydrobal). Because the density is assumed constant ($\rho = \rho_0$),
 we may integrate this equation from $\eta$ to an arbitrary height $z$ to give 
 $$ p(x,y,z,t) - p(x,y,\eta(x,y,t),t) = \rho_0 g (\eta(x,y,t) - z).
-$$ {#eq-integrated_pressure} It is physically justified to assume the
+$$ {#eq-integrated_pressure}
+It is physically justified to assume the
 pressure at the free surface $p(x,y,\eta,t)$ is constant (for some applications we may need to change this assumption though). Hence, we can
 take the horizontal gradient of both sides of @eq-integrated_pressure to
 arrive at $$ \gradH \ p = \rho_0 g \ \gradH \ \eta.
-$$ {#eq-grad_p-eta} Now we consider the horizontal momentum equation in
-@eq-Bousmom and substitute for the horizontal pressure gradient using
-@eq-grad_p-eta
-$$ \frac{\partial \vb}{\partial t} + (\vb \cdot\gradH) \vb =  - g \ \gradH \ \eta,
-$$ {#eq-SWmomn1} where we also neglected the vertical velocity at
-leading order. Note that the right-hand side of this equation is
-independent of $z$. Hence, if we assume the velocity is initially
-independent of $z$, it should remain independent of $z$, i.e.
-$\vb = \vb(x,y,t)$. As a consequence, for the rest of this chapter we do
-not deal with $z$ derivative. We also simplify the notation by replacing $\gradH$ with $\grad$ in the context of shallow water equation since there is no $z$ dependence. For example, we write @eq-SWmomn1 as
+$$ {#eq-grad_p-eta}
+Now we consider the horizontal momentum equation in @eq-Bousmom and substitute for the horizontal pressure gradient using @eq-grad_p-eta
+$$
+\frac{\partial \vb}{\partial t} + (\vb \cdot\gradH) \vb + w \frac{\partial \vb}{\partial z} =  - g \ \gradH \ \eta.
+$$ {#eq-SWmomn1pre}
+Note that the right-hand side of this equation is independent of $z$. Hence, if we assume the velocity is initially independent of $z$, it should remain independent of $z$, i.e. $\vb = \vb(x,y,t)$. As a consequence, for the rest of this chapter we do not deal with $z$ derivative. Since $\partial\vb/\partial z = 0$, @eq-SWmomn1pre simplifies to
+$$
+\frac{\partial \vb}{\partial t} + (\vb \cdot\gradH) \vb =  - g \ \gradH \ \eta.
+$$
+We also simplify the notation by replacing $\gradH$ with $\grad$ in the context of shallow water equations since there is no $z$ dependence, giving
 $$
     \frac{D \vb}{D t}  =  - g \ \grad \eta.
 $$ {#eq-SWmomn1}
@@ -141,9 +137,15 @@ In summary, in a non-rotating frame, the inviscid shallow water equations are
 ::: {.callout-important icon="false"}
 ## **Inviscid Shallow Water Equations** 
 
-$$ \text{momentum:} \quad \frac{D \vb}{D t}  =  - g \ \gradH \eta. $$ {#eq-SW1}
-$$ \text{mass continuity:} \quad \frac{\partial h}{\partial t} + \gradH \cdot (h \vb) = 0, \quad \text{or} \quad  \frac{D h}{D t} + h \gradH \cdot \vb=0 $$ {#eq-SW2}
-$$ \text{height relation:}  \quad  h(x,y,t) = \eta(x,y,t) - \eta_b(x,y,t). $$ {#eq-SW3}
+$$
+ \text{momentum:} \quad \frac{D \vb}{D t}  =  - g \ \gradH \eta. 
+$$ {#eq-SW1}
+$$
+ \text{mass continuity:} \quad \frac{\partial h}{\partial t} + \gradH \cdot (h \vb) = 0, \quad \text{or} \quad  \frac{D h}{D t} + h \gradH \cdot \vb=0 
+$$ {#eq-SW2}
+$$
+ \text{height relation:}  \quad  h(x,y,t) = \eta(x,y,t) - \eta_b(x,y,t). 
+$$ {#eq-SW3}
 :::
 
 ::: {.callout-tip icon="false"}
@@ -176,66 +178,141 @@ Substituting these expressions into Equations ([-@eq-SW1])-([-@eq-SW3]) leads to
 and further neglecting the product of (small) disturbance terms (i.e. $u$ and $\eta$) gives
 $$
     \frac{\partial u}{\partial t}  + g \frac{\partial \eta}{\partial x} = 0 $$ {#eq-exSW1a}
-$$ \frac{\partial \eta}{\partial t} + H \frac{\partial u}{\partial x}  =   0. $$ {#eq-exSW1b}
+$$
+ \frac{\partial \eta}{\partial t} + H \frac{\partial u}{\partial x}  =   0. 
+$$ {#eq-exSW1b}
 We can take the $x$ derivative of @eq-exSW1a and $t$ derivative of @eq-exSW1b and eliminate $u$ to arrive at 
 $$
-    \frac{\partial^2 \eta}{\partial t^2} - c^2 \frac{\partial^2 \eta}{\partial x^2} = 0 , \quad c = \sqrt{g H},
+    \frac{\partial^2 \eta}{\partial t^2} - c_0^2 \frac{\partial^2 \eta}{\partial x^2} = 0 , \quad c_0 = \sqrt{g H},
 $$
 which is simply the one-dimensional wave equation. For unbounded domains, you are familiar with the d'Alembert solution of the wave equation 
 $$
-    \eta(x,t) = \frac{1}{2} \left( F(x-ct) + F(x+ct) \right),
+    \eta(x,t) = \frac{1}{2} \left( F(x-c_0t) + F(x+c_0t) \right),
 $$ {#eq-dAlembert_sol}
 where $F(x)$ is the initial condition. Using the given initial condition for this problem (@eq-ICSWdistrb), we find
 $$
-    \eta(x,t) = - \frac{1}{2} \eta_0 \left( \mathrm{sgn}(x-ct) + \mathrm{sgn}(x+ct) \right) = 
+    \eta(x,t) = - \frac{1}{2} \eta_0 \left( \mathrm{sgn}(x-c_0t) + \mathrm{sgn}(x+c_0t) \right) = 
     \begin{cases}
-+ \eta_0  \quad x<-ct  \\
-       0 \ \   \quad -ct<x<ct \\
-- \eta_0  \quad x>ct  
++ \eta_0  \quad x<-c_0t  \\
+       0 \ \   \quad -c_0t<x<c_0t \\
+- \eta_0  \quad x>c_0t  
 \end{cases}
 $$
-This solution implies that a half of the disturbance moves backwards and a half forwards, both with the speed $c=\sqrt{g H}$. In between the travelling disturbance becomes zero as shown in the left panel of @fig-damBreakSol. It is interesting that the height disturbance travels faster if the water is deeper. 
+This solution implies that a half of the disturbance moves backwards and a half forwards, both with the speed $c_0=\sqrt{g H}$. In between the travelling disturbance becomes zero as shown in the top panel of @fig-damBreakSol. It is interesting that the height disturbance travels faster if the water is deeper. 
 
 We can also derive the velocity for this solution by using @eq-dAlembert_sol and @eq-exSW1a (or @eq-exSW1b)
 $$
-    u(x,t) = - \frac{1}{2} \eta_0 \sqrt{\frac{g}{H}} \left( \mathrm{sgn}(x-ct) - \mathrm{sgn}(x+ct) \right) = 
+    u(x,t) = - \frac{1}{2} \eta_0 \sqrt{\frac{g}{H}} \left( \mathrm{sgn}(x-c_0t) - \mathrm{sgn}(x+c_0t) \right) = 
     \begin{cases}
-       0  \ \   \quad  \quad  \quad \quad  \quad \quad  x<-ct  \\
-      {\eta_0} \sqrt{g/H}  \quad -ct<x<ct \\
-       0  \ \   \quad  \quad  \quad \quad  \quad \quad x>ct  
+       0  \ \   \quad  \quad  \quad \quad  \quad \quad  x<-c_0t  \\
+      {\eta_0} \sqrt{g/H}  \quad -c_0t<x<c_0t \\
+       0  \ \   \quad  \quad  \quad \quad  \quad \quad x>c_0t  
 \end{cases}
 $$
-As the disturbance moves to both sides, it creates a velocity in the middle (see the right panel of @fig-damBreakSol). This velocity is larger in shallower water (proportional to $H^{-1/2}$). 
+As the disturbance moves to both sides, it creates a velocity in the middle (see the bottom panel of @fig-damBreakSol). This velocity is larger in shallower water (proportional to $H^{-1/2}$). 
 
 
 
-![The height (top) and velocity (bottom) for the propagating height disturbance in shallow water system. The variables are normalised. The dashed line shows the initial condition and the solid line the solution at $t=4/c$.](figures/dambreak_solution.png){#fig-damBreakSol width="80%"}
+![The height (top) and velocity (bottom) for the propagating height disturbance in the shallow water system. The variables are normalised. The dashed line shows the initial condition and the solid line the solution at $t=4/c_0$.](figures/dambreakSW_combined.png){#fig-damBreakSol width=60%}
 
 
 :::
 
-## Vortices on sloping beaches
 
-There are cases where the changes in $\eta$ are small compared to the flow and bottom surface, but the surface pressure is no longer constant. In such cases, we need to modify the shallow water equations by changing the top boundary condition from constant pressure to constant $\eta$. This boundary condition is known as a *rigid lid* as it is literally the equivalent of putting a rigid lid on the top. Using this condition, @eq-integrated_pressure changes to
-$$    p(x,y,z,t) - p(x,y,0,t) = \rho_0 g (0 - z), $$
-where we place our $z$ axis at the top surface that is nearly constant. Taking the horizontal gradient of this equation gives,
-$$  \gradH \ p(x,y,z,t)  = \gradH \ (p_0(x,y,t) =p(x,y,0,t)), $$
-where we used $p_0$ to denote the surface pressure. Note the constant $\eta$ assumption means that $h(x,y,t) = - \eta_b(x,y)$. As a result, if the bottom surface doesn't change with time (reasonable assumption for many problems with a solid boundary), $\partial h /\partial t =0$. Using these assumptions, we can write the rigid-lid shallow water equations as
-$$ \frac{D \vb}{D t}  =  - \frac{1}{\rho_0}\ \gradH p_0, $$ {#eq-riglid_SWeqs1}
-$$ \gradH \cdot (h \vb) = 0, $$ {#eq-riglid_SWeqs2}
-$$ h(x,y,t) = \eta_b(x,y,t).$$ {#eq-riglid_SWeqs3}
+::: {.callout-tip icon="false"}
+## Example
 
-::: {.callout-note appearance="simple"}
+![A schematic figure of dam break with a reservoir on the left ($x<0$) and dry bed on the right ($x>0$).](figures/DamBreak_nonlinear.png){#fig-Nonlinear_dambreak width=70% fig-alt="Schematic of nonlinear dam break."}
 
-The rigid-lid  shallow water system is a good approximation for flows on sloping beaches as surface variations compared to the changes of the bottom slope and velocities are negligible. This is also a good model for lab experiments where the flow is confined by a solid wall from the top.
-:::
+Let us now return to the dam-break problem, but this time without linearising the shallow water equations. Consider a reservoir of water with constant depth $H$ occupying $x<0$, while the region $x>0$ is initially dry. At $t=0$, the dam at $x=0$ is suddenly removed. We would like to determine how the water spreads into the dry region.
 
-We can transform equations ([-@eq-riglid_SWeqs1])-([-@eq-riglid_SWeqs3]) into the following equation (see the assignment for derivation)
-$$q = \frac{\nabla \times \vb}{h} = \frac{\partial v/\partial x - \partial u/\partial y}{h}, \quad  \frac{D q}{D t} = 0. $$ {#eq-PV4riglidSW}
+The one-dimensional shallow water equations over a flat bottom are
+$$
+\frac{\partial u}{\partial t}
++ u\frac{\partial u}{\partial x}
+= -g\frac{\partial h}{\partial x},
+$$ {#eq-nonlinear_SW_momentum}
+$$
+\frac{\partial h}{\partial t}
++ \frac{\partial (hu)}{\partial x}
+=0,
+$$ {#eq-nonlinear_SW_mass}
+with the initial condition
+$$
+h(x,0)=
+\begin{cases}
+    H, & x<0,\\
+    0, & x>0,
+\end{cases}
+\qquad
+u(x,0)=0.
+$$
 
-This shows that the quantity $q$ is conserved materially (i.e. on particle trajectories), which has important consequences for the dynamics. For example, if a vortex is pushed up toward shallower parts of a sloping beach, it becomes stronger and rotates faster.
+Unlike the previous example, we cannot assume that the disturbance is small. Therefore, the nonlinear terms in the shallow water equations are retained.
 
-::: {.callout-note appearance="simple"}
+There is no fixed horizontal length scale in this problem. The initial condition specifies the water depth $H$, but does not specify a horizontal length scale over which the disturbance varies. We therefore expect the horizontal extent of the solution to grow with time. The natural velocity scale of the problem is the shallow-water wave speed $c_0=\sqrt{gH}$, and hence the disturbed region is expected to spread over a distance of order $c_0t$. This motivates looking for a *self-similar solution* that depends on $x$ and $t$ only through the combination
+$$
+\xi=\frac{x}{t},
+$$
+so that $h(x,t)=h(\xi)$ and $u(x,t)=u(\xi)$.
 
-$q$ as defined in @eq-PV4riglidSW is a special case of a quantity known as Potential Vorticity (PV). We will introduce the general form of this quantity in chapter 5 and show that is it conserved for some limits of the shallow water and Boussinesq equations. Such a conservation law is an important element of large-scale atmospheric and oceanic flows.
+Using
+$$
+\frac{\partial}{\partial t}
+=
+-\frac{\xi}{t}\frac{d}{d\xi},
+\qquad
+\frac{\partial}{\partial x}
+=
+\frac{1}{t}\frac{d}{d\xi},
+$$
+the momentum @eq-nonlinear_SW_momentum becomes
+$$
+(u-\xi)\frac{du}{d\xi}
++g\frac{dh}{d\xi}=0,
+$$ {#eq-dam_similarity_momentum}
+and the mass @eq-nonlinear_SW_mass becomes
+$$
+(u-\xi)\frac{dh}{d\xi}
++h\frac{du}{d\xi}=0.
+$$ {#eq-dam_similarity_mass}
+
+For a non-trivial solution of @eq-dam_similarity_momentum and @eq-dam_similarity_mass, the determinant of the coefficient matrix must vanish, giving $(u-\xi)^2=gh$. Defining $c=\sqrt{gh}$ (the local wave speed), and choosing the branch
+$$
+u-\xi=-c,
+$$
+then substituting into @eq-dam_similarity_momentum and integrating gives
+$$
+u + 2c = \text{constant}.
+$$
+Matching to the undisturbed reservoir ($u=0$, $h=H$ hence $c=c_0$) at the left boundary gives $u + 2c = 2c_0$.
+
+Combining these results, the solution in the disturbed region is
+$$
+u(x,t)=\frac{2}{3}\left(c_0+\frac{x}{t}\right),
+\qquad
+h(x,t)=\frac{1}{9g}\left(2c_0-\frac{x}{t}\right)^2.
+$$
+
+The solution applies in the region where $h>0$. At the left edge, the solution matches the undisturbed reservoir ($u=0$, $h=H$), giving $x/t = -c_0$. At the right edge, $h=0$ gives $x/t = 2c_0$. The complete solution is therefore
+$$
+(h,u)=
+\begin{cases}
+    (H,\,0),
+    & x<-c_0t,\\[2mm]
+    \left(
+    \dfrac{1}{9g}\!\left(2c_0-\dfrac{x}{t}\right)^2,\;
+    \dfrac{2}{3}\!\left(c_0+\dfrac{x}{t}\right)
+    \right),
+    & -c_0t<x<2c_0t,\\[4mm]
+    (0,\,0),
+    & x>2c_0t.
+\end{cases}
+$$
+
+The disturbed region expands linearly in time and the front of the water moves into the dry region with constant speed $2c_0 = 2\sqrt{gH}$. Thus, a deeper reservoir produces a faster-moving front.
+
+![The evolution of the height (top) and velocity (bottom) for the nonlinear dam break. Both figures share the same legend shown at the top.](figures/Solution_nonlinear_dambreak.png){#fig-sol_nldambreak width=80%}
+
+This solution is quite different from the linearised dam-break solution derived earlier (see @fig-sol_nldambreak). In the linear problem, the disturbance splits into waves travelling in opposite directions while retaining their shape. Here the nonlinear shallow water equations produce a continuously varying region connecting the undisturbed reservoir to the moving dry front. This type of expanding solution is called a *rarefaction wave*.
 :::

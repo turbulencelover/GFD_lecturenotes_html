@@ -1,0 +1,26 @@
+/.quarto/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.toc
+*.tex
+
+# EPS files and their PDF conversions (use PNG/JPG instead)
+*.eps
+*-eps-converted-to.pdf
+
+# Quarto backup files
+*.qmd~
+*.yml~
+
+# Rendered HTML (in _book/ is fine, root copies are not needed)
+/geostrophy.html
+/index.html
+/intro.html
+/rotation.html
+/shallow-water.html
+/strat.html
+/turbulence.html
+/waves.html
+/index_files/

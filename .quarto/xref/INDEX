@@ -1,41 +1,26 @@
 {
   "index.qmd": {
-    "index.html": "385d7f3c"
+    "index.html": "75620988"
   },
   "intro.qmd": {
-    "intro.html": "0520a3ea"
-  },
-  "mag.qmd": {
-    "mag.html": "004acfd6"
-  },
-  "kinematics.qmd": {
-    "kinematics.html": "9fe2c136"
-  },
-  "statics.qmd": {
-    "statics.html": "c5ef02b5"
-  },
-  "dynamics.qmd": {
-    "dynamics.html": "cfe8a0f2"
+    "intro.html": "80dbd596"
   },
   "strat.qmd": {
-    "strat.html": "77263000"
+    "strat.html": "52f28c32"
   },
   "shallow-water.qmd": {
-    "shallow-water.html": "3ff949d6"
+    "shallow-water.html": "e675a2f2"
   },
   "rotation.qmd": {
-    "rotation.html": "f8069465"
+    "rotation.html": "4334f02c"
   },
   "geostrophy.qmd": {
-    "geostrophy.html": "9f90012b"
+    "geostrophy.html": "5706acc9"
   },
   "waves.qmd": {
-    "waves.html": "8c2f3455"
-  },
-  "instabilities.qmd": {
-    "instabilities.html": "5bbd85e3"
+    "waves.html": "99e1d873"
   },
   "turbulence.qmd": {
-    "turbulence.html": "a48c7055"
+    "turbulence.html": "ec397cf3"
   }
 }

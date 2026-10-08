@@ -1,84 +1,115 @@
 # Stratification {#sec-chap:strat}
 <div style="display:none">$\nextSection$</div>
 
-## Buoyancy
+## Buoyancy frequency
 
  A heavy object sinks down in a fluid because of gravity, but lighter objects float because of an upward force that the fluid exerts on them opposite to the direction of gravity. This force -- known as *buoyancy* -- is due to the weight of displaced fluid. 
  
  Typically, fluids in the atmosphere and ocean are *stratified*. That is, the density of air in the atmosphere and of water in the ocean varies with height. In a stably stratified medium (where lower density layers are above higher density ones), when a fluid parcel is pushed down vertically, we expect that it will try to come back up due to buoyancy force, and vice-versa. By considering the motion of such a fluid parcel, we can infer its buoyancy which is an important property of stratified fluids.
 
-![A fluid parcel is raised from height $z^*$ to height $z^* + \Delta z$  in a layer of hydrostatically balanced fluid.](figures/Buoyfreq.png){#fig-Buoyancy_parcel width=50% fig-alt="Schematic of a fluid parcel in a layer of hydrostatically balanced fluid."}
+![A fluid parcel is raised from height $z=0$ to height $z=Z$ in a layer of hydrostatically balanced fluid.](figures/Buoyancy_N.png){#fig-Buoyancy_parcel width=50% fig-alt="Schematic of a fluid parcel in a layer of hydrostatically balanced fluid."}
 
-Consider a fluid at rest with density $\tilde\rho(z)$ and hydrostatic pressure $\tilde p$, i.e., $d\tilde p/dz = -g \tilde\rho$. Then consider raising a parcel of fluid from a height $z^*$ to $z^* + \Delta z$ (see @fig-Buoyancy_parcel). At $z^*$, the environment and the parcel are in hydrostatic balance and so
+Consider a fluid at rest with density $\tilde\rho(z)$ and hydrostatic pressure $\tilde p$, i.e.,
 $$
-\frac{d\tilde p}{dz}\bigg |_{z^*} = -g \tilde\rho(z^*) = -g \rho_p(z^*),
+\frac{d\tilde p}{dz}=-g\tilde\rho.
 $$
-where we denote by a subscript $p$ a variable following the parcel and a tilde denotes an environment variable.
+Now consider raising a parcel of fluid from $z=0$ to $z=Z$ (see @fig-Buoyancy_parcel). The pressure of the parcel adjusts to the pressure of the surrounding environment, but its density may differ from that of the environment. To make this distinction, we denote the density of the parcel by $\rho_p$. At $z=0$, the parcel and the environment have the same density, and hence
+$$
+\frac{d\tilde p}{dz}\bigg|_{z=0}
+=-g\tilde\rho(0)
+=-g\rho_p(0).
+$$
 
-The environment at $z^*+\Delta z$ is also in hydrostatic balance:
+The environment at $z=Z$ is also in hydrostatic balance:
 $$
-\frac{d\tilde p}{dz}\bigg |_{z^*+\Delta z} = -g \tilde\rho(z^* +\Delta z).
+\frac{d\tilde p}{dz}\bigg|_{z=Z}
+=-g\tilde\rho(Z).
 $$
-
-However, the fluid parcel at $z^*+\Delta z$ is now being acted on by a force given by 
+However, the displaced parcel is no longer in hydrostatic balance. Since we consider a fixed mass of incompressible fluid, the parcel density does not change when it is lifted:
 $$
--\frac{d\tilde p}{dz}\bigg |_{z^*+\Delta z}  -g \rho_p(z^* +\Delta z)
+\rho_p(Z)=\rho_p(0)=\tilde\rho(0).
+$$ {#eq-parcel_density}
+The upward pressure-gradient force per unit volume acting on the parcel is
 $$
-since the pressure of the parcel is the same as the pressure of the environment. Note the pressure gradient acts upwards and gravity downwards. Then, since $-g \rho_p(z^* +\Delta z) \neq -g\tilde\rho(z^* +\Delta z) = {d\tilde p}/{dz}\bigg |_{z^*+\Delta z}$, there is a net force acting on the fluid parcel (per unit volume) which can be written as
+-\frac{d\tilde p}{dz}\bigg|_{z=Z}=g\tilde\rho(Z),
 $$
-    F_b = g \tilde\rho(z^* +\Delta z) - g \rho_p( z^* +\Delta z)
+whereas its weight per unit volume is $g\rho_p(Z)$. Hence, the net vertical force per unit volume is
+$$
+F_{\mathrm{net}}
+=-\frac{d\tilde p}{dz}\bigg|_{z=Z}-g\rho_p(Z)
+=g\left[\tilde\rho(Z)-\rho_p(Z)\right].
 $$ {#eq-BuoForce}
 
-We can then apply Newton's Second Law to the parcel at $z^*+\Delta z$ to give
+We can then apply Newton's second law to the parcel:
 $$
-    \rho_p(z^* +\Delta z) \frac{d^2 \Delta z}{dt^2} = F_b
+\rho_p(Z)\frac{d^2 Z}{dt^2}=F_{\mathrm{net}},
 $$
-and so
+and hence
 $$
-\frac{d^2 \Delta z}{dt^2}  = \frac{g\left[ \tilde \rho(z^* +\Delta z) -  \rho_p( z^* +\Delta z) \right]}{\rho_p(z^* +\Delta z) }.
+\frac{d^2 Z}{dt^2}
+=
+\frac{g\left[\tilde\rho(Z)-\rho_p(Z)\right]}
+{\rho_p(Z)}.
 $$ {#eq-N2Lparcel}
-Next, if we assume the density of the parcel is conserved then we have that $\rho_p(z^* +\Delta z)=\rho_p(z^*)=\tilde\rho(z^*)$. Then we can write @eq-N2Lparcel as 
+Using @eq-parcel_density, we can write @eq-N2Lparcel as
 $$
-\frac{d^2 \Delta z}{dt^2}  = \frac{g\left[ \tilde \rho(z^* +\Delta z) -  \tilde\rho( z^*) \right]}{\tilde\rho(z^*) }$$
-$$ \approx\frac{g}{\tilde\rho(z^*)}\frac{d\tilde\rho}{dz}\bigg |_{z^*}\Delta z $$ {#eq-N2Lbuoyancy}
-where we have used a Taylor series for $\tilde\rho(z^* +\Delta z)$ to arrive at the final expression. We see that if ${d\tilde\rho}/{dz}<0$ then solutions to @eq-N2Lbuoyancy are oscillatory with frequency $N(z^*)$ where in general 
+\frac{d^2 Z}{dt^2}
+=
+\frac{g\left[\tilde\rho(Z)-\tilde\rho(0)\right]}
+{\tilde\rho(0)}
+\approx
+\frac{g}{\tilde\rho(0)}
+\frac{d\tilde\rho}{dz}\bigg|_{z=0}Z,
+$$ {#eq-N2Lbuoyancy}
+where we have used a Taylor expansion of $\tilde\rho(Z)$ about $z=0$.
+
+Defining
+$$
+N_0^2
+=
+-\frac{g}{\tilde\rho(0)}
+\frac{d\tilde\rho}{dz}\bigg|_{z=0},
+$$
+the equation becomes
+$$
+\frac{d^2 Z}{dt^2}=-N_0^2Z.
+$$ {#eq-N0sq}
+
+We will see in the example below that if ${d\tilde\rho}/{dz}<0$, the solution of the above equation is oscillatory and $N_0$ is the frequency of this motion.
+
+
+
+::: {.callout-tip icon="false"}
+## Example
+
+Consider a fluid parcel that is raised to $Z=Z_0$ at $t=0$ in a fluid that is initially at rest. Find the motion of the parcel after it is released.
+
+To find the parcel dynamics, we solve
+$$
+    \frac{d^2 Z}{dt^2}=-N_0^2Z,
+    \qquad
+    Z(0)=Z_0,
+    \qquad
+    \frac{dZ}{dt}(0)=0.
+$$ {#eq-egBuoOscil}
+The solution is
+$$
+    Z(t)=Z_0\cos(N_0t),
+$$
+which is a simple oscillatory motion with frequency $N_0$. @eq-egBuoOscil is very similar to the linearised pendulum equation. In pendulum motion, gravity provides the restoring force, whereas here the restoring force results from buoyancy.
+:::
+
+
+
+We could place our parcel at any height, rather than at $z=0$, and therefore generalise @eq-N0sq to define the general buoyancy frequency
 $$
 N^2(z) = -\frac{g}{\tilde\rho}\frac{d\tilde\rho}{dz}.
 $$ {#eq-BVfreq}
-The quantity $N(z)$ is known as the **buoyancy frequency** or **Brunt--Väisälä** frequency. It gives the theoretical frequency of vertical oscillations of a small parcel of fluid in a stratified medium.
-
-
-
-::: {.callout-tip icon="false"}
-## Example
-
-Consider a fluid parcel that is raised a distance $\Delta z_0$ in a fluid that is at rest. Find the motion of this parcel after it is let go. 
-
-We assume that the displacement is small such that $N = N_0$ remains constant. To find the parcel dynamics we then need to solve 
-$$
-    \frac{d^2 \Delta z}{dt^2}  = - N_0^2 \Delta z, \quad \Delta z (t=0) = \Delta z_0, \quad \frac{d \Delta z}{dt}  (t=0) = 0. 
-$$ {#eq-egBuoOscil}
-The solution to this equation is
-$$
-    \Delta z(t) = \Delta z_0 \cos{(N_0 t)},
-$$
-which is a simple oscillatory motion with frequency $N_0$. @eq-egBuoOscil is very similar to the linear pendulum equations. In pendulum motion, the restoring force is gravity, whereas here the restoring force is buoyancy.
-:::
-
-
+The quantity $N(z)$ is known as the **buoyancy frequency** or **Brunt--Väisälä frequency**. It gives the frequency of small vertical oscillations of a fluid parcel in a stably stratified medium.
 
 ::: {.callout-note appearance="simple"}
 
-If ${d\tilde\rho}/{dz}>0$ then $N^2<0$ and the stratification is *unstable* meaning that if we raise a fluid parcel it will continue to rise.
-:::
-
-
-
-::: {.callout-tip icon="false"}
-## Example
-For a constant temperature atmosphere, we saw in an earlier example that $\tilde\rho = \rho_se^{-\frac{z}{H}}$ where $\rho_s = \frac{\rho_0}{\mathcal{R}T}$ and $H=\frac{\mathcal{R}T}{g}$. For this stratification, 
-$$ N^2 = -\frac{g}{\rho_se^{-\frac{z}{H}}}\left( -\frac{\rho_s}{H}e^{-\frac{z}{H}}\right) = \frac{g}{H}=\frac{g^2}{\mathcal{R}T}.$$
-That is, $N$ is independent of $z$. With $T=300K$, $N\approx 0.03s^{-1}$. Observations tell us that a more realistic value for $N$ is approximately $0.01\mathrm{s^{-1}}$.
+If ${d\tilde\rho}/{dz}>0$ then $N^2<0$ and the stratification is *unstable*: a parcel displaced upwards continues to rise rather than oscillating about its original position.
 :::
 
 
@@ -119,9 +150,15 @@ $$
 \rho_0 \frac{D\ub}{Dt} = -\nabla p - (\rho_0 + \delta\rho(\xb,t))g\eb_z.
 $$
 Then, dividing by $\rho_0$ and combining with equation ([-@eq-incompdensity]) and ([-@eq-divu0]), we obtain the so called **Boussinesq equations**:
-$$\frac{\partial\ub}{\partial t} + (\ub\cdot\nabla)\ub = -\frac{1}{\rho_0}\nabla p -\frac{\rho}{\rho_0}g\eb_z. $$ {#eq-Bousmom}
-$$ \nabla\cdot\ub = 0, $$ {#eq-Bousdivu0}
-$$\frac{D\rho}{Dt}  = \frac{\partial \rho}{\partial t} + (\ub\cdot\nabla)\rho= 0, $$ {#eq-Bousdensity}
+$$
+\frac{\partial\ub}{\partial t} + (\ub\cdot\nabla)\ub = -\frac{1}{\rho_0}\nabla p -\frac{\rho}{\rho_0}g\eb_z. 
+$$ {#eq-Bousmom}
+$$
+ \nabla\cdot\ub = 0, 
+$$ {#eq-Bousdivu0}
+$$
+\frac{D\rho}{Dt}  = \frac{\partial \rho}{\partial t} + (\ub\cdot\nabla)\rho= 0, 
+$$ {#eq-Bousdensity}
 
 ::: {.callout-note appearance="simple"}
 Although we have derived this set of Boussinesq equations starting from the assumption of an incompressible fluid, it is possible to show that the Boussinesq approximation applies to a more general compressible fluid.
@@ -156,7 +193,9 @@ Note that this expression is analogous to the buoyancy force per unit mass $F_b/
 Substituting ([-@eq-decompvar]) into @eq-Bousdivu0 simply gives $\nabla\cdot\ub'=0$. Finally, substituting ([-@eq-decompvar]) into @eq-Bousdensity gives
 $$
 \frac{\partial(\tilde \rho(z)+\rho')}{\partial t} + (\ub'\cdot\nabla)(\tilde\rho(z)+\rho')=0$$
-$$\Rightarrow \frac{\partial\rho'}{\partial t} + (\ub'\cdot\nabla)\rho' + w'\frac{d\tilde\rho}{dz}=0.$$ {#eq-rhoprimed}
+$$
+\Rightarrow \frac{\partial\rho'}{\partial t} + (\ub'\cdot\nabla)\rho' + w'\frac{d\tilde\rho}{dz}=0.
+$$ {#eq-rhoprimed}
 Multiplying @eq-rhoprimed by $-\frac{g}{\rho_0}$ allows us to form
 \begin{align*}
  \frac{Db}{Dt}+\left(\frac{-g}{\rho_0}\frac{d\tilde\rho}{dz}\right)w'&=0,\\
@@ -174,9 +213,15 @@ Gathering together the Boussinesq equations for the perturbation quantities we h
 ::: {.callout-important icon="false"}
 ## **(Non-hydrostatic) Boussinesq Equations** 
 
-$$ \frac{\partial\ub}{\partial t} + (\ub\cdot\nabla)\ub = -\frac{1}{\rho_0}\nabla p +b\eb_z, $$ {#eq-Bousmombuoy}
-$$\nabla\cdot\ub=0,  $$ {#eq-Bousdivu0buoy}
-$$\frac{\partial b}{\partial t}+(\ub\cdot\nabla)b+N^2(z)w=0,$$ {#eq-Bousdenistybuoy}
+$$
+ \frac{\partial\ub}{\partial t} + (\ub\cdot\nabla)\ub = -\frac{1}{\rho_0}\nabla p +b\eb_z, 
+$$ {#eq-Bousmombuoy}
+$$
+\nabla\cdot\ub=0,  
+$$ {#eq-Bousdivu0buoy}
+$$
+\frac{\partial b}{\partial t}+(\ub\cdot\nabla)b+N^2(z)w=0,
+$$ {#eq-Bousdenistybuoy}
 :::
 where we have dropped the primes from perturbation quantities as is customary. 
 
@@ -206,6 +251,129 @@ Left: Stratification in the atmosphere in the region of Gadanki in India (13.5$^
 :::
 
 
+
+
+### Mountain waves caused by stratification {#sec-lee-waves}
+
+![Schematic view of lee waves generated by wind flowing over a mountain.](figures/MountainWave_Schem.png){#fig-schem_leewaves width=50% fig-alt="Schematic of lee waves generated by wind flowing over a mountain."}
+
+One of the interesting phenomena that arises as a result of stratification is the generation of mountain waves (also known as lee waves). We study a simplified version of these waves using the Boussinesq equations derived in the previous section. Consider a gentle mountain (see @fig-schem_leewaves), by which we mean that the topographic variations, or equivalently the height of the mountain, are relatively small. We assume that the mountain is periodic and described by
+$$
+h = h_0 \sin(kx),
+$$ {#eq-mountain_shape}
+where $h_0$ is the height of the mountain. A wind of speed $U$, which we assume to be constant, blows over the mountain and displaces air parcels vertically. We therefore expect buoyancy to act as a restoring force on these displaced parcels.
+
+Let us consider a steady, two-dimensional version of this problem, assuming that variations in the $y$ direction are negligible. We write the flow variables as the sum of a background wind and disturbances caused by the mountain (denoted by primes):
+$$
+u = U + u', \qquad v=0, \qquad w = w', \qquad p = p',
+\qquad b = b'.
+$$
+Substituting these expressions into ([-@eq-Bousmombuoy])-([-@eq-Bousdenistybuoy]), and neglecting $\partial/\partial y$ and $\partial/\partial t$, gives
+$$
+\begin{aligned}
+    U \frac{\partial u'}{\partial x} + u' \frac{\partial u'}{\partial x} + w' \frac{\partial u'}{\partial z} &= -\frac{\partial p'}{\partial x}, \\
+    U \frac{\partial w'}{\partial x} + u' \frac{\partial w'}{\partial x} + w' \frac{\partial w'}{\partial z} &= -\frac{\partial p'}{\partial z} + b',\\
+    \frac{\partial u'}{\partial x} + \frac{\partial w'}{\partial z} &= 0, \\
+    U \frac{\partial b'}{\partial x} + N^2 w' &= 0.
+\end{aligned}
+$$
+
+If the mountain is small, it generates small disturbances. We can therefore neglect products of disturbance quantities, leading to the linearised equations. Dropping the primes for convenience, we obtain
+$$
+\begin{aligned}
+    U \frac{\partial u}{\partial x} &= -\frac{\partial p}{\partial x}, \\
+    U \frac{\partial w}{\partial x} &= -\frac{\partial p}{\partial z} + b, \\
+    \frac{\partial u}{\partial x} + \frac{\partial w}{\partial z} &= 0, \\
+    U \frac{\partial b}{\partial x} + N^2 w &= 0.
+\end{aligned}
+$$ {#eq-FreeAtmos2}
+
+Eliminating $u$, $p$ and $b$ in favour of $w$ in @eq-FreeAtmos2, we obtain
+$$
+\frac{\partial^2 w}{\partial x^2} + \frac{\partial^2 w}{\partial z^2} = -\frac{N^2}{U^2}w.
+$$ {#eq-weq}
+
+At the ground, a fluid parcel must follow the terrain. Since the surface is described by $z=h(x)$, the vertical velocity of a parcel on the surface is
+$$
+w = \frac{Dh}{Dt}.
+$$
+For a steady, two-dimensional flow this gives
+$$
+w(x,z=h) = (U+u')\frac{\partial h}{\partial x}.
+$$
+For a small mountain, we linearise this condition by evaluating it at $z=0$ and neglecting the product $u'\partial h/\partial x$. Hence,
+$$
+w(x,z=0) \approx U\frac{\partial h}{\partial x}.
+$$ {#eq-w_Dh}
+Using @eq-mountain_shape, the lower boundary condition becomes
+$$
+w(x,z=0) = h_0Uk\cos(kx).
+$$ {#eq-BC_ground}
+
+Motivated by @eq-BC_ground, we seek a solution of the form
+$$
+w(x,z) = h_0Uk\cos(kx+mz).
+$$
+Substitution into @eq-weq gives
+$$
+\left(-k^2-m^2+\frac{N^2}{U^2}\right)
+h_0Uk\cos(kx+mz)=0.
+$$
+For this expression to hold for all $x$ and $z$, we require
+$$
+-k^2-m^2+\frac{N^2}{U^2}=0.
+$$
+Hence,
+$$
+m^2 = \frac{N^2}{U^2}-k^2,
+\qquad
+m = \pm\sqrt{\frac{N^2}{U^2}-k^2}.
+$$ {#eq-m_verwavenumber}
+Here we have assumed that $N/U>k$, so that $m$ is real and the disturbance can propagate vertically as a mountain wave. This condition is favoured by strong stratification, weak winds, or sufficiently long horizontal wavelengths.
+
+We now need to determine which sign of $m$ corresponds to the physical solution. Since the waves are generated by the mountain, we expect their energy to propagate upwards, away from the ground. The vertical flux of wave energy is given by the pressure work $pw$.
+
+For our solution $w=h_0Uk\cos(kx+mz)$, the continuity equation gives
+$$
+u=-h_0Um\cos(kx+mz),
+$$
+and the $x$-momentum equation then gives
+$$
+p=-Uu = h_0U^2m\cos(kx+mz).
+$$
+Hence, the vertical energy flux is
+$$
+pw = h_0^2U^3km\cos^2(kx+mz).
+$$
+We take the $x$ direction to be the direction of the background wind, so that $U>0$, and take $k>0$. Since $\cos^2(kx+mz)\geq 0$, the sign of the vertical energy flux is determined by the sign of $m$. The waves are generated by the mountain, so their energy must propagate upwards. Therefore, requiring the vertical energy flux to be upwards selects
+$$
+m=+\sqrt{\frac{N^2}{U^2}-k^2}.
+$$ {#eq-meq_signed}
+
+![Lee-wave cloud patterns generated by flow over the Hawaiian Islands (left) and over mountainous terrain north of the Adriatic Sea (right).](figures/Adratic.png){#fig-LeeWave_examples width=100% fig-alt="Lee-wave cloud patterns over islands and mountains."}
+
+Hence, our final solution is
+$$
+\begin{aligned}
+    w &= h_0Uk \cos\!\left(kx+\sqrt{\frac{N^2}{U^2}-k^2}\,z\right),\\
+    u &= -h_0U\sqrt{\frac{N^2}{U^2}-k^2} \cos\!\left(kx+\sqrt{\frac{N^2}{U^2}-k^2}\,z\right),\\
+    p &= h_0U^2\sqrt{\frac{N^2}{U^2}-k^2} \cos\!\left(kx+\sqrt{\frac{N^2}{U^2}-k^2}\,z\right).
+\end{aligned}
+$$
+The solution has an oscillatory vertical structure rather than decaying with height. As air parcels are advected through this stationary wave pattern, they are displaced alternately upwards and downwards. In sufficiently moist air, the upward motion can cool the air and lead to condensation, producing cloud bands that follow the mountain-wave pattern. Such patterns can be visible in satellite images; two examples are shown in @fig-LeeWave_examples. Another cool video of these waves created by the Rockies can be found [on this page](https://www.boldmethod.com/learn-to-fly/weather/mountain-wave-today-boulder-co/).
+
+In reality, mountains are of course not sinusoidal. However, more general topography can be decomposed into sinusoidal components using a Fourier transform. Since the equations considered here are linear, the wave response to each Fourier component can be calculated separately and the individual solutions superposed.
+
+It is also insightful to consider the case with no stratification. If $N=0$, @eq-weq reduces to
+$$
+\frac{\partial^2 w}{\partial x^2}+\frac{\partial^2 w}{\partial z^2}=0.
+$$
+For the same sinusoidal forcing at the ground, the solution that decays as $z\to\infty$ is
+$$
+w=h_0Uk\,\mathrm{e}^{-kz}\cos(kx).
+$$
+The disturbance now has no oscillatory vertical structure and simply decays with height. Without stratification, there is no buoyancy restoring force to support vertically propagating mountain waves.
+
 ### Hydrostatic approximation {#sec-hydroapprox}
 
 A common approximation in geophysical fluid dynamics is to assume that the horizontal scale is large compared to the vertical scale. In this case, the vertical component of the momentum equation is simply replaced by our hydrostatic balance equation. This is known as the *hydrostatic approximation* and leads to the following **hydrostatic Boussinesq equations**
@@ -214,10 +382,18 @@ A common approximation in geophysical fluid dynamics is to assume that the horiz
 ::: {.callout-important icon="false"}
 ## **(Hydrostatic) Boussinesq Equations** {#eq-BoussinesqHydrostat}
 
-$$ \frac{\partial \vb}{\partial t} + (\ub\cdot\nabla)\vb = -\frac{1}{\rho_0}\nabla_H p,$$ {#eq-BoussinesqHydrostat1}
-$$   \frac{\partial p}{\partial z}  = \rho_0 b = -\rho g,$$ {#eq-hydroapprox_hydrobal}
-$$   \nabla\cdot \ub =0,$$ {#eq-BoussinesqHydrostat3}
-$$    \frac{\partial b}{\partial t} + (\ub\cdot\nabla)b +N^2w =0,$$ {#eq-BoussinesqHydrostat4}
+$$
+ \frac{\partial \vb}{\partial t} + (\ub\cdot\nabla)\vb = -\frac{1}{\rho_0}\nabla_H p,
+$$ {#eq-BoussinesqHydrostat1}
+$$
+   \frac{\partial p}{\partial z}  = \rho_0 b = -\rho g,
+$$ {#eq-hydroapprox_hydrobal}
+$$
+   \nabla\cdot \ub =0,
+$$ {#eq-BoussinesqHydrostat3}
+$$
+    \frac{\partial b}{\partial t} + (\ub\cdot\nabla)b +N^2w =0,
+$$ {#eq-BoussinesqHydrostat4}
 :::
 where $\vb=(u,v)$ is the horizontal velocity and $\nabla_H=\left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}\right)$.
 
