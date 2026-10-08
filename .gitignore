@@ -24,3 +24,8 @@
 /turbulence.html
 /waves.html
 /index_files/
+
+# PDF/LaTeX outputs from Quarto (PDF notes are maintained on Overleaf)
+/_book/*.pdf
+/_book/book-latex/
+.DS_Store
