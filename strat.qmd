@@ -1,0 +1,237 @@
+# Stratification {#sec-chap:strat}
+<div style="display:none">$\nextSection$</div>
+
+## Buoyancy
+
+ A heavy object sinks down in a fluid because of gravity, but lighter objects float because of an upward force that the fluid exerts on them opposite to the direction of gravity. This force -- known as *buoyancy* -- is due to the weight of displaced fluid. 
+ 
+ Typically, fluids in the atmosphere and ocean are *stratified*. That is, the density of air in the atmosphere and of water in the ocean varies with height. In a stably stratified medium (where lower density layers are above higher density ones), when a fluid parcel is pushed down vertically, we expect that it will try to come back up due to buoyancy force, and vice-versa. By considering the motion of such a fluid parcel, we can infer its buoyancy which is an important property of stratified fluids.
+
+![A fluid parcel is raised from height $z^*$ to height $z^* + \Delta z$  in a layer of hydrostatically balanced fluid.](figures/Buoyfreq.png){#fig-Buoyancy_parcel width=50% fig-alt="Schematic of a fluid parcel in a layer of hydrostatically balanced fluid."}
+
+Consider a fluid at rest with density $\tilde\rho(z)$ and hydrostatic pressure $\tilde p$, i.e., $d\tilde p/dz = -g \tilde\rho$. Then consider raising a parcel of fluid from a height $z^*$ to $z^* + \Delta z$ (see @fig-Buoyancy_parcel). At $z^*$, the environment and the parcel are in hydrostatic balance and so
+$$
+\frac{d\tilde p}{dz}\bigg |_{z^*} = -g \tilde\rho(z^*) = -g \rho_p(z^*),
+$$
+where we denote by a subscript $p$ a variable following the parcel and a tilde denotes an environment variable.
+
+The environment at $z^*+\Delta z$ is also in hydrostatic balance:
+$$
+\frac{d\tilde p}{dz}\bigg |_{z^*+\Delta z} = -g \tilde\rho(z^* +\Delta z).
+$$
+
+However, the fluid parcel at $z^*+\Delta z$ is now being acted on by a force given by 
+$$
+-\frac{d\tilde p}{dz}\bigg |_{z^*+\Delta z}  -g \rho_p(z^* +\Delta z)
+$$
+since the pressure of the parcel is the same as the pressure of the environment. Note the pressure gradient acts upwards and gravity downwards. Then, since $-g \rho_p(z^* +\Delta z) \neq -g\tilde\rho(z^* +\Delta z) = {d\tilde p}/{dz}\bigg |_{z^*+\Delta z}$, there is a net force acting on the fluid parcel (per unit volume) which can be written as
+$$
+    F_b = g \tilde\rho(z^* +\Delta z) - g \rho_p( z^* +\Delta z)
+$$ {#eq-BuoForce}
+
+We can then apply Newton's Second Law to the parcel at $z^*+\Delta z$ to give
+$$
+    \rho_p(z^* +\Delta z) \frac{d^2 \Delta z}{dt^2} = F_b
+$$
+and so
+$$
+\frac{d^2 \Delta z}{dt^2}  = \frac{g\left[ \tilde \rho(z^* +\Delta z) -  \rho_p( z^* +\Delta z) \right]}{\rho_p(z^* +\Delta z) }.
+$$ {#eq-N2Lparcel}
+Next, if we assume the density of the parcel is conserved then we have that $\rho_p(z^* +\Delta z)=\rho_p(z^*)=\tilde\rho(z^*)$. Then we can write @eq-N2Lparcel as 
+$$
+\frac{d^2 \Delta z}{dt^2}  = \frac{g\left[ \tilde \rho(z^* +\Delta z) -  \tilde\rho( z^*) \right]}{\tilde\rho(z^*) }$$
+$$ \approx\frac{g}{\tilde\rho(z^*)}\frac{d\tilde\rho}{dz}\bigg |_{z^*}\Delta z $$ {#eq-N2Lbuoyancy}
+where we have used a Taylor series for $\tilde\rho(z^* +\Delta z)$ to arrive at the final expression. We see that if ${d\tilde\rho}/{dz}<0$ then solutions to @eq-N2Lbuoyancy are oscillatory with frequency $N(z^*)$ where in general 
+$$
+N^2(z) = -\frac{g}{\tilde\rho}\frac{d\tilde\rho}{dz}.
+$$ {#eq-BVfreq}
+The quantity $N(z)$ is known as the **buoyancy frequency** or **Brunt--Väisälä** frequency. It gives the theoretical frequency of vertical oscillations of a small parcel of fluid in a stratified medium.
+
+
+
+::: {.callout-tip icon="false"}
+## Example
+
+Consider a fluid parcel that is raised a distance $\Delta z_0$ in a fluid that is at rest. Find the motion of this parcel after it is let go. 
+
+We assume that the displacement is small such that $N = N_0$ remains constant. To find the parcel dynamics we then need to solve 
+$$
+    \frac{d^2 \Delta z}{dt^2}  = - N_0^2 \Delta z, \quad \Delta z (t=0) = \Delta z_0, \quad \frac{d \Delta z}{dt}  (t=0) = 0. 
+$$ {#eq-egBuoOscil}
+The solution to this equation is
+$$
+    \Delta z(t) = \Delta z_0 \cos{(N_0 t)},
+$$
+which is a simple oscillatory motion with frequency $N_0$. @eq-egBuoOscil is very similar to the linear pendulum equations. In pendulum motion, the restoring force is gravity, whereas here the restoring force is buoyancy.
+:::
+
+
+
+::: {.callout-note appearance="simple"}
+
+If ${d\tilde\rho}/{dz}>0$ then $N^2<0$ and the stratification is *unstable* meaning that if we raise a fluid parcel it will continue to rise.
+:::
+
+
+
+::: {.callout-tip icon="false"}
+## Example
+For a constant temperature atmosphere, we saw in an earlier example that $\tilde\rho = \rho_se^{-\frac{z}{H}}$ where $\rho_s = \frac{\rho_0}{\mathcal{R}T}$ and $H=\frac{\mathcal{R}T}{g}$. For this stratification, 
+$$ N^2 = -\frac{g}{\rho_se^{-\frac{z}{H}}}\left( -\frac{\rho_s}{H}e^{-\frac{z}{H}}\right) = \frac{g}{H}=\frac{g^2}{\mathcal{R}T}.$$
+That is, $N$ is independent of $z$. With $T=300K$, $N\approx 0.03s^{-1}$. Observations tell us that a more realistic value for $N$ is approximately $0.01\mathrm{s^{-1}}$.
+:::
+
+
+
+## Boussinesq equations
+
+### Density and temperature variation in the ocean and atmosphere
+
+![(a)  Position of different measurements in the Canada Basin of the Arctic Ocean. The trajectory followed during the cruise is represented by the black lines between the cast positions. (b) Density profiles from the 2006 survey within the 300–700$\mathrm{m}$ depth range against distance traveled from the first cast. Profiles in blue correspond to the blue dots in (a). (c) Mean temperature and density profiles from mooring D averaged between September 2006 and August 2007 are shown with solid lines. The dashed lines show the same quantities but for a single cast in March 2007. (d) Time evolution of the density profiles at mooring D shown in panel (a). This figure is taken from (Menesguen et al. 2022).](figures/densVarArcCorrected.png){#fig-density_arctic width=100%}
+
+In the lower atmosphere and most parts of the ocean, the density (or temperature) does not change significantly at different horizontal locations $\xb=(x,y)$ or in time. This motivates the **Boussinesq approximation** which involves writing the density (and pressure) as a sum of a base profile plus small perturbation, where the base profile only depends on $z$. We will formulate this approximation mathematically in the next section, but before that it will be insightful to look at few observations of density and temperature variations in the ocean and atmosphere. 
+
+
+@fig-density_arctic shows a combination of two types of measurements in a region in the arctic ocean. In panel (a), there are four red dots that are **mooring** measurements obtained by a collection of devices connected to a wire and anchored on the sea floor. The other dots are measurements taken by a cruise that sends diving devices down into the ocean. The details of these observations are not important for us, but they show that several locations are sampled by different measuring devices and at different times. Panel (b) shows the density profiles of the cruise measurements at different locations. It is clear that the density profile has a (horizontal) mean that is a function of $z$. The perturbations to this mean by changing the horizontal location are much smaller than the mean value itself. The variation of density from the base profile is better quantified in the panel (c). The solid black curve shows the mean (base) profile of the density next to a single cast with dashed black curve, which marginally deviates from the mean. Panel (d) shows the density profiles for a fixed location (location D in panel (a)), but at different times. It can be inferred from this plot that changing time does not affect the mean density profile very much. Looking at different part of the ocean, we get a more general base profile (a smoother mean). Nevertheless, the underlying message of this example still holds: the density is well approximated with a base profile that is a function of depth only plus small perturbations. 
+
+
+![An example of temperature-altitude profiles of the daily averaged temperature up to 40 km from 20 to 24 July 2009 over the Indian region (65$^{\circ}$N–110$^{\circ}$E). The figure is taken from (Prasad et al., 2018).](figures/TempProfileAtmos1.png){#fig-atmos_Tprofile width=50%}
+
+
+@fig-atmos_Tprofile displays the (daily) temperature profiles over a region in India. Atmospheric temperature is directly related to the density at each altitude (which has a fixed pressure). Hence, the relative magnitude of the mean temperature to perturbations can translate to the density as well. It is evident from this figure that changes in temperature at each altitude are relatively small for lower atmosphere (below 15km). There is a jump in temperature that is known as "tropopause". Near the tropopause, the deviations from the mean temperature profile are larger, and the Boussinesq approximation is not justified. 
+
+Measurements similar to the examples just discussed are abundant in the literature thanks to several decades of observational campaigns. Considering them all together, we can conclude that in most parts of the ocean, and in the lower atmosphere, the variations in density at a fixed $z$ are small relative to their means.
+
+
+### Boussinesq approximation
+
+As we have seen, the density in the ocean and in the lower layer of atmosphere varies by only a few percent across the depth or altitude. We can therefore exploit the smallness of these variations and write 
+$$
+\rho(\xb,t) = \rho_0 + \delta\rho(\xb,t)
+$$
+where $\rho_0$ is the average density (a constant) and $\delta\rho$ are (small) perturbations away from this mean. The perturbations are assumed small so that $|\delta\rho|\ll\rho_0$. 
+Substituting this into the inviscid, incompressible momentum equation (i.e., @eq-incompmom with $\nu=0$) and again assuming gravity is the only body force acting so that $\fb_b=-g\eb_z$, we find
+$$
+(\rho_0 + \delta\rho(\xb,t)) \frac{D\ub}{Dt} = -\nabla p - (\rho_0 + \delta\rho(\xb,t))g\eb_z.
+$$
+Since $|\delta\rho|\ll\rho_0$ we may be tempted to ignore all the terms involving $\delta\rho$. Instead, we neglect all the terms involving $\delta\rho$ *except* in the term involving gravity (here there is only one but in more complex cases there may be others). This is because while $|\delta\rho|\ll\rho_0$, gravity is strong and so the buoyancy term (the one involving gravity) is retained. Making this approximation, known as the **Boussinesq approximation**, leads to 
+$$
+\rho_0 \frac{D\ub}{Dt} = -\nabla p - (\rho_0 + \delta\rho(\xb,t))g\eb_z.
+$$
+Then, dividing by $\rho_0$ and combining with equation ([-@eq-incompdensity]) and ([-@eq-divu0]), we obtain the so called **Boussinesq equations**:
+$$\frac{\partial\ub}{\partial t} + (\ub\cdot\nabla)\ub = -\frac{1}{\rho_0}\nabla p -\frac{\rho}{\rho_0}g\eb_z. $$ {#eq-Bousmom}
+$$ \nabla\cdot\ub = 0, $$ {#eq-Bousdivu0}
+$$\frac{D\rho}{Dt}  = \frac{\partial \rho}{\partial t} + (\ub\cdot\nabla)\rho= 0, $$ {#eq-Bousdensity}
+
+::: {.callout-note appearance="simple"}
+Although we have derived this set of Boussinesq equations starting from the assumption of an incompressible fluid, it is possible to show that the Boussinesq approximation applies to a more general compressible fluid.
+:::
+
+::: {.callout-note appearance="simple"}
+The Boussineq approximation is valid everywhere in the ocean since density variations are small. However, it is also valid for any motions in the atmosphere that are confined to a layer that is thin compared with the scale height of the atmosphere. For the Earth's atmosphere, we have seen that the scale height is approximately $8$km and so the Boussinesq approximation should apply to motions that are confined to layers of about $1$km or less.
+:::
+
+
+### Buoyancy as a variable
+
+Next, let's consider splitting our variables into a reference state and perturbations to this state. We will consider a static, time-independent reference state with a vertical density stratification $\rho=\tilde\rho(z)$. @eq-Bousdivu0 and @eq-Bousdensity are automatically satisfied by this reference state and @eq-Bousmom demands
+$$
+p=\tilde p(z) \quad \text{with} \quad \frac{d\tilde p}{dz} = -\tilde\rho g. 
+$$ {#eq-hydrobal2}
+Decomposing our variables in this way gives 
+$$
+\ub = \ub'(\xb,t), \quad \rho = \tilde\rho(z) + \rho'(\xb,t), \quad p = \tilde p(z) + p'(\xb,t) 
+$$ {#eq-decompvar}
+where a tilde denotes a reference state variable and the primed quantities are perturbations to these states (for now no assumptions are made about the size of the perturbations).
+
+Now, substituting ([-@eq-decompvar]) into @eq-Bousmom gives
+$$
+	\frac{\partial\ub'}{\partial t} + (\ub'\cdot\nabla)\ub' = -\frac{1}{\rho_0}\nabla p' -\frac{\rho'}{\rho_0}g\eb_z = -\frac{1}{\rho_0}\nabla p' +b\eb_z, 
+$$
+where we have used @eq-hydrobal2 to cancel reference state terms and introduced the *buoyancy* variable 
+$$ b = -\frac{\rho'}{\rho_0} g .
+$$ {#eq-buoyance_Variable}
+Note that this expression is analogous to the buoyancy force per unit mass $F_b/\rho_0$ introduced in @eq-BuoForce.
+
+Substituting ([-@eq-decompvar]) into @eq-Bousdivu0 simply gives $\nabla\cdot\ub'=0$. Finally, substituting ([-@eq-decompvar]) into @eq-Bousdensity gives
+$$
+\frac{\partial(\tilde \rho(z)+\rho')}{\partial t} + (\ub'\cdot\nabla)(\tilde\rho(z)+\rho')=0$$
+$$\Rightarrow \frac{\partial\rho'}{\partial t} + (\ub'\cdot\nabla)\rho' + w'\frac{d\tilde\rho}{dz}=0.$$ {#eq-rhoprimed}
+Multiplying @eq-rhoprimed by $-\frac{g}{\rho_0}$ allows us to form
+\begin{align*}
+ \frac{Db}{Dt}+\left(\frac{-g}{\rho_0}\frac{d\tilde\rho}{dz}\right)w'&=0,\\
+ \Rightarrow\frac{Db}{Dt}+N^2(z)w'&=0
+\end{align*}
+where 
+$$
+N^2(z) = -\frac{g}{\rho_0}\frac{d\tilde\rho}{dz}.
+$$
+Here $N(z)$ is the buoyancy frequency in the Boussinesq approximation. Note it is subtly different to the definition in @eq-BVfreq.
+
+Gathering together the Boussinesq equations for the perturbation quantities we have the following equation set:
+
+
+::: {.callout-important icon="false"}
+## **(Non-hydrostatic) Boussinesq Equations** 
+
+$$ \frac{\partial\ub}{\partial t} + (\ub\cdot\nabla)\ub = -\frac{1}{\rho_0}\nabla p +b\eb_z, $$ {#eq-Bousmombuoy}
+$$\nabla\cdot\ub=0,  $$ {#eq-Bousdivu0buoy}
+$$\frac{\partial b}{\partial t}+(\ub\cdot\nabla)b+N^2(z)w=0,$$ {#eq-Bousdenistybuoy}
+:::
+where we have dropped the primes from perturbation quantities as is customary. 
+
+
+::: {.callout-note appearance="simple"}
+Note here that $p$ is a perturbation to the background pressure state. In general, when $p$ appears along side buoyancy in the governing equations then this indicates it is a perturbation pressure. This is in contrast to the Boussinesq equations where $p$ in @eq-Bousmom is taken to mean the full pressure (likewise in @eq-Bousmom, $\rho$ is the full density).
+:::
+
+
+::: {.callout-tip icon="false"}
+## Example
+
+The buoyancy (Brunt--Väisälä) frequency that appears in @{eq-Bousdenistybuoy} is an important quantity in different regimes of geophysical flows. @fig-Nprofile shows the values of $N^2$ for a region in the atmosphere/ocean as functions of altitude/depth. In the left plot, $N^2$ over the region of Gadanki in India is shown. There is a noticeable jump at around 18km altitude (similar to what we observed in figure @fig-atmos_Tprofile, marking the "tropopause", which is the border between two layers of atmosphere (troposphere and stratosphere). Note that the height of tropopause varies to some degrees in different locations (that is why the jump in @fig-atmos_Tprofile and @fig-Nprofile appears at slightly different altitudes). Around the tropopause, constant $N$ or even the Boussinesq approximation are not valid, but in the lower atmosphere (below the tropopause) $N$ can be assumed constant. Horizontal bars show standard deviations obtained while considering 43 different measurements during April 2006 to March 2007. The low variability in the lower atmosphere (relatively small bars) justifies the Boussinesq approximation, whereas the high variability near tropopause shows this approximation is no longer valid around this altitude. 
+
+The right plot is obtained from a mooring observation ("NISKINe" campaign). For the deep ocean (lower than 800 meters), it is safe to use constant $N$. However, in the upper ocean the variation of $N$ with depth cannot be neglected. A comparison between the two figures shows that $N$ is an order of magnitude smaller in the ocean.
+
+::: {#fig-Nprofile layout-ncol=2}
+
+![](figures/N2atmosphere.png){width=85%}
+
+![](figures/N2profile_ocean.png){width=85%}
+
+Left: Stratification in the atmosphere in the region of Gadanki in India (13.5$^{\circ}$N, 79.2$^{\circ}$E). This curve is obtained by averaging over 43 radar measurements and the bars show the standard deviation for each altitude. This plot is taken from (Mehta et al., 2008). Right: raw stratification profile (blue) observed during a pilot cruise measurement campaign named ``NISKINe", along with its 50-m moving average (black) and a Gaussian fit (orange). This plot is taken from (Asselin \& Young, 2020).
+:::
+
+
+:::
+
+
+### Hydrostatic approximation {#sec-hydroapprox}
+
+A common approximation in geophysical fluid dynamics is to assume that the horizontal scale is large compared to the vertical scale. In this case, the vertical component of the momentum equation is simply replaced by our hydrostatic balance equation. This is known as the *hydrostatic approximation* and leads to the following **hydrostatic Boussinesq equations**
+
+
+::: {.callout-important icon="false"}
+## **(Hydrostatic) Boussinesq Equations** {#eq-BoussinesqHydrostat}
+
+$$ \frac{\partial \vb}{\partial t} + (\ub\cdot\nabla)\vb = -\frac{1}{\rho_0}\nabla_H p,$$ {#eq-BoussinesqHydrostat1}
+$$   \frac{\partial p}{\partial z}  = \rho_0 b = -\rho g,$$ {#eq-hydroapprox_hydrobal}
+$$   \nabla\cdot \ub =0,$$ {#eq-BoussinesqHydrostat3}
+$$    \frac{\partial b}{\partial t} + (\ub\cdot\nabla)b +N^2w =0,$$ {#eq-BoussinesqHydrostat4}
+:::
+where $\vb=(u,v)$ is the horizontal velocity and $\nabla_H=\left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}\right)$.
+
+
+Note that the hydrostatic approximation has resulted in the vertical momentum equation being replaced by hydrostatic balance. 
+
+::: {.callout-note appearance="simple"}
+The Boussinesq equations ([-@eq-Bousmombuoy]) - ([-@eq-Bousdenistybuoy]) (and their hydrostatic counterparts ([-@eq-BoussinesqHydrostat1]) - ([-@eq-BoussinesqHydrostat4])) are the fundamental equations that are solved numerically in weather forecast and climate models. Because we observe and measure everything from the rotating Earth, these equations are solved in the rotating frame of reference (which we will come to in @sec-chap:rotation). Most climate models use the Hydrostatic equations as they require far fewer computational resources. Hence, because climate models (unlike weather models) are run for very long times (several years or decades), it is worth reducing the computational cost at the expense of making the hydrostatic assumption.
+:::
+
+::: {.callout-note appearance="simple"}
+In the geophysical fluids literature, equations ([-@eq-BoussinesqHydrostat1]) - ([-@eq-BoussinesqHydrostat4]) are often known as the *primitive equations*. This is somewhat confusing as the non-Hydrostatic Boussinesq equation set is more general. However, the Hydrostatic Boussinesq equations are still more accurate than some other reduced equations such as the shallow water equations and quasigeostrophic equations that we will study in Chapters [-@sec-chap:SW] and [-@sec-Geostrophic], respectively.
+:::
+
+
+
+

@@ -1,0 +1,182 @@
+project:
+  type: book
+
+number-sections: true
+
+book:
+  title: "Geophysical and Astrophysical Fluids"
+  author:
+    - name: "Hossein Kafiabad"
+      affiliations: "Durham University"
+    - name: "Laura Currie"
+  date: "October 2024"
+  date-format: "MMMM YYYY"
+  cover-image: figures/polar_vortex.png
+  chapters:
+    - index.qmd
+    - part: "Michaelmas Term: Geophysical Fluids"
+      chapters:
+        - intro.qmd
+        - strat.qmd
+        - shallow-water.qmd
+        - rotation.qmd
+        - geostrophy.qmd
+        - waves.qmd
+        - turbulence.qmd
+        # - instabilities.qmd
+    # - part: "Epiphany Term: Astrophysical Fluids"
+      # chapters:
+      #   - intro_epiphany.qmd
+      #   - mag.qmd
+ #   - kinematics.qmd
+ #   - statics.qmd
+ #   - dynamics.qmd
+
+# bibliography: references.bib
+
+format:
+  html:
+#    include-in-header: mathjax.html
+    theme:
+      - journal
+#      - custom.scss
+    self-contained: true
+    include-before:
+      <p hidden>
+      $$
+       \def\ab{\boldsymbol{a}}
+       \def\bb{\boldsymbol{b}}
+       \def\eb{\boldsymbol{e}}
+       \def\fb{\boldsymbol{f}}
+       \def\gb{\boldsymbol{g}}
+       \def\kb{\boldsymbol{k}}
+       \def\nb{\boldsymbol{n}}
+       \def\ub{\boldsymbol{u}}
+       \def\vb{\boldsymbol{v}}
+       \def\xb{\boldsymbol{x}}
+       \def\Xb{\boldsymbol{X}}
+       \def\Ab{\boldsymbol{A}}
+       \def\Bb{\boldsymbol{B}}
+       \newcommand{\Cb}{\boldsymbol{C}}
+       \newcommand{\Db}{\boldsymbol{D}}
+       \def\Eb{\boldsymbol{E}}
+       \def\Fb{\boldsymbol{F}}
+       \def\Jb{\boldsymbol{J}}
+       \def\Ub{\boldsymbol{U}}
+       \def\xib{\boldsymbol{\xi}}
+       \def\evx{\boldsymbol{e}_x}
+       \def\evy{\boldsymbol{e}_y}
+       \def\evz{\boldsymbol{e}_z}
+       \def\evr{\boldsymbol{e}_r}
+       \def\evt{\boldsymbol{e}_\theta}
+       \def\evp{\boldsymbol{e}_r}
+       \def\evf{\boldsymbol{e}_\phi}
+       \def\evb{\boldsymbol{e}_\parallel}
+       \def\omb{\boldsymbol{\omega}}
+       \def\dA{\;\mathrm{d}\Ab}
+       \def\dS{\;\mathrm{d}\boldsymbol{S}}
+       \def\dV{\;\mathrm{d}V}
+       \def\dl{\mathrm{d}\boldsymbol{l}}
+       \def\bfzero{\boldsymbol{0}}
+       \def\Rey{\mathrm{Re}}
+       \newcommand{\dds}[1]{\frac{\mathrm{d}{#1}}{\mathrm{d}s}}
+       \newcommand{\ddy}[2]{\frac{\partial{#1}}{\partial{#2}}}
+       \newcommand{\ddt}[1]{\frac{\mathrm{d}{#1}}{\mathrm{d}t}}
+       \newcommand{\DDt}[1]{\frac{\mathrm{D}{#1}}{\mathrm{D}t}}
+       \newcommand{\gradH}{\nabla_\mathrm{H}}
+       \newcommand{\grad}{\nabla}
+       \newcommand{\Dl}{\mathrm{\Delta}}
+       \newcommand{\Omb}{\boldsymbol{\mathrm{\Omega}}}
+       \newcommand{\Omrm}{\mathrm{\Omega}}
+       \newcommand{\Ld}{\mathcal{L}_d }
+       \newcommand{\nd}[1]{{#1}^*}
+       \newcommand{\vh}{\nd{\boldsymbol{v}}}
+       \newcommand{\bh}{\nd{b}}
+       \newcommand{\ph}{\nd{p}}
+       \newcommand{\fh}{\nd{\fb}}
+       \newcommand{\tha}{\nd{t}}
+       \newcommand{\wh}{\nd{w}}
+       \newcommand{\zh}{\nd{z}}
+       \newcommand{\gradHh}{\nd{\nabla}_H}
+       \newcommand{\psih}{\nd{\psi}}
+       \newcommand{\Ro}{\mathrm{Ro}}
+       \newcommand{\ddz}[1]{\frac{\mathrm{d}{#1}}{\mathrm{d}z}}
+      $$
+      </p>
+
+  pdf:
+    documentclass: scrreprt
+    pdf-engine: pdflatex
+    geometry:
+      - top=20mm
+      - left=20mm
+      - right=20mm
+      - bottom=20mm
+    include-in-header:
+      text: |
+       \usepackage[makeroom]{cancel}
+       \def\ab{\boldsymbol{a}}
+       \def\bb{\boldsymbol{b}}
+       \def\eb{\boldsymbol{e}}
+       \def\fb{\boldsymbol{f}}
+       \def\gb{\boldsymbol{g}}
+       \def\kb{\boldsymbol{k}}
+       \def\nb{\boldsymbol{n}}
+       \def\ub{\boldsymbol{u}}      
+       \def\vb{\boldsymbol{v}}
+       \def\xb{\boldsymbol{x}}
+       \def\Xb{\boldsymbol{X}}
+       \def\Ab{\boldsymbol{A}}
+       \def\Bb{\boldsymbol{B}}
+       \newcommand{\Cb}{\boldsymbol{C}}
+       \newcommand{\Db}{\boldsymbol{D}}
+       \def\Eb{\boldsymbol{E}}
+       \def\Fb{\boldsymbol{F}}
+       \def\Jb{\boldsymbol{J}}
+       \def\Ub{\boldsymbol{U}}
+       \def\xib{\boldsymbol{\xi}}
+       \def\omb{\boldsymbol{\omega}}
+       \def\evx{\boldsymbol{e}_x}
+       \def\evy{\boldsymbol{e}_y}
+       \def\evz{\boldsymbol{e}_z}
+       \def\evr{\boldsymbol{e}_r}
+       \def\evt{\boldsymbol{e}_\theta}
+       \def\evp{\boldsymbol{e}_r}
+       \def\evf{\boldsymbol{e}_\phi}
+       \def\evb{\boldsymbol{e}_\parallel}
+       \def\dA{\;\mathrm{d}\Ab}
+       \def\dS{\;\mathrm{d}\boldsymbol{S}}
+       \def\dV{\;\mathrm{d}V}
+       \def\dl{\mathrm{d}\boldsymbol{l}}
+       \def\bfzero{\boldsymbol{0}}
+       \def\Rey{\mathrm{Re}}
+       \newcommand{\dds}[1]{\frac{\mathrm{d}{#1}}{\mathrm{d}s}}
+       \newcommand{\ddy}[2]{\frac{\partial{#1}}{\partial{#2}}}
+       \newcommand{\ddt}[1]{\frac{\mathrm{d}{#1}}{\mathrm{d}t}}
+       \newcommand{\DDt}[1]{\frac{\mathrm{D}{#1}}{\mathrm{D}t}}
+       \newcommand{\nextSection}{}
+       \newcommand{\gradH}{\nabla_\mathrm{H}}
+       \newcommand{\grad}{\nabla}
+       \newcommand{\Dl}{\mathrm{\Delta}}
+       \newcommand{\Omb}{\boldsymbol{\mathrm{\Omega}}}
+       \newcommand{\Omrm}{\mathrm{\Omega}}
+       \newcommand{\Ld}{\mathcal{L}_d }
+       \newcommand{\nd}[1]{{#1}^*}
+       \newcommand{\vh}{\nd{\boldsymbol{v}}}
+       \newcommand{\bh}{\nd{b}}
+       \newcommand{\ph}{\nd{p}}
+       \newcommand{\fh}{\nd{\fb}}
+       \newcommand{\tha}{\nd{t}}
+       \newcommand{\wh}{\nd{w}}
+       \newcommand{\zh}{\nd{z}}
+       \newcommand{\gradHh}{\nd{\nabla}_H}
+       \newcommand{\psih}{\nd{\psi}}
+       \newcommand{\Ro}{\mathrm{Ro}}
+       \newcommand{\ddz}[1]{\frac{\mathrm{d}{#1}}{\mathrm{d}z}}
+
+
+  latex:
+    documentclass: report
+    classoption: [twocolumn, landscape]
+    lof: true
+    lot: true

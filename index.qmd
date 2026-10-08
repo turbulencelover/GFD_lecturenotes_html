@@ -1,0 +1,61 @@
+# Preface {.unnumbered}
+
+## Module overview
+
+Welcome to Geophysical and Astrophysical Fluids IV.
+
+This module builds on Fluid Mechanics III to introduce the concepts required for understanding the flows that are common in geophysical and astrophysical systems such as the Earth and the Sun.
+
+In Michaelmas, our aim is to derive and understand equations that govern many geophysical flows. We build on the concepts explored in Fluid Mechanics III to introduce the different types of dynamics encountered when rotation and/or stratification are present. We will derive mathematical descriptions and explore the rich landscape of waves and instabilities that can occur in these systems making connections between the mathematics and observed phenomena in planetary atmospheres and oceans along the way.
+
+In Epiphany, we will extend the continuum model of liquids and gases from Fluid Mechanics III to encompass plasmas, through the theory of magnetohydrodynamics (MHD). Because plasmas are ionised gases that conduct electricity, there are now two primary variables: the velocity field and the magnetic field. Their coupling leads not only to important physical effects (such as solar eruptions, planetary magnetospheres, or the failure of fusion reactors) but also to elegant mathematical properties, for whose discovery Hannes Alfvén was awarded a Nobel prize in 1970.
+
+
+## Lecture notes
+
+<!-- These are the lecture notes for **MATH4421 Geophysical and Astrophysical Fluid Dynamics IV** for Michaelmas Term 2023. I will generally follow these notes in the lectures, although not  word for word. If you do spot any significant discrepancies, then please let me know! -->
+
+We will generally follow these notes in the lectures, although not word for word. If you do spot any significant discrepancies, then please let us know! You should also be keeping up to date with the associated problem sheets, found on Learn Ultra.
+
+::: {.callout-note appearance="simple"}
+In these notes, remarks in boxes like this provide extra information.
+:::
+
+::: {.callout-tip icon=false}
+## Example
+These boxes highlight "examples".
+:::
+
+::: {.callout-important icon="false"}
+## Important Equation Set
+Boxes like this one are used to highlight important equation sets.
+:::
+
+Below is a table summarising the notation used throughout these notes. The list is not exhaustive.
+
+| Symbol  | Meaning |
+|:------- |:--------|
+| $\ub=(u,v,w)$  | 3D fluid velocity and components (in Cartesian coordinates)  |
+| $\vb=(u,v)$  | 2D fluid velocity and components (in Cartesian coordinates)  |
+| $\nabla = (\cfrac{\partial}{\partial x},\cfrac{\partial}{\partial y},\cfrac{\partial}{\partial z})$  | 3D gradient (in Cartesian coordinates) |
+| $\nabla_H = (\cfrac{\partial}{\partial x},\cfrac{\partial}{\partial y})$  | 2D gradient (in Cartesian coordinates) |
+| $\Delta = \cfrac{\partial^2}{\partial x^2}+\cfrac{\partial^2}{\partial y^2}+\cfrac{\partial^2}{\partial z^2}$  | Laplacian  (in Cartesian coordinates) |
+| $\rho$  | Fluid density   |
+| $\nu$  | Kinematic viscosity  |
+| $p$  | Pressure  |
+| $b$  | Buoyancy  |
+| $T$  | Temperature  |
+| $\fb_b$  | Body force  |
+| $N(z)$  | Buoyancy (Brunt--Väisälä) frequency |
+
+
+
+
+
+
+: Notation {.striped .hover}
+
+
+These notes have been created with Quarto (<https://quarto.org/docs/books>).
+
+

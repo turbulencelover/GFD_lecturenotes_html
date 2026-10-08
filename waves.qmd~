@@ -1,0 +1,246 @@
+# Waves in the atmosphere and ocean {#sec-chap:waves}
+
+## Basic concepts
+
+We review some basic concepts about waves that you might be familiar with from your other courses. To start let's consider a plane sinusoidal wave 
+$$
+    \psi(\xb,t) = \mathcal{M} \cos(\kb . \xb - \omega t) + \mathcal{N} \sin(\kb . \xb - \omega t)
+$$ {#eq-planewave_sin}
+where $\kb = (k_x,k_y,k_z)$ is the wavevector and $\omega$ the frequency. The norm of wave vector $k = | \kb |$ is known as wavenumber (sometimes in literature even $\kb$ is loosely referred to as wavenumber). The argument of $\sin$ and $\cos$ functions is known as the phase and usually denoted by $\theta = \kb . \xb - \omega t$. Using trigonometric identities, we can write @eq-planewave_sin in a slightly different form
+$$
+    \psi(\xb,t) = \mathcal{A} \cos(\kb . \xb - \omega t + \phi_0),
+$$
+where $\mathcal{A} = \sqrt{\mathcal{M}^2+\mathcal{N}^2}$ is the wave amplitude and $\phi_0$ an initial phase shift. Another useful equivalent form of @eq-planewave_sin is in term of complex exponential function
+$$
+    \psi(\xb,t) = \mathcal{R}e \{ A e^{i (\kb . \xb - \omega t)} \}
+$$ {#eq-planewave_exp}
+We often drop the real pat $\mathcal{R}e$ in the rest of this chapter to lighten the notation, while we still consider the real part of this function. $A$ is the complex wave amplitude (sometimes loosely referred to as just wave amplitude), which is constant for plane waves but in general can be a function of time and space. With some complex algebra we can show $|A| = \mathcal{A}$. We can infer from @eq-planewave_sin that the distance between two consecutive crests or troughs of a wave is $\lambda = 2 \pi/ |\kb|$, which is known as the wavelength. If we fix a point in space, the period $T = 2 \pi/ \omega$ is the length of time that the wave function repeat itself (for example, the period between two crest passing through a fixed point in space). 
+
+### Dispersion relation
+
+Different forms of waves are solution to different linear (partial) differential equations (there are nonlinear waves as well which are beyond the scope of this course). For example, the plane wave that we considered above (in one dimension) can be the solution to
+$$
+    \frac{\partial \psi}{\partial t} + \alpha \ \frac{\partial \psi}{\partial x} = 0
+$$ {#eq-waveq_1D}
+Upon substituting @eq-planewave_exp in this equation, we obtain $A(-i\omega + \alpha \ ik_x)=0$. This equality holds as long as 
+$$  \omega = \alpha k_x $$ {#eq-planewave_disprel}
+In other words, for any wavenumber $k$, we find a corresponding frequency in @eq-planewave_disprel that makes $A e^{i (\kb . \xb - \omega t)}$ a solution of @eq-waveq_1D. Such relation that is derived from substituting the wave ansatz in the differential equation is know as *dispersion relation*.
+
+
+::: {.callout-tip icon="false"}
+## Example
+
+For the following equation 
+$$
+    \frac{\partial}{\partial t} \nabla^2 \psi + \beta \ \frac{\partial \psi}{\partial x} = 0,
+$$ {#eq-RossbyWave_3D}
+we find the dispersion relation
+$$
+    \omega = \frac{-\beta k_x}{k_x^2+k_y^2+k_z^2}
+$$ {#eq-RossbyWave_disprel}
+:::
+
+
+For a general linear equation, the dispersion relation can have the form of
+$$
+    \omega = \Omega(\kb; \xb, k)
+$$
+
+
+### Phase speed and phase velocity
+
+![Propagation of plane wave crests.](figures/plane_wave.png){#fig-plane_wave_crest width=50%}
+
+
+Phase speed is the distant that the crests (or troughs) of a wave are travelling per unit of time. To find the value of phase speed, (at any instance in time) we align our coordinate along the $\kb$ axis as shown in @fig-plane_wave_crest. If denote the position along the $\kb$ axis in the new coordinate by $x^*$, $\kb \cdot \xb = k x^*$. We then write @eq-planewave_exp as
+$$
+    \psi = A e^{i (\kb . \xb - \omega t)} = A e^{i k (x^*- c t)} ,
+$$
+where
+$$
+    c_p = \frac{\omega}{k}
+$${#eq-phase_speed}
+is the phase speed. From this form we can see that the wave function is simply shifted along the $\kb$ direction by $c t$. Hence, if we pick a point on the wave (for example on a crest), it moves along the $\kb$ axis with the speed $c$. 
+
+
+::: {.callout-tip icon="false"}
+## Example
+
+Based on the definition of phase speed in @eq-phase_speed, we derive $c$ for the following equations 
+$$  \frac{\partial \psi}{\partial t} + \alpha \ \frac{\partial \psi}{\partial x} = 0 $$ {#eq-PlaneWave_1D}
+$$    \frac{\partial}{\partial t} \frac{\partial^2 \psi}{\partial x^2} \psi + \beta \ \frac{\partial \psi}{\partial x} = 0. $$ {#eq-RossbyWave_1D}
+We can first derive the dispersion relation for the above systems and then divide $\omega$ by $k$ to get the phase speed. We have already found the dispersion for @eq-PlaneWave_1D in @eq-planewave_disprel. Dividing this expression by $k$, we obtain $c_p = \alpha$. The system @eq-RossbyWave_1D is a one-dimensional case of @eq-RossbyWave_3D, where $k = k_x$ and $k_y = k_z =0$. Dividing @eq-RossbyWave_disprel by $k$ leads to $c_p = -\beta / k_x$.
+:::
+
+
+It is common to assign a direction to the phase speed and turn it into a velocity vector. Considering that wave crests propagate along $\kb$ we can define the phase velocity as 
+$$
+    \boldsymbol{c}_p = \frac{\omega}{k} \ \frac{\kb}{k}.
+$$
+(decide later if you want to talk about phase velocity in more detail. probably better not to bother)
+
+::: {#fig-disp_nondispWave layout-ncol=2}
+
+![](figures/nondispers2waves.png){width=50%}
+
+![](figures/dispers2waves.png){width=50%}
+
+Propagation of two superimposed waves: left) non-dispersive and right) dispersive. The solid line is the initial wave $\psi(x,t=0)$ and the dashed line after 1.5 time $\psi(x,t=1.5)$.
+:::
+
+
+Now let's consider a (one-dimensional) compound wave that consists of two wavenumbers, for example 
+$$
+    \psi = A_1 e^{i ( x - c_1 t)} + A_2 e^{i 2 ( x - c_2 t)}. 
+$$ {#eq-twowaves_1_2}
+If this wave evolves under @eq-PlaneWave_1D we find that phase velocity of both components are the same $c_1 = c_2 = \alpha$. This means that both signals (wave components) move at the same speed so the initial shape of the wave will be preserved in time and just gets shifted along the x axis. The story is very different for the system @eq-RossbyWave_1D as each component of the wave has a different velocity $c_1 = \beta$ and $c_2 = \beta / 2$. This means that the shape of the wave deforms in time as its constituents propagate at different speed. This is demonstrated in figure @fig-disp_nondispWave. The first systems @eq-PlaneWave_1D belongs to a class of waves that are called *non-dispersive*. For non-dispersive waves the phase speed does not depend on the wavenumber (left panel of @fig-disp_nondispWave). The second system @eq-RossbyWave_1D is an example of *dispersive* waves for which the phase speed is an explicit function of wavenumber (right panel of @fig-disp_nondispWave). 
+
+
+### Group velocity
+
+![The signals of first and second row plots, with slightly different frequencies are added generating the bottom plot signal.](figures/Group_Vel.png){#fig-groupvel width=65%}
+
+Energy and information do not necessarily travel at the phase speed. We do not care too much about how individual crests and troughs propagate in time. Instead, we want to know how a packet or bundle of them move together. Their collective motion shows how much energy and information is transferred by them. The quantity that characterises such a collective motion is the *group velocity*. 
+
+To understand the concept of group velocity, we consider a superposition of two waves similar to @eq-twowaves_1_2
+$$
+    \psi = A \left[ e^{i ( k_1 x - \omega_1 t)} + e^{i (k_2 x - \omega_2 t) } \right], 
+$$ {#eq-twoSimilarWaves}
+but this time we set the frequency of individual signals to $\omega_1 = \omega + \Delta \omega$ and $\omega_2 = \omega - \Delta \omega$, and their wavenumbers to $k_1 = k + \Delta k$ and $k_2 = k - \Delta k$. If $\Delta k$ and $\Delta \omega$ are small, these two components will have similar frequencies and wavenumbers. An example of two wave signals with slightly different frequencies and wavenumbers is depicted in the top rows of @fig-groupvel. The bottom row of this figure shows the superposition of these waves, which forms a wave packets (an envelope of crests and troughs) that look like a wave itself. We can see this in a mathematical expression by simplifying @eq-twoSimilarWaves
+$$
+    \psi = A e^{i ( k x - \omega t)} \left[ e^{i ( \Delta k x - \Delta \omega t)} + e^{- i ( \Delta k x - \Delta \omega t)}  \right] = A \cos (\Delta k x - \Delta \omega t) e^{i ( k x - \omega t)}   
+$$
+The amplitude of the superposition is no longer constant and instead is *modulated* by $\cos(\Delta k x - \Delta \omega t)$. Just like the original wave signals, this modulated envelope moves in time, however, with a different speed that is $\Delta \omega / \Delta k$. This quantity at the limit of $\Delta k, \Delta \omega \to 0$ is the group velocity $c_g = \partial \omega / \partial k$. Group velocity is equal to the phase speed only for non-dispersive waves, i.e. when the frequency is a linear function of wavenumber. The energy in a wave is transported by group velocity. To have a better understanding of this phenomenon, consider the nodes between the envelopes in figure @fig-groupvel. The wave function is zero at these nodes so the energy cannot be transferred across them. These nodes (as well as the envelopes between them that contains the wave energy) move with the group velocity. We can generalise this concept to three dimensions and define the group velocity as
+$$
+    \boldsymbol{c}_g = \nabla_{\kb} \omega = \ddy{\omega}{\kb} = \left(\ddy{\omega}{k_x}, \ddy{\omega}{k_y}, \ddy{\omega}{k_z} \right)
+$$ {#eq-groupVel_def}
+
+
+## Inertia-gravity waves in the Boussinesq equations
+
+Now that we are equipped with the basic concepts in wave dynamics, we can start studying an important class of waves in the atmosphere and ocean: *inertia-gravity waves*. These waves are the result of two restoring forces that we learned about in previous chapters: buoyancy and Coriolis force. There are different mechanism for the generation of these waves like atmospheric flows hitting a mountainous topography, tides in the ocean or wind flowing over the ocean surface. Despite having different generation sources, these waves propagate in the ocean or atmosphere interior following similar physical principles. Here we want to unfold their dynamics. To that end, we consider disturbances travelling in the fluid at rest. If these disturbances are small, we can neglect the nonlinear quadratic terms and focused on the linearised equation. The linear (hydrostatic) Boussinesq equations are
+$$ \frac{\partial \vb}{\partial t} + \fb \times \vb = - \frac{1}{\rho_0} \ \gradH p, $$ {#eq-lin_BousMomH} 
+$$ b = \frac{1}{\rho_0} \frac{\partial p }{\partial z} , $$ {#eq-lin_BousMomV}
+$$ \gradH \cdot \vb + \frac{\partial w}{\partial z} =0,  $$ {#eq-lin_BousMass}
+$$ \frac{\partial b}{\partial t} + N^2 w =0. $$ {#eq-lin_Bousbuoy}
+
+Using the usual wave ansatz for all variables
+\begin{gather*}
+    u = \tilde{u}\ e^{i (\kb . \xb - \omega t)}, \quad v = \tilde{v}\ e^{i (\kb . \xb - \omega t)}, \quad w = \tilde{w}\ e^{i (\kb . \xb - \omega t)}, \\
+    b = \tilde{b}\ e^{i (\kb . \xb - \omega t)}, \quad p = \tilde{p}\ e^{i (\kb . \xb - \omega t)},
+\end{gather*}
+we substitute them in the linear equations ([-@eq-lin_BousMomH]) -([-@eq-lin_Bousbuoy])  (and cancel $e^{i (\kb . \xb - \omega t)}$ from both sides)
+
+$$ -i\omega \tilde{u} -f \tilde{v} = -\frac{1}{\rho_0} \ i k_x \tilde{p},$$ {#eq-uk} 
+$$ -i\omega \tilde{v} +f \tilde{u} = -\frac{1}{\rho_0} \ i k_y \tilde{p}, $$ {#eq-vk} 
+$$ \tilde{b} = \frac{1}{\rho_0} \ i k_z \tilde{p} , $$ {#eq-hydrostatk}
+$$ i k_x \tilde{u} + i k_y \tilde{v} +  i k_z \tilde{w} =0, $$ {#eq-kMass}
+$$ -i \omega \tilde{b} + N^2 \tilde{w} =0. $$ {#eq-bk}
+
+We then replace for $\tilde{p}$ in @eq-uk and @eq-vk from @eq-hydrostatk, and for $\tilde{w}$ in @eq-bk from @eq-kMass to obtain
+$$
+    \begin{bmatrix}
+	-i \omega  	    & -f            	& k_x / k_z    \\
+	_f            	& -i \omega        	& k_y / k_z    \\
+	- N^2 k_x/k_z   & - N^2 k_y/k_z     & -i \omega
+	\end{bmatrix} 
+	\begin{bmatrix} \tilde{u} \\ \tilde{v} \\ \tilde{b} \end{bmatrix}
+        = 0
+$$
+To find the dispersion relation for this system we need to form the characteristic polynomial of the above linear matrix and solve for $\omega$
+$$  -i \omega (-\omega^2 + N^2 (k_y/k_z)^2)   + f (i \omega f + N^2 (k_x k_y / k_z^2) )
+    - k_x / k_z (f N^2 k_y / k_z - i \omega N^2 k_x/k_z) = 0 $$
+$$    \rightarrow \quad i \omega (-\omega^2 + f^2 + N^2 (k_x^2+k_y^2)/k_z^2) = 0 $$
+$$    \rightarrow \quad  \omega = 0, \quad \omega = \pm \sqrt{f^2 + N^2 \cfrac{k_h^2}{k_z^2}},$$ {#eq-IGWdispersion}
+
+
+
+![Cone of constant frequency for inertia-gravity waves with their group and phase velocity.](figures/coneTheta.png){#fig-IGWcone width=35%}
+
+where $k_h = \sqrt{k_x^2+k_y^2}$. We are interested in waves that propagate in time so we focus on non-zero frequencies. The dispersion relation @eq-IGWdispersion reveals very useful information about the nature of inertia-gravity waves. The frequency of these waves with wavenumber $\kb$ only depends on the ratio $k_h/k_z$. As the schematic @fig-IGWcone demonstrates this ratio is equal to $k_h/k_z = \tan(\theta)$, where $\theta$ is the angle of wavevector from the vertical. This means different wavevectors with fixed $\theta$ have the same frequency. Hence, constant frequency surfaces form a (double) cone in wavenumber space (see @fig-IGWcone). Remembering the definition of group velocity in @eq-groupVel_def, we know that $\boldsymbol{c}_g$ should be perpendicular to constant frequency surfaces (i.e. the cones). The phase velocity, on the other hand, is in the radial direction and lies on the cone. As a result, the phase and group velocity are perpendicular to each other. Although it is a little counter intuitive, the information and energy propagate in a direction perpendicular to the propagation of the wave crests. This can be seen by directly calculating the derive of @eq-IGWdispersion with respect to $\kb$
+$$
+    \boldsymbol{c}_g = \left( \ddy{\omega}{k_x}, \ddy{\omega}{k_y}, \ddy{\omega}{k_z} \right) = 
+    \left( \frac{N^2  k_x/ k_z^2}{\omega}, \frac{N^2 k_y/k_z^2}{\omega},  - \frac{N^2 k_h^2/k_z^3}{\omega} \right)
+$$ {#eq-hydstat_IGWdisp}
+It is easy to verify the inner product of the above expression with $\kb = (k_x, k_y, k_z)$ (direction of phase velocity) is zero.
+
+
+::: {.callout-tip icon="false"}
+## Example
+
+Near inertial waves
+:::
+
+
+We can repeat the whole process for the non-hydrostatic Boussinesq equation ?? (with a little more algebra involved) to find the dispersion relation of this system
+$$
+    \omega = \pm \sqrt{f^2 \cfrac{k_z^2}{k^2} + N^2 \cfrac{k_h^2}{k^2}} = \pm \sqrt{f^2 \cos^2(\theta) + N^2 \sin^2(\theta)}
+$$ {#eq-nonhydstat_IGWdisp}
+
+The dispersion relations of waves in the hydrostatic and non-hydrostatic Boussinesq systems share a characteristic; they are both only functions of $\theta$ (the angle from the vertical). As a result they have the same constant frequency surfaces (cones) and $\boldsymbol{c}_p$ and $\boldsymbol{c}_g$ are perpendicular to each other. However, the non-hydrostatic version has an addition feature; the frequency of inertia-gravity waves for this system is bounded between $N$ and $f$. This is indeed consistent with observations in the ocean and atmosphere. 
+
+## Rossby waves
+
+![The effect of Rossby waves when they interact with jet stream. This figure is taken from an animation from NASA's Goddard Space Flight Center.](figures/RossbyWave.jpeg){#fig-RossbyWaveSim width=65%}
+
+
+Rossby waves are another group of important waves in the ocean and atmosphere. They have relatively large scales -- almost the scale of the planet and for this reasons are called *planetary waves* as well. @fig-RossbyWaveSim gives you a better idea about the scale of these waves. These waves play a significant role in shaping weather as they move a substantial amount of water or air with them and form cyclones and anticyclones. The restoring force that creates these waves is the variation of Coriolis parameter with latitude, i.e. the $\beta$-effect that you learned about in @sec-tang_plane_approx. We follow our typical practice to study these waves: we start with a set of (linear) equations and find the dispersion relation of waves. For Rossby waves we start with the quasi-geostrophic equations (the equations @eq-QGdim or @eq-SWQG)
+$$
+     \frac{D q}{D t}  = 0
+$$ {#eq-QGrepeat}
+where $q$ is the PV. Note that we did not start with the Boussinesq equation as we consider the QG equation to be a good approximation at large scales. As discussion in sections @sec-QGBouss and @sec-QGSW, the conservation of PV holds both for the shallow water and Boussinesq systems. However, the PV expressions are different for each system. Starting from @eq-QGrepeat we can derive Rossby waves for both systems. In this course, however, we limit our attention to Rossby waves for shallow waters for simplicity. That being said, the Rossby waves for both systems share a lot of characteristics. Recall that the shallow water is (see @eq-SWQG)
+$$
+    q = \gradH^2 \psi + f_0 + \beta y -\frac{1}{\mathcal{L}_d^2} \psi,
+$$ {#eq-PVSWrepeat}
+where $\mathcal{L}_d = \sqrt{g H}/f_0$ is the deformation radius of the shallow water system. We linearise @eq-QGrepeat around a time-independent basic state. This is different than the case of inertia-gravity waves where we assumed the basic state to be at rest. We also assume this basic state to be in east-west direction and constant. This assumption is relevant to the strong east/west-propagating waves that are prevalent in large-scale atmospheric and oceanic flows and are known as *zonal jets* or zonal flows. We can then write the total flow as the sum of this zonal basic state (denoted by bar) and a wavy perturbation (denoted by prime)
+$$  \psi = \overline{\psi}(y) + \psi'(x,y,t) = - \overline{u} y + \psi'(x,y,t), $$
+$$    u = \overline{u} - \frac{\partial \psi'}{\partial y}, \quad v = \frac{\partial \psi'}{\partial x}, $$ {#eq-velRoWave}
+where $\overline{u}$ is the constant zonal velocity and we further used the fact that $\overline{v} = 0$. The PV @eq-PVSWrepeat for this flow becomes
+$$
+    q = \gradH^2 \psi' + f_0 + \beta y + \frac{\overline{u} y}{\mathcal{L}_d^2} -\frac{\psi'}{\mathcal{L}_d^2}.
+$$ {#eq-qRoWave}
+We then can substitute @eq-velRoWave and @eq-qRoWave in @eq-QGrepeat and simplify the equation to arrive at
+$$
+    \ddy{}{t}\left( \gradH^2 \psi' -\frac{\psi'}{\mathcal{L}_d^2} \right) 
+    + \left( \overline{u} - \frac{\partial \psi'}{\partial y} \right) \ddy{}{x} \left( \gradH^2 \psi' -\frac{\psi'}{\mathcal{L}_d^2} \right) +
+    \frac{\partial \psi'}{\partial x} \ddy{}{y} \left( \gradH^2 \psi' + \beta y + \frac{\overline{u} y}{\mathcal{L}_d^2} -\frac{\psi'}{\mathcal{L}_d^2} \right) = 0
+$$
+Following our usual practice in linearisation, we neglect the products of perturbation terms to obtain
+$$
+   \left(\ddy{}{t} + \overline{u} \ddy{}{x}\right) \left( \gradH^2 \psi' -\frac{\psi'}{\mathcal{L}_d^2} \right) + \frac{\partial \psi'}{\partial x} \left( \beta + \frac{\overline{u}}{\mathcal{L}_d^2} \right) = 0
+$$
+Substituting the wave ansatz  $\psi' = \tilde{\psi} e^{i ( k_x x + k_y y - \omega t)}$ in the above equation, we derive the dispersion relation
+$$
+    \omega = \frac{k_x \left(\overline{u}(k_x^2+k_y^2 -\beta) \right)}{k_x^2+k_y^2+1/\mathcal{L}_d^2} = \overline{u} k_x - k_x \frac{\beta + \overline{u}/\mathcal{L}_d^2}{k_x^2+k_y^2+1/\mathcal{L}_d^2}.
+$$
+It is insightful to consider the special case of very large deformation radius $\mathcal{L}_d \to \infty$. This is a good approximation when the scale of motion is much smaller than the deformation radius. The dispersion relation in this case reduces to 
+$$
+    \omega = \overline{u} k_x - \frac{k_x \beta }{k_x^2+k_y^2}.
+$$
+The phase velocity associated with this dispersion relation is
+$$
+    \boldsymbol{c}_p = \left(\frac{\omega}{k_x} ,\frac{\omega}{k_y} \right) =  \left(\overline{u} - \frac{\beta}{k_x^2+k_y^2} , \overline{u}\frac{k_x}{k_y} - \frac{\beta k_x}{k_y (k_x^2+k_y^2)} \right)
+$$ {#eq-cp_RossWav_Inf}
+
+::: {.callout-note appearance="simple"}
+In the absence of a mean flow ($\overline{u} = 0$), the phase speed in the x-direction is negative definite for this system, meaning the wave travels westward. If we have an eastward flow with $\overline{u} = \beta / (k_x^2+k_y^2)$, then the Rossby wave will become stationary, meaning their shape does not change in time.
+:::
+
+
+The group velocity of Rossby waves with $\mathcal{L}_d \to \infty$ is 
+$$
+    \boldsymbol{c}_g = \left(\ddy{\omega}{k_x} ,\ddy{\omega}{k_y} \right) = \left( \overline{u} + \frac{\beta(k_x^2-k_y^2)}{(k_x^2+k_y^2)^2}, \frac{2 k_x k_y \beta}{(k_x^2+k_y^2)^2}\right)
+$$ {#eq-cg_RossWav_Inf}
+Unlike inertia-gravity waves, the phase and group velocity of Rossby waves are not perpendicular to each other. In fact, $\boldsymbol{c}_g$ and $\boldsymbol{c}_p$ may have arbitrary angles depending on the wavenumber and flow velocity. 
+
+By comparing @eq-cp_RossWav_Inf and @eq-cg_RossWav_Inf, we find that the $x$-component of group velocity can be written as a sum of the $x$-component phase velocity plus a positive quantity
+$$
+    \boldsymbol{c}_g \cdot \eb_x = \boldsymbol{c}_p \cdot \eb_x + \frac{2 k_x^2 \beta}{(k_x^2+k_y^2)^2}.
+$$
+This is an interesting observation meaning that the group velocity of the Rossby wave moves eastward relative to its phase velocity. For instance, if we consider the station Rossby wave (with the infinite deformation radius), although the shape of the wave is frozen in space, the Rossby wave packets transport energy eastward. 
+
+![The mechanism of Rossby wave with infinite radius of deformation. An initial disturbance moves a material line at constant $y$ latitude (the black straight line) to the solid line $\eta(t=0)$. Conservation of PV ($\zeta + f_0 + \beta y$) leads to the production of $\zeta$, as shown for two particles with black filled circles that are moved northward and southward. The associated velocity field (arrows on the circles) then advects the fluid parcels, and the material line evolves into the dashed line $\eta(t>0)$ with the phase propagating westward.](figures/RossbyWaveSchem.jpg){#fig-Mechanism_RossbyWave width=65%}
+
+We can gain more physical intuition for Rossby waves (with large deformation radius) with a relatively heuristic argument. Imagine a line of particles at a fixed $y$ as shown by black straight line in @fig-Mechanism_RossbyWave. We disturb this material line to take the form of $\eta(t=0)$ marked by blue solid curve. The absolute vorticity $\gradH^2 \psi + f_0 + \beta y = \zeta + f_0 + \beta y$ of the particle on this line is conserved according to @eq-QGrepeat. Hence, for a particle that is moved northward (increasing $y$), a negative voriticy ($\zeta<0$) should be created to keep its PV unchanged. Likewise, a particle moved southward gains a positive voritciy. As illustrated in @fig-Mechanism_RossbyWave, these values of voriticy push the adjacent particles toward west (the dashed line $\eta(t>0)$). This is consistent with the sign of the $x$-component of phase velocity in @eq-cp_RossWav_Inf in the case of $\overline{u}=0$.
+
+

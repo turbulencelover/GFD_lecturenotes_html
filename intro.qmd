@@ -1,0 +1,151 @@
+# Introduction
+
+## Overview
+
+Geophysical fluids, namely air in the atmosphere and water in the ocean, strongly influence life as we know it on planet Earth. Their dynamics shape the weather and the ocean circulations that affect our lives on a daily basis. For example, the daily weather forecasts that we check regularly are basically numerical solutions of dynamical equations for geophysical fluids. Furthermore, climate change is another important aspect relevant to geophysical fluid dynamics. The goal of this course is to study geophysical fluids and their motion from a mathematical point of view.  
+
+From Fluid Mechanics III, you will be familiar with the Navier-Stokes equations. Atmospheric and oceanic flows are described by similar equations, but there are two distinguishing features of these flows that are not covered in details in generic fluids courses. The first feature is the variation of density in different layers of the atmosphere and ocean, known as *stratification*. We cover this phenomenon and some of its implications in @sec-chap:strat. The other feature is the effect of the Earth's *rotation*. We are observing the atmospheric and oceanic flows from a rotating frame of reference, which has important implications on their dynamics. In fact, the Earth's rotation is one of the main drivers behind the weather systems and ocean circulation. We introduce rotating fluids and some of their features in  @sec-chap:rotation.
+
+Geophysical flows are also an amazing platform for the application of mathematics. Due to their complexity, we use a variety of mathematical tools to systematically simplify their governing equations. These simplifications are performed for specific scales or regimes of these fluids. In other words, the simplification and the type of mathematical tools that we employ are problem-dependent. In Chapters [-@sec-chap:SW], [-@sec-Geostrophic], and [-@chap-waves], we will use different mathematical tools such as non-dimensionalisation and scaling analysis, perturbation techniques, linearisation and stability analysis in order to study problems of geophysical interest. Hopefully this will equip you with a set of applied maths skills that you can use in other contexts and problems. In the rest of this chapter, we review some generic aspects of fluid dynamics that you should be familiar with from Fluid Mechanics III.
+
+
+## Review of governing equations
+
+Recall from Fluid Mechanics III, the governing equations for a viscous and compressible fluid are the Navier-Stokes equations:
+$$
+\frac{\partial\rho}{\partial t} + \nabla\cdot(\rho\ub) = \frac{D\rho}{Dt} + \rho\nabla\cdot\ub =0, 
+$$ {#eq-NSmass}
+$$
+\frac{\partial\ub}{\partial t} + (\ub\cdot\nabla)\ub = \fb_b -\frac{1}{\rho}\nabla p+\frac{\nu}{3}\nabla(\nabla\cdot\ub) + \nu\Delta\ub,$$ {#eq-NSmom}
+$$+ \quad \text{equation of state}$$ {#eq-NSeos}
+
+where $\rho$ is the fluid density, $\ub=(u,v,w)$ is the velocity, $p$ the pressure, $\nu$ the kinematic viscosity and $\fb_{b}$ represents body forces acting on the fluid (e.g., gravity). The operator 
+$$
+    \frac{D}{Dt} = \frac{\partial }{\partial t} +\ub \cdot \nabla
+$$
+is the material derivative. @eq-NSmass is a result of mass conservation and @eq-NSmom follows from momentum conservation. These four equations (remember $\ub$ has three components) provide dynamic relations between $\rho$, $\ub$ and $p$ (5 unknowns). Hence, an equation of state is required to close the system.
+
+
+
+### Equation of state
+The equation of state provides a relationship between the pressure and density that is valid even when the fluid is at rest. This relation will often also depend on the temperature, $T$, i.e., $p=p(\rho,T)$. In this case, $T$ must be prescribed otherwise we would require a further governing equation for $T$ (which is usually provided by conservation of energy but the details are beyond the scope of this course).
+
+A commonly used equation of state is the ideal gas law $p=\rho \mathcal{R}T$ where $\mathcal{R}$ is a gas constant (which takes a different value for different gases).
+
+::: {.callout-tip icon="false"}
+## Example
+
+Air is considered to satisfy the ideal gas law with $\mathcal{R}=287\mathrm{Jkg^{-1}K^{-1}}$ (for dry air).
+:::
+
+
+
+
+### Incompressible fluids
+
+For the incompressible flow we assume that the density of fluid parcels remains constant in time, i.e.,
+$$ \frac{D\rho}{Dt}  = \frac{\partial \rho}{\partial t} + (\ub\cdot\nabla)\rho= 0. $$ {#eq-incompdensity}
+In other words, the rate of change of $\rho$ when following a fluid element is zero but $\rho$ is not necessarily constant. In this case, @eq-NSmass reduces to $\nabla\cdot\ub = 0$ and the governing equations for incompressible flow are
+$$      \frac{\partial \rho}{\partial t} + (\ub\cdot\nabla)\rho = 0 $$ {#eq-NavStoIncompress}
+$$ \nabla\cdot\ub = 0, $$ {#eq-divu0}
+$$ \frac{\partial\ub}{\partial t} + (\ub\cdot\nabla)\ub = \fb_b -\frac{1}{\rho}\nabla p + \nu\Delta\ub. $$ {#eq-incompmom}
+Note, we have discarded the equation of state as it is redundant for incompressible flow.
+
+
+::: {.callout-note appearance="simple"}
+In this course we will be largely concerned with stably stratified fluids where density is not constant and instead it changes with height/depth. However, we can remove a base profile of density and pressure and after a systematic simplification we find $\nabla\cdot\ub = 0$ for this system. This simplification is known as *Boussinesq approximation*, which we will study in @sec-chap:strat. 
+:::
+
+
+### Inviscid fluids
+
+In reality, both air and water are viscous (water is more viscous than air). However, viscosity acts at very small scales. For example, for atmospheric motion, the scale at which viscosity becomes very important (known as the Kolmogorov microscale) ranges from 0.1 to 10$\mathrm{mm}$. One may argue that at scales slightly above 10$\mathrm{mm}$ the effect of viscosity might still be felt. However, it is very reasonable to say that for the scales larger than kilometers the effect of viscosity on the dynamics is negligible. For the most parts of this course, we consider the large-scale motion in the atmosphere and ocean -- scales of tens of thousand to hundred kilometers. Hence, we safely assume the flow to be inviscid, meaning we set $\nu\Delta\ub \approx 0$ in equations ([-@eq-NSmom]) and ([-@eq-incompmom]).
+
+That being said, viscosity is still an important part of geophysical fluids. Its effect is felt close to the boundaries (near the shores, the bottom of the ocean, or at the ocean surface). Microphysics is another area of geophysical fluids that is highly affected by viscosity (for example in the formation of clouds or disintegration of pollutants) but these are beyond the scope of this course. 
+
+### Initial and boundary conditions
+
+From the point of view of PDE analysis, the set of Navier Stokes equations (compressible or incompressible) need a set of initial conditions and boundary conditions to have a (unique) solution. 
+
+
+::: {.callout-note appearance="simple"}
+Even with provided boundary and initial conditions (in the most general case), we are not sure if the Navier-Stokes equations have a unique solution. This problem (the regularity of Navier-Stokes equations) is one of the unsolved millennium maths problems with the prize of one million dollars. There are only seven millennium problems and one of them so far has been solved.
+:::
+
+
+Common boundary conditions which may be used are: 1) *no-slip* condition for viscous fluids in which the velocity is zero or a given value at boundary, and 2) *free-slip* for inviscid flow in which the velocity normal to the boundary is zero. There are other types of boundary conditions such as fixed values of velocity at the flow inlet or zero-shear at free surfaces.
+
+::: {.callout-note appearance="simple"}
+The governing equations are hard to solve, even numerically! Our approach is to make simplifications. You see different ways of simplifying these equations in different parts of the course. These simplifications in geophysical fluid dynamics are referred to as *reduced models* as they reduce the complexity of original systems.
+:::
+
+## Hydrostatic balance {#sec-hydrostat}
+
+Assume that gravity acts on the fluid so that $\fb_b=-g\eb_z$ (gravity is acting downwards and $z$ points upwards). For this body force, the vertical momentum equation, which is embedded in @eq-incompmom, becomes  
+$$
+ \frac{\partial w}{\partial t} + (\ub\cdot\nabla)w = - \frac{\partial p}{\partial z} -\rho g.
+$$ {#eq-vertMom}
+Note that we also neglected the viscosity effects. In many fluid applications, the vertical velocity is relatively small, motivating the reduction of @eq-vertMom to 
+$$ \frac{\partial p}{\partial z} = -\rho g. $$ {#eq-hydrobal}
+This equation is called *hydrostatic balance* and is an important concept that will be used throughout this course. From this equation, we see that pressure decreases with height. Specifically, if we fix the horizontal coordinate $(x_0,y_0)$ and integrate from an arbitrary height/depth $z$ upwards/downward to a reference level $z=z_0$ (e.g., ocean surface or ground) then we find
+$$
+    p(x_0,y_0,z_0)-p(x_0,y_0,z) = -\int_z^{z_0} \rho(x_0,y_0,s) g \,ds 
+$$
+$$
+ \Rightarrow\quad p(x_0,y_0,z) = p(x_0,y_0,z_0) + \int_z^{z_0} \rho(x_0,y_0,s) g \,ds.
+$$
+This says that the pressure at any level is equal to the pressure at the reference level $p_0 = p(x_0,y_0,z_0)$ plus the total weight (per unit area) of the fluid column above that level.
+
+A special case where hydrostatic balance holds perfectly is the fluid at rest ($\ub = 0$). In this particular case, @eq-divu0 is trivially satisfied and the horizontal components of @eq-incompmom reduces to
+$$
+ 0 = -\frac{1}{\rho}\frac{\partial p}{\partial x}, \quad 0 = -\frac{1}{\rho}\frac{\partial p}{\partial y}.
+$$
+Therefore, $p$ is a function of $z$ only. Since the left-hand-side of @eq-hydrobal is just a function of $z$, so must the right-hand-side be, and hence $\rho$ also only depends on $z$. 
+
+Note the equation of state $p=p(\rho,T)$ implies that if $p$ and $\rho$ are only functions of $z$ then so is the temperature $T$. In cases where $T$ is prescribed, the equation of state can in theory be combined with equation @eq-hydrobal to obtain $\rho$ and $p$ as functions of $z$.
+
+
+
+::: {.callout-tip icon="false"}
+## Example
+
+Consider an ideal gas atmosphere with a constant temperature $T$ occupying $z>0$. By combining the ideal gas law, $\rho=\rho\mathcal{R}T$ with the equation for hydrostatic balance (@eq-hydrobal), we can determine $\rho$ and $p$ (given that $T$ is constant). 
+
+From the ideal gas law we have that $\rho=\frac{p}{\mathcal{R} T}$ and therefore, from @eq-hydrobal, we have
+$$
+\frac{dp}{dz} = -\frac{gp}{\mathcal{R} T}=-\frac{p}{H}, 
+$$ {#eq-exidealatmos}
+where $H=\frac{\mathcal{R}T}{g}$ is a scale height. Solving @eq-exidealatmos for $p$ gives $p=p_0e^{-\frac{z}{H}}$ where $p_0=p(z=0)$ is the pressure at the bottom of the atmosphere. It follows that $\rho=\frac{\rho_0}{\mathcal{R} T}e^{-\frac{z}{H}}$.
+
+Therefore, we see that both $\rho$ and $p$ decrease upwards with a scale height of $H$. A scale height is typically defined as a distance over which a quantity changes by a factor of $e$.
+
+For the Earth's atmosphere, taking $T=270\mathrm{K}$ and $\mathcal{R}=287\mathrm{Jkg^{-1}K^{-1}}$ gives $H\approx 8\mathrm{km}$.
+
+:::
+
+
+
+
+
+::: {.callout-tip icon="false"}
+## Example
+
+Consider an ocean of constant temperature $T$ and depth $D$ occupying $-D<z<0$. In this case, we use an equation of state more appropriate for water:
+\begin{equation}
+\rho=\bar\rho(1-\alpha_T(T-273) + \alpha_p p)
+\end{equation}
+where $\alpha_T>0$ is the coefficient of thermal expansion and $\alpha_p>0$ is the coefficient of compression. Estimates for sea-water give $\bar\rho=1028\mathrm{kgm^{-3}}$, $\alpha_T=1.7\times10^{-4}\mathrm{K^{-1}}$ and $\alpha_p=4.4\times10^{-10}\mathrm{Pa^{-1}}$.
+
+Combining this equation of state with the equation for hydrostatic balance (@eq-hydrobal) gives
+\begin{align}
+\frac{1}{\alpha_p\bar\rho}\frac{d\rho}{dz}&=-\rho g\\
+\Rightarrow \frac{d\rho}{dz} &= -\alpha_p\bar\rho\rho g = -\frac{\rho}{H},
+\end{align}
+where $H=\frac{1}{g\alpha_p\bar\rho}$ is a scale depth. Hence, $\rho=\rho_0e^{-\frac{z}{H}}$ where $\rho_0=\rho(z=0)$ is the density at the top of the ocean. So the density increases downwards with a scale depth of $H$.
+
+For the Earth's ocean, using the values above for $\alpha_p$ and $\bar\rho$, we find $H\approx 220\mathrm{km}$. Therefore, over an ocean depth of $5\mathrm{km}$, the density increases by a factor of $e^{\frac{D}{H}}=e^{\frac{5}{220}}\approx 1.023$, i.e., an increase over only a few percent.
+
+:::
+
+
+
