@@ -243,7 +243,7 @@ $$
    \frac{\partial \vb}{\partial t} + (\ub\cdot\nabla)\vb  + \fb\times\vb = -\frac{1}{\bar\rho}\gradH p,
 $$ {#eq-rtBoussinesqHydrostat1}
 $$
-   \frac{\partial p}{\partial z}  = \bar\rho b = -\rho g,
+   \frac{\partial p}{\partial z}  = \bar\rho b,
 $$ {#eq-rthydroapprox_hydrobal}
 $$
    \nabla\cdot \ub =0,

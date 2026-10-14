@@ -35,14 +35,15 @@ $$
 $$
 whereas its weight per unit volume is $g\rho_p(Z)$. Hence, the net vertical force per unit volume is
 $$
-F_{\mathrm{net}}
+F_{\mathrm{b}}
 =-\frac{d\tilde p}{dz}\bigg|_{z=Z}-g\rho_p(Z)
 =g\left[\tilde\rho(Z)-\rho_p(Z)\right].
 $$ {#eq-BuoForce}
+We can view $F_{\mathrm{b}}$ as the net buoyancy force arising from the density difference between the parcel and its environment.
 
 We can then apply Newton's second law to the parcel:
 $$
-\rho_p(Z)\frac{d^2 Z}{dt^2}=F_{\mathrm{net}},
+\rho_p(Z)\frac{d^2 Z}{dt^2}=F_{\mathrm{b}},
 $$
 and hence
 $$
@@ -144,14 +145,31 @@ where $\rho_0$ is the average density (a constant) and $\delta\rho$ are (small) 
 Substituting this into the inviscid, incompressible momentum equation (i.e., @eq-incompmom with $\nu=0$) and again assuming gravity is the only body force acting so that $\fb_b=-g\eb_z$, we find
 $$
 (\rho_0 + \delta\rho(\xb,t)) \frac{D\ub}{Dt} = -\nabla p - (\rho_0 + \delta\rho(\xb,t))g\eb_z.
+$$ {#eq-drho_mom}
+Separating the horizontal and vertical momentum equations in @eq-drho_mom and dividing them by $\rho_0$ yields
 $$
-Since $|\delta\rho|\ll\rho_0$ we may be tempted to ignore all the terms involving $\delta\rho$. Instead, we neglect all the terms involving $\delta\rho$ *except* in the term involving gravity (here there is only one but in more complex cases there may be others). This is because while $|\delta\rho|\ll\rho_0$, gravity is strong and so the buoyancy term (the one involving gravity) is retained. Making this approximation, known as the **Boussinesq approximation**, leads to 
+\Big(1 + \underbrace{\frac{\delta\rho}{\rho_0}}_{\mathcal{O}(\epsilon)}\Big) \frac{D\vb}{Dt} = - \frac{1}{\rho_0} \gradH p,
+$$ {#eq-drho_hormom}
 $$
-\rho_0 \frac{D\ub}{Dt} = -\nabla p - (\rho_0 + \delta\rho(\xb,t))g\eb_z.
+\Big(1 + \underbrace{\frac{\delta\rho}{\rho_0}}_{\mathcal{O}(\epsilon)}\Big) \underbrace{\frac{D w}{Dt}}_{\mathcal{O}(\epsilon)} = - \frac{1}{\rho_0} \frac{\partial p}{\partial z} - \Big(1 + \underbrace{\frac{\delta\rho}{\rho_0}}_{\mathcal{O}(\epsilon)}\Big) g,
+$$ {#eq-drho_vermom}
+where $\vb = (u,v)$ and $\gradH = (\partial/\partial x,\partial/\partial y)$ are the horizontal velocity and gradient, respectively.
+
+In most geophysical flows, both $\delta\rho/\rho_0$ and the vertical acceleration $Dw/Dt$ are relatively small terms and we denote them by $\mathcal{O}(\epsilon)$ for $0<\epsilon \ll 1$, while we assume all other terms to be $\mathcal{O}(1)$. We can ignore the $\mathcal{O}(\epsilon)$ terms in @eq-drho_hormom to obtain
 $$
-Then, dividing by $\rho_0$ and combining with equation ([-@eq-incompdensity]) and ([-@eq-divu0]), we obtain the so called **Boussinesq equations**:
+\frac{D\vb}{Dt} = - \frac{1}{\rho_0} \gradH p.
+$$ {#eq-BoussRho_hmom}
+Following a similar approach for @eq-drho_vermom and keeping only the $\mathcal{O}(1)$ terms (i.e. ignoring the $\mathcal{O}(\epsilon)$ and $\mathcal{O}(\epsilon^2)$ terms) leads to
 $$
-\frac{\partial\ub}{\partial t} + (\ub\cdot\nabla)\ub = -\frac{1}{\rho_0}\nabla p -\frac{\rho}{\rho_0}g\eb_z. 
+\frac{1}{\rho_0} \frac{\partial p}{\partial z} = - g.
+$$
+This is simply the leading-order hydrostatic balance, which is too simplistic for the applications we are considering. To retain the vertical dynamics and the effects of density perturbations, we must keep the $\mathcal{O}(\epsilon)$ terms, while ignoring the $\mathcal{O}(\epsilon^2)$ terms:
+$$
+\frac{D w}{Dt} = - \frac{1}{\rho_0} \frac{\partial p}{\partial z} - \Big(1 + \frac{\delta\rho}{\rho_0}\Big) g = - \frac{1}{\rho_0} \frac{\partial p}{\partial z} - \frac{\rho}{\rho_0} g.
+$$ {#eq-BoussRho_vmom}
+The approximation that leads to @eq-BoussRho_hmom and @eq-BoussRho_vmom is known as the **Boussinesq approximation**. Combining these momentum equations with ([-@eq-incompdensity]) and ([-@eq-divu0]), we can write
+$$
+\frac{D\ub}{Dt} = -\frac{1}{\rho_0}\nabla p -\frac{\rho}{\rho_0}g\eb_z. 
 $$ {#eq-Bousmom}
 $$
  \nabla\cdot\ub = 0, 
@@ -159,6 +177,7 @@ $$ {#eq-Bousdivu0}
 $$
 \frac{D\rho}{Dt}  = \frac{\partial \rho}{\partial t} + (\ub\cdot\nabla)\rho= 0, 
 $$ {#eq-Bousdensity}
+which are known as the **Boussinesq equations** written in terms of the density variable.
 
 ::: {.callout-note appearance="simple"}
 Although we have derived this set of Boussinesq equations starting from the assumption of an incompressible fluid, it is possible to show that the Boussinesq approximation applies to a more general compressible fluid.
@@ -234,9 +253,9 @@ Note here that $p$ is a perturbation to the background pressure state. In genera
 ::: {.callout-tip icon="false"}
 ## Example
 
-The buoyancy (Brunt--Väisälä) frequency that appears in @{eq-Bousdenistybuoy} is an important quantity in different regimes of geophysical flows. @fig-Nprofile shows the values of $N^2$ for a region in the atmosphere/ocean as functions of altitude/depth. In the left plot, $N^2$ over the region of Gadanki in India is shown. There is a noticeable jump at around 18km altitude (similar to what we observed in figure @fig-atmos_Tprofile, marking the "tropopause", which is the border between two layers of atmosphere (troposphere and stratosphere). Note that the height of tropopause varies to some degrees in different locations (that is why the jump in @fig-atmos_Tprofile and @fig-Nprofile appears at slightly different altitudes). Around the tropopause, constant $N$ or even the Boussinesq approximation are not valid, but in the lower atmosphere (below the tropopause) $N$ can be assumed constant. Horizontal bars show standard deviations obtained while considering 43 different measurements during April 2006 to March 2007. The low variability in the lower atmosphere (relatively small bars) justifies the Boussinesq approximation, whereas the high variability near tropopause shows this approximation is no longer valid around this altitude. 
+The buoyancy (Brunt--Väisälä) frequency that appears in @{eq-Bousdenistybuoy} is an important quantity in different regimes of geophysical flows. @fig-Nprofile shows the values of $N^2$ for a region in the atmosphere/ocean as functions of altitude/depth. In the left plot, $N^2$ over the region of Gadanki in India is shown. There is a noticeable jump at around 18km altitude (similar to what we observed in figure @fig-atmos_Tprofile, marking the "tropopause", which is the border between two layers of atmosphere (troposphere and stratosphere). Note that the height of tropopause varies to some degrees in different locations (that is why the jump in @fig-atmos_Tprofile and @fig-Nprofile appears at slightly different altitudes). Around the tropopause, constant $N$ or even the Boussinesq approximation are not valid, but in the lower atmosphere (below the tropopause) $N$ can be assumed constant. Horizontal bars show standard deviations obtained while considering 43 different measurements during April 2006 to March 2007. The relatively small variability in the lower atmosphere supports representing the stratification by a slowly varying background profile. Near the tropopause, however, $N$ varies rapidly with height and a constant-$N$ approximation is no longer appropriate. 
 
-The right plot is obtained from a mooring observation ("NISKINe" campaign). For the deep ocean (lower than 800 meters), it is safe to use constant $N$. However, in the upper ocean the variation of $N$ with depth cannot be neglected. A comparison between the two figures shows that $N$ is an order of magnitude smaller in the ocean.
+The right plot is obtained from a mooring observation ("NISKINe" campaign). For the deep ocean (lower than 800 meters), a constant-$N$ approximation appears reasonable. However, in the upper ocean the variation of $N$ with depth cannot be neglected. A comparison between the two figures shows that $N$ is an order of magnitude smaller in the ocean.
 
 ::: {#fig-Nprofile layout-ncol=2}
 
@@ -261,7 +280,7 @@ One of the interesting phenomena that arises as a result of stratification is th
 $$
 h = h_0 \sin(kx),
 $$ {#eq-mountain_shape}
-where $h_0$ is the height of the mountain. A wind of speed $U$, which we assume to be constant, blows over the mountain and displaces air parcels vertically. We therefore expect buoyancy to act as a restoring force on these displaced parcels.
+where $h_0$ is the height of the mountain. A wind of speed $U$, which we assume to be constant, blows over the mountain and displaces air parcels vertically. We therefore expect buoyancy to act as a restoring force on these displaced parcels. We also assume that the buoyancy frequency $N$ is constant.
 
 Let us consider a steady, two-dimensional version of this problem, assuming that variations in the $y$ direction are negligible. We write the flow variables as the sum of a background wind and disturbances caused by the mountain (denoted by primes):
 $$
@@ -271,8 +290,8 @@ $$
 Substituting these expressions into ([-@eq-Bousmombuoy])-([-@eq-Bousdenistybuoy]), and neglecting $\partial/\partial y$ and $\partial/\partial t$, gives
 $$
 \begin{aligned}
-    U \frac{\partial u'}{\partial x} + u' \frac{\partial u'}{\partial x} + w' \frac{\partial u'}{\partial z} &= -\frac{\partial p'}{\partial x}, \\
-    U \frac{\partial w'}{\partial x} + u' \frac{\partial w'}{\partial x} + w' \frac{\partial w'}{\partial z} &= -\frac{\partial p'}{\partial z} + b',\\
+    U \frac{\partial u'}{\partial x} + u' \frac{\partial u'}{\partial x} + w' \frac{\partial u'}{\partial z} &= -\frac{1}{\rho_0}\frac{\partial p'}{\partial x}, \\
+    U \frac{\partial w'}{\partial x} + u' \frac{\partial w'}{\partial x} + w' \frac{\partial w'}{\partial z} &= -\frac{1}{\rho_0}\frac{\partial p'}{\partial z} + b',\\
     \frac{\partial u'}{\partial x} + \frac{\partial w'}{\partial z} &= 0, \\
     U \frac{\partial b'}{\partial x} + N^2 w' &= 0.
 \end{aligned}
@@ -281,8 +300,8 @@ $$
 If the mountain is small, it generates small disturbances. We can therefore neglect products of disturbance quantities, leading to the linearised equations. Dropping the primes for convenience, we obtain
 $$
 \begin{aligned}
-    U \frac{\partial u}{\partial x} &= -\frac{\partial p}{\partial x}, \\
-    U \frac{\partial w}{\partial x} &= -\frac{\partial p}{\partial z} + b, \\
+    U \frac{\partial u}{\partial x} &= -\frac{1}{\rho_0}\frac{\partial p}{\partial x}, \\
+    U \frac{\partial w}{\partial x} &= -\frac{1}{\rho_0}\frac{\partial p}{\partial z} + b, \\
     \frac{\partial u}{\partial x} + \frac{\partial w}{\partial z} &= 0, \\
     U \frac{\partial b}{\partial x} + N^2 w &= 0.
 \end{aligned}
@@ -335,17 +354,21 @@ We now need to determine which sign of $m$ corresponds to the physical solution.
 
 For our solution $w=h_0Uk\cos(kx+mz)$, the continuity equation gives
 $$
-u=-h_0Um\cos(kx+mz),
+u=-h_0Um\cos(kx+mz)+C(z),
 $$
-and the $x$-momentum equation then gives
+where $C(z)$ is independent of $x$. The term $C(z)$ represents a horizontally uniform ($k=0$) component of the flow. Since the mountain forcing contains only the wavenumber $k$, and the linearised equations do not couple different horizontal wavenumbers, this component is not generated by the mountain. Moreover, the horizontally uniform flow is already included in our prescribed background wind. We therefore set $C(z)=0$, giving
 $$
-p=-Uu = h_0U^2m\cos(kx+mz).
+u=-h_0Um\cos(kx+mz).
+$$
+The $x$-momentum equation then gives
+$$
+p=-\rho_0 Uu = \rho_0h_0U^2m\cos(kx+mz).
 $$
 Hence, the vertical energy flux is
 $$
-pw = h_0^2U^3km\cos^2(kx+mz).
+pw = \rho_0h_0^2U^3km\cos^2(kx+mz).
 $$
-We take the $x$ direction to be the direction of the background wind, so that $U>0$, and take $k>0$. Since $\cos^2(kx+mz)\geq 0$, the sign of the vertical energy flux is determined by the sign of $m$. The waves are generated by the mountain, so their energy must propagate upwards, away from the ground. Therefore, requiring the vertical energy flux to be upwards selects
+We take the $x$ direction to be the direction of the background wind, so that $U>0$, and take $k>0$. Since $\cos^2(kx+mz)\geq 0$, the sign of the vertical energy flux is therefore determined by the sign of $m$. The waves are generated by the mountain, so their energy must propagate upwards, away from the ground. Therefore, requiring the vertical energy flux to be upwards selects
 $$
 m=+\sqrt{\frac{N^2}{U^2}-k^2}.
 $$ {#eq-meq_signed}
@@ -357,7 +380,7 @@ $$
 \begin{aligned}
     w &= h_0Uk \cos\!\left(kx+\sqrt{\frac{N^2}{U^2}-k^2}\,z\right),\\
     u &= -h_0U\sqrt{\frac{N^2}{U^2}-k^2} \cos\!\left(kx+\sqrt{\frac{N^2}{U^2}-k^2}\,z\right),\\
-    p &= h_0U^2\sqrt{\frac{N^2}{U^2}-k^2} \cos\!\left(kx+\sqrt{\frac{N^2}{U^2}-k^2}\,z\right).
+    p &= \rho_0h_0U^2\sqrt{\frac{N^2}{U^2}-k^2} \cos\!\left(kx+\sqrt{\frac{N^2}{U^2}-k^2}\,z\right).
 \end{aligned}
 $$
 The solution has an oscillatory vertical structure rather than decaying with height. As air parcels are advected through this stationary wave pattern, they are displaced alternately upwards and downwards. In sufficiently moist air, the upward motion can cool the air and lead to condensation, producing cloud bands that follow the mountain-wave pattern. Such patterns can be visible in satellite images; two examples are shown in @fig-LeeWave_examples. Another cool video of these waves created by the Rockies can be found [on this page](https://www.boldmethod.com/learn-to-fly/weather/mountain-wave-today-boulder-co/).
@@ -386,7 +409,7 @@ $$
  \frac{\partial \vb}{\partial t} + (\ub\cdot\nabla)\vb = -\frac{1}{\rho_0}\nabla_H p,
 $$ {#eq-BoussinesqHydrostat1}
 $$
-   \frac{\partial p}{\partial z}  = \rho_0 b = -\rho g,
+   \frac{\partial p}{\partial z}  = \rho_0 b,
 $$ {#eq-hydroapprox_hydrobal}
 $$
    \nabla\cdot \ub =0,
@@ -401,7 +424,7 @@ where $\vb=(u,v)$ is the horizontal velocity and $\nabla_H=\left(\frac{\partial}
 Note that the hydrostatic approximation has resulted in the vertical momentum equation being replaced by hydrostatic balance. 
 
 ::: {.callout-note appearance="simple"}
-The Boussinesq equations ([-@eq-Bousmombuoy]) - ([-@eq-Bousdenistybuoy]) (and their hydrostatic counterparts ([-@eq-BoussinesqHydrostat1]) - ([-@eq-BoussinesqHydrostat4])) are the fundamental equations that are solved numerically in weather forecast and climate models. Because we observe and measure everything from the rotating Earth, these equations are solved in the rotating frame of reference (which we will come to in @sec-chap:rotation). Most climate models use the Hydrostatic equations as they require far fewer computational resources. Hence, because climate models (unlike weather models) are run for very long times (several years or decades), it is worth reducing the computational cost at the expense of making the hydrostatic assumption.
+The Boussinesq equations ([-@eq-Bousmombuoy]) - ([-@eq-Bousdenistybuoy]) (and their hydrostatic counterparts ([-@eq-BoussinesqHydrostat1]) - ([-@eq-BoussinesqHydrostat4])) are the fundamental equations that are solved numerically in many climate models. Because we observe and measure everything from the rotating Earth, these equations are solved in the rotating frame of reference (which we will come to in @sec-chap:rotation). Most climate models use the Hydrostatic equations as they require far fewer computational resources. Hence, because climate models (unlike weather models) are run for very long times (several years or decades), it is worth reducing the computational cost at the expense of making the hydrostatic assumption.
 :::
 
 ::: {.callout-note appearance="simple"}
